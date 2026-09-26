@@ -126,8 +126,8 @@ def scrape_footage(categories: list[dict] | None = None, max_pages_per_filter: i
         clips = scrape_clips_for_filter([c["id"]], label=f"{c['parent']}/{c['name']}", max_pages=max_pages_per_filter)
         all_clips.update(clips)
 
-    # Catalog endpoint (footage stories)
-    log.info(f"  Fetching footage catalog (stories)")
+    # Catalog endpoint (returns list of platforms, each with results)
+    log.info(f"  Fetching footage catalog (top charts / trending stories)")
     stories = []
     for page in range(1, 50):
         try:
@@ -135,11 +135,21 @@ def scrape_footage(categories: list[dict] | None = None, max_pages_per_filter: i
         except Exception as e:
             log.error(f"  catalog page {page} failed: {e}")
             break
-        results = data.get("catalog", {}).get("results", []) if isinstance(data, dict) else []
-        if not results:
+        # Response shape: {"catalog": [{"platformCode": "spotify", "results": [...]}, ...]}
+        cat_list = data.get("catalog", []) if isinstance(data, dict) else []
+        if not cat_list:
             break
-        stories.extend(results)
-        if len(results) < 100:
+        page_added = 0
+        for platform in cat_list:
+            for r in platform.get("results", []) or []:
+                r["_platform"] = platform.get("platformCode")
+                stories.append(r)
+                page_added += 1
+        if page_added == 0:
+            break
+        if page % 5 == 0:
+            log.info(f"    catalog page {page}: {page_added} items, total {len(stories)}")
+        if page_added < 100:
             break
 
     return {

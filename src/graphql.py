@@ -478,11 +478,13 @@ def luts(lut_base_preview_id: str, page: int = 1, take: int = 20,
     if contrast: v["contrast"] = contrast
     if video_category_name: v["videoCategoryName"] = video_category_name
     if mood_category_name: v["moodCategoryName"] = mood_category_name
-    return _run("Luts", v, version=2).get("luts", [])
+    # Luts query is on v1/graphql (not v2)
+    return _run("Luts", v, version=1).get("luts", [])
 
 
 def luts_by_ids(ids: list[str]) -> list[dict]:
-    return _run("LutsByIds", {"ids": ids}, version=2).get("lutsByIds", [])
+    # LutsByIds is also on v1 (verified from HAR)
+    return _run("LutsByIds", {"ids": ids}, version=1).get("lutsByIds", [])
 
 
 def search_terms_autosuggestions(asset_type: str) -> list[str]:

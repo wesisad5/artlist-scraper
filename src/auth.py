@@ -32,8 +32,12 @@ def jwt_headers(extra: dict | None = None) -> dict:
 
 
 def api_headers(extra: dict | None = None) -> dict:
-    """Headers for api.artlist.io (Bearer JWT auth)."""
-    return jwt_headers(extra)
+    """Headers for api.artlist.io (Bearer JWT auth + service-host)."""
+    h = jwt_headers()
+    h["service-host"] = "content.directories-api"
+    if extra:
+        h.update(extra)
+    return h
 
 
 def trpc_flows_headers(extra: dict | None = None) -> dict:
