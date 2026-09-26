@@ -1,16 +1,3 @@
-2026-09-26 05:39:15 [INFO] src.pipelines.audit: === CATALOG AUDIT ===
-2026-09-26 05:39:16 [INFO] src.pipelines.audit:   music: 32948 items, {'permlink': 98844, 'signed': 0, 'proxy': 0, 'unknown': 0, 'empty': 0}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   sfx: 51383 items, {'permlink': 154129, 'signed': 0, 'proxy': 0, 'unknown': 0, 'empty': 20}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   luts: 411 items, {'permlink': 822, 'signed': 0, 'proxy': 0, 'unknown': 0, 'empty': 0}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   templates: 1951 items, {'permlink': 3643, 'signed': 259, 'proxy': 0, 'unknown': 0, 'empty': 0}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   collections: 0 items, {'permlink': 0, 'signed': 0, 'proxy': 0, 'unknown': 0, 'empty': 0}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit: === AI AUDIT ===
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   flows: {'path': '/home/z/artlist-work/artlist-scraper/data/ai/flows.json', 'exists': True, 'size_kb': 392.1, 'valid': True, 'template_count': 10, 'user_flow_count': 1, 'node_count': 5}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit:   studio: {'path': '/home/z/artlist-work/artlist-scraper/data/ai/studio.json', 'exists': True, 'size_kb': 647.2, 'valid': True, 'spotlight_count': 1, 'user_project_count': 0}
-2026-09-26 05:39:17 [INFO] src.pipelines.audit: === CDN REACHABILITY AUDIT (sample=5) ===
-2026-09-26 05:39:23 [INFO] src.pipelines.audit:   20/20 samples reachable
-2026-09-26 05:39:23 [INFO] src.pipelines.audit: === BLOB MANIFEST AUDIT ===
-2026-09-26 05:39:23 [INFO] src.pipelines.audit:   0 mirrored URLs
 {
   "catalog": {
     "files": {
@@ -44,7 +31,17 @@
       },
       "footage": {
         "path": "/home/z/artlist-work/artlist-scraper/data/catalog/footage.json",
-        "exists": false
+        "exists": true,
+        "size_kb": 68103.8,
+        "valid": true,
+        "item_count": 38337,
+        "url_classification": {
+          "permlink": 76160,
+          "signed": 514,
+          "proxy": 0,
+          "unknown": 0,
+          "empty": 0
+        }
       },
       "luts": {
         "path": "/home/z/artlist-work/artlist-scraper/data/catalog/luts.json",
@@ -89,12 +86,11 @@
         }
       }
     },
-    "issues": [
-      "footage: file missing"
-    ],
+    "issues": [],
     "summary": {
       "music": 32948,
       "sfx": 51383,
+      "footage": 38337,
       "luts": 411,
       "templates": 1951,
       "collections": 0
@@ -132,147 +128,182 @@
     "samples": [
       {
         "source": "music",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9hcnRsaXN0L3NvbmctYWFjLzk3YmY2M2U2LTI5ODUtNGYwYS05",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvOTk5NTExX0VtYmVyd29vZF9SZWNvcmRzX0xM",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "music",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvNTcyMzFfNDgwMDM2XzQ4MDAzNl9fV2hlbl9N",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvNTQyNDFfNDU4OTg5XzQ1ODk4OV9fTGFuY2Vf",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "music",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvMTA5OTlfMjY1NTU4XzI2NTU1OF9JX1dhbnRf",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvNTUxODNfNDYxODA0XzQ2MTgwNF9fNG9yZXNp",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "music",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvOTY3MzExXzk2NDI2Nl9BcmRpZV9Tb25fLV9f",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvOTUxMzQ3Xzk1MTMyM19BbGV4YW5kcnVfRGFu",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "music",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvNTE4NDlfNDM5NzcyXzQzOTc3Ml9fU29uaWNf",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9tdXNpYy9hYWMvOTYyODI4Xzk2MjI1MV85NjE3ODdfUm9pZV9T",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "sfx",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzk3MjQ1MF85NzIzODVfVkVIRG9vci1pbnRfU2tv",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzk0NDgwXzY5MjE2NV9FbmdsaXNoX1Nwb3J0c19D",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "sfx",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzYwODEzXzQ5MDU0OV80OTA1NDhfMTcxXy1fRG91",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzgwMDEyNF84MDAwMTBfQXJ0bGlzdF8tX1NGWF9C",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "sfx",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzk0Njk4XzY5MzA2NV8zMS1CYXNrZXRfQmFsbC1f",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzUyMTY2XzQzNTMzM180MzUzMzJfU2NpRmlfVmVo",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "sfx",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzg2MDE1XzY0MTI4NV82NDEyODRfV0FUUk12bXRf",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzg1MTE1OV84NTEwODRfUGlhbm9fRm9ydGVfLV9G",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
         "source": "sfx",
-        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzIzMTE4XzMzMzYyNl8zMzM2MjZfV2hvb3NoZXNf",
+        "url": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzY3NTQ0OV9UaW5uaXR1cy0tLTUtQy1Mb25nLUF0",
         "classification": "permlink",
         "status": 302,
         "ok": true
       },
       {
-        "source": "luts",
-        "url": "https://artlist-luts.imgix.net/23524674-b3d1-409b-b6e5-771ca3d957f0_lutThumbnail_818b5408-ed73-438e-",
+        "source": "footage",
+        "url": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/f58227e7-e303-4520-b1ab-57ed4275",
+        "classification": "permlink",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "footage",
+        "url": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/88755_playlist.m3u8",
+        "classification": "permlink",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "footage",
+        "url": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/song-626268_playlist_1676288699.",
+        "classification": "permlink",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "footage",
+        "url": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/59030_playlist.m3u8",
+        "classification": "permlink",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "footage",
+        "url": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/ebfc1870-4675-4f1c-9635-5453da9e",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "luts",
-        "url": "https://artlist-luts.imgix.net/35c29ba4-e8f9-4a94-94ad-64458b691a80_lutThumbnail_16089f6d-0088-4c02-",
+        "url": "https://artlist-luts.imgix.net/a4676e41-3e61-48db-97f3-aa59afdf4c19_lutThumbnail_2126f5fc-4e2e-46d8-",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "luts",
-        "url": "https://artlist-luts.imgix.net/a397aa36-58c4-4542-a0db-ce2debc0bd4d_lutThumbnail_72e0728c-5ac8-4dd6-",
+        "url": "https://artlist-luts.imgix.net/d616f1a0-6363-40a0-8995-13f83f01a975_lutThumbnail_2d8417aa-4db5-47cd-",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "luts",
-        "url": "https://artlist-luts.imgix.net/d618232e-9122-4406-8f9a-a3f93cb8db27_lutThumbnail_b4b7a20e-5c55-4fb8-",
+        "url": "https://artlist-luts.imgix.net/95fb62e0-047b-46ab-9e29-7ce4f641ac6d_lutThumbnail_3d2e69f0-87e5-4585-",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "luts",
-        "url": "https://artlist-luts.imgix.net/fd042e19-cf4e-4739-b99f-e53cc69e4e00_lutThumbnail_00a54ce1-cfa7-4563-",
+        "url": "https://artlist-luts.imgix.net/ba560b7e-5b32-4b79-bea6-bbf8ba7f7bd6_lutThumbnail_93a32074-6311-4cf9-",
+        "classification": "permlink",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "luts",
+        "url": "https://artlist-luts.imgix.net/4272e091-6384-4b9f-974b-0114d171258b_lutThumbnail_02dcdab5-91d8-4b9b-",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "templates",
-        "url": "https://artlist-templates.imgix.net/image/Frame_Fusion_Slideshow-BVP_PIX.jpg",
+        "url": "https://artlist-content-images.imgix.net/jpg/b409843b-5fff-4b47-9aa0-22bfa5269c1e-gradedThumbnail_w8",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "templates",
-        "url": "https://artlist-templates.imgix.net/image/Real_Paper_Transitions-nitrozme.jpg",
+        "url": "https://template-private.imgix.net/jpg/778484_artistic_infographic-useful-more.jpg?Expires=210573908",
+        "classification": "signed",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "templates",
+        "url": "https://template-private.imgix.net/jpg/758511_floating_ui_logo_reveal-protomotion.jpg?Expires=210573",
+        "classification": "signed",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "source": "templates",
+        "url": "https://artlist-templates.imgix.net/image/Soft_Motion_Slideshow-BVP_PIX.jpg",
         "classification": "permlink",
         "status": 200,
         "ok": true
       },
       {
         "source": "templates",
-        "url": "https://artlist-templates.imgix.net/jpg/728b52da-3818-443b-a4c4-467ddc68962e-gradedThumbnail_w800px_",
-        "classification": "permlink",
-        "status": 200,
-        "ok": true
-      },
-      {
-        "source": "templates",
-        "url": "https://artlist-templates.imgix.net/image/CRT_Valentines_Day_Pixel_Opener-Lemmotion.jpg",
-        "classification": "permlink",
-        "status": 200,
-        "ok": true
-      },
-      {
-        "source": "templates",
-        "url": "https://artlist-templates.imgix.net/jpg/829551_drawn_sticker_pack-tatsianasa.jpg",
+        "url": "https://artlist-templates.imgix.net/jpg/919238_3d_cinemetallic_titles-saladboys.jpg",
         "classification": "permlink",
         "status": 200,
         "ok": true
       }
     ],
     "issues": [],
-    "ok_count": 20,
+    "ok_count": 25,
     "fail_count": 0
   },
   "blob_manifest": {
