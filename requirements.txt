@@ -1,0 +1,2 @@
+python-dotenv>=1.0.0
+# No other deps - we use stdlib urllib for HTTP to minimize surface area
