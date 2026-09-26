@@ -62,7 +62,8 @@ def scrape_clips_for_filter(filter_categories: list[int], label: str = "",
     last_total = 0
     for page in range(1, max_pages + 1):
         try:
-            data = graphql.clip_list(page=page, filter_categories=filter_categories, take=take)
+            # Note: clip_list doesn't accept take (server uses default 50)
+            data = graphql.clip_list(page=page, filter_categories=filter_categories)
         except Exception as e:
             if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
                 log.info(f"    page {page}: pagination cap hit, stopping")
