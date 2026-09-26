@@ -435,11 +435,13 @@ def catalog(page: int = 1, take: int = 100) -> dict:
 
 
 def template_root_categories() -> list[dict]:
-    return _run("TemplateRootCategories", {}, version=2).get("templateRootCategories", [])
+    # templateRootCategories is on v1/graphql (verified)
+    return _run("TemplateRootCategories", {}, version=1).get("templateRootCategories", [])
 
 
 def template_search_filters() -> dict:
-    return _run("templateSearchFilters", {}, version=2)
+    # templateSearchFilters is on v1/graphql (verified)
+    return _run("templateSearchFilters", {}, version=1).get("templateSearchFilters", {})
 
 
 def templates_list(page: int = 1, take: int = 50, sort_by: str = "STAFF_PICKS",
