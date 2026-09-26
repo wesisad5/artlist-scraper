@@ -13,6 +13,8 @@ import json
 import logging
 import sys
 from . import config
+
+log = logging.getLogger(__name__)
 from .pipelines import catalog as cat_pipeline
 from .pipelines import audit as audit_pipeline
 
@@ -54,8 +56,61 @@ def cmd_test_auth(args):
 
 def cmd_catalog(args):
     skip = args.skip.split(",") if args.skip else []
+    if getattr(args, 'resume', False):
+        # Resume mode: check progress.json and skip already-completed steps
+        from pathlib import Path
+        progress_file = config.META_DIR / "progress.json"
+        if progress_file.exists():
+            progress = json.loads(progress_file.read_text())
+            done_steps = progress.get("done_steps", [])
+            skip = list(set(skip + done_steps))
+            log.info(f"Resuming: skipping completed steps: {done_steps}")
     meta = cat_pipeline.run_catalog(skip=skip)
     print(json.dumps(meta, indent=2))
+    # Save progress
+    progress = {"done_steps": list(meta.get("steps", {}).keys()),
+                "done": all(s.get("status") == "ok" for s in meta.get("steps", {}).values()),
+                "totals": meta.get("totals", {}),
+                "run_id": meta.get("run_id")}
+    (config.META_DIR / "progress.json").write_text(json.dumps(progress, indent=2))
+
+
+def cmd_mirror_signed(args):
+    """Mirror signed (non-permlink) URLs to Netlify blob storage."""
+    from . import cdn as cdn_mod
+    from .storage import mirror_url, manifest
+    from .http_client import request
+    from . import auth
+    import json
+
+    log.info("=== Mirroring signed URLs to Netlify blob ===")
+    m = manifest()
+    count = 0
+    for name, fname, items_key, url_fields in [
+        ("music", "music.json", "songs", ["sitePlayableFilePath", "waveSurferFilePath", "albumImageFilePath"]),
+        ("sfx", "sfx.json", "items", ["sitePlayableFilePath", "waveSurferFilePath", "albumImageFilePath"]),
+        ("footage", "footage.json", "clips", ["clipPath", "thumbnailUrl"]),
+        ("luts", "luts.json", "luts", ["hlsUrl", "thumbnailUrl"]),
+        ("templates", "templates.json", "templates", ["previewVideoFileUrl", "thumbnailUrl"]),
+    ]:
+        path = config.CATALOG_DIR / fname
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text())
+        items = data.get(items_key, [])
+        for item in items:
+            for field in url_fields:
+                url = item.get(field)
+                if not url:
+                    continue
+                if cdn_mod.classify(url) != "permlink" and not m.has(url):
+                    info = mirror_url(url, extra_metadata={"source": name, "field": field})
+                    if info:
+                        count += 1
+                        if count % 50 == 0:
+                            log.info(f"  Mirrored {count} signed URLs so far")
+    log.info(f"=== Mirror complete: {count} new signed URLs mirrored ===")
+    print(json.dumps({"mirrored": count, "total_in_manifest": len(m.all())}, indent=2))
 
 
 def cmd_ai(args):
@@ -238,6 +293,7 @@ def main():
 
     p_cat = sub.add_parser("catalog", help="Run catalog scrape")
     p_cat.add_argument("--skip", help="Comma-separated list to skip (music,sfx,footage,luts,templates,collections,categories)")
+    p_cat.add_argument("--resume", action="store_true", help="Resume from last checkpoint")
     p_cat.set_defaults(func=cmd_catalog)
 
     p_ai = sub.add_parser("ai", help="Run AI tools scrape")
@@ -249,6 +305,8 @@ def main():
     p_all.set_defaults(func=cmd_all)
 
     sub.add_parser("audit", help="Run E2E audit").set_defaults(func=cmd_audit)
+
+    sub.add_parser("mirror-signed", help="Mirror signed URLs to Netlify blob").set_defaults(func=cmd_mirror_signed)
 
     p_serve = sub.add_parser("serve", help="Serve UI")
     p_serve.add_argument("--port", type=int, default=8000)
