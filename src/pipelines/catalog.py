@@ -58,7 +58,7 @@ def run_catalog(out_dir: Path | None = None, *, skip: list[str] | None = None) -
         "totals": {},
     }
 
-    # 1. Categories
+    # 1. Categories (fetch first so we can pass to per-catalog scrapers)
     cats_data = None
     if "categories" not in skip:
         cats_data, s = _step("categories", cat_scraper.scrape_all_categories,
@@ -73,15 +73,19 @@ def run_catalog(out_dir: Path | None = None, *, skip: list[str] | None = None) -
         except Exception as e:
             log.warning(f"search_terms failed: {e}")
 
-    # 2. Music
+    # 2. Music (pass music categories for per-category pagination)
     if "music" not in skip:
-        data, s = _step("music", music_scraper.scrape_music, out_dir / "music.json")
+        music_cats = (cats_data or {}).get("music", []) if cats_data else None
+        data, s = _step("music", music_scraper.scrape_music, out_dir / "music.json",
+                         categories=music_cats)
         run_meta["steps"]["music"] = s
         if data: run_meta["totals"]["music"] = data.get("total_unique", 0)
 
-    # 3. SFX
+    # 3. SFX (pass sfx categories)
     if "sfx" not in skip:
-        data, s = _step("sfx", sfx_scraper.scrape_sfx, out_dir / "sfx.json")
+        sfx_cats = (cats_data or {}).get("sfx", []) if cats_data else None
+        data, s = _step("sfx", sfx_scraper.scrape_sfx, out_dir / "sfx.json",
+                         categories=sfx_cats)
         run_meta["steps"]["sfx"] = s
         if data: run_meta["totals"]["sfx"] = data.get("total_unique", 0)
 
@@ -90,7 +94,7 @@ def run_catalog(out_dir: Path | None = None, *, skip: list[str] | None = None) -
         footage_cats = (cats_data or {}).get("footage", []) if cats_data else None
         data, s = _step("footage", footage_scraper.scrape_footage,
                          out_dir / "footage.json",
-                         categories=footage_cats, max_pages_per_filter=200)
+                         categories=footage_cats, max_pages_per_filter=60)
         run_meta["steps"]["footage"] = s
         if data:
             run_meta["totals"]["footage_clips"] = data.get("total_unique_clips", 0)

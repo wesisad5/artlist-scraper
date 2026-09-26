@@ -1,39 +1,45 @@
 """Music scraper: SongList with pagination.
 
-Strategy:
-- Use sort_type STAFF_PICKS first (returns totalResults).
-- Paginate through all pages (take=50, page=1..N).
-- totalResults is reported but may be approximate; we keep paging until empty or duplicate.
-- Also iterate sort types (STAFF_PICKS, RECENT, BEST_MATCH, MOST_POPULAR) and merge by songId to maximize coverage.
-- Also iterate category IDs (genre, mood, etc.) to ensure we hit everything if pagination caps out.
+KEY CONSTRAINT: Server caps pagination at page × take ≤ 3000 ("PaginationLimitValidator").
+With take=50, max page = 60. To cover the full 35,512 songs:
+1. Iterate sort types (STAFF_PICKS, RECENT, MOST_POPULAR, BEST_MATCH) — dedupes by songId.
+2. Iterate sub-categories with filterCategories=[cat_id] — each yields up to 3000 songs.
 """
 import logging
 import time
 from .. import graphql
 from .. import config
+from .categories import flatten_categories
 
 log = logging.getLogger(__name__)
 
 SORT_TYPES = ["STAFF_PICKS", "RECENT", "MOST_POPULAR", "BEST_MATCH"]
 
+# Server cap: page × take ≤ 3000. With take=50, max page = 60.
+MAX_PAGE_PER_FILTER = 60
 
-def scrape_one_sort(sort_type: str, take: int = 50, max_pages: int = 1000,
-                    category_ids: list[int] | None = None,
-                    vocal_type: str = "VOCAL_AND_INSTRUMENTS") -> tuple[dict[str, dict], int]:
-    """Scrape all songs for one sort type (and optional category filter).
-    Returns (songs_by_id, total_results_reported).
-    """
+
+def scrape_one_filter(sort_type: str, take: int = 50, max_pages: int = MAX_PAGE_PER_FILTER,
+                      category_ids: list[int] | None = None,
+                      vocal_type: str = "VOCAL_AND_INSTRUMENTS",
+                      excluded_song_ids: list[str] | None = None,
+                      label: str = "") -> dict[str, dict]:
+    """Scrape songs for one sort + category filter combo. Respects 3000-item cap."""
     songs: dict[str, dict] = {}
-    total_reported = 0
     cat_label = f"cat={category_ids[:3]}" if category_ids else "all"
-    log.info(f"  sort={sort_type} {cat_label} take={take}")
+    log.info(f"  sort={sort_type} {cat_label} label={label} take={take}")
     for page in range(1, max_pages + 1):
         try:
             data = graphql.song_list(
                 page=page, take=take, sort_type=sort_type,
                 vocal_type=vocal_type, category_ids=category_ids,
+                excluded_song_ids=excluded_song_ids,
             )
         except Exception as e:
+            # If we hit PaginationLimitValidator or other validation error, stop this filter
+            if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
+                log.info(f"    page {page}: pagination cap hit, stopping this filter")
+                break
             log.error(f"    page {page} failed: {e}")
             time.sleep(2)
             continue
@@ -42,23 +48,21 @@ def scrape_one_sort(sort_type: str, take: int = 50, max_pages: int = 1000,
         if not page_songs:
             log.info(f"    page {page}: empty, stopping")
             break
-        total_reported = sl.get("totalResults", total_reported)
         new_count = 0
         for s in page_songs:
             sid = str(s.get("songId"))
             if sid not in songs:
                 new_count += 1
             songs[sid] = _normalize_song(s)
-        if page % 20 == 0 or page == 1:
-            log.info(f"    page {page}: {len(page_songs)} songs ({new_count} new). Total unique: {len(songs)}/{total_reported}")
-        # If we got fewer than take, we're at the end
+        if page % 10 == 0 or page == 1:
+            log.info(f"    page {page}: {len(page_songs)} songs ({new_count} new). Total unique: {len(songs)}")
         if len(page_songs) < take:
             break
-        # If we've collected everything reported and no new songs in last page, stop
-        if total_reported and len(songs) >= total_reported and new_count == 0:
-            log.info(f"    page {page}: reached total {total_reported}, stopping")
+        # If we've collected this filter's worth and no new items, stop
+        if new_count == 0 and page > 3:
+            log.info(f"    page {page}: no new items, stopping")
             break
-    return songs, total_reported
+    return songs
 
 
 def _normalize_song(s: dict) -> dict:
@@ -95,20 +99,58 @@ def _normalize_song(s: dict) -> dict:
     }
 
 
-def scrape_music(max_pages_per_sort: int = 1000, sort_types: list[str] | None = None) -> dict:
-    """Full music catalog scrape. Returns {meta, songs: [...]}."""
+def scrape_music(max_pages_per_filter: int = MAX_PAGE_PER_FILTER,
+                 sort_types: list[str] | None = None,
+                 categories: list[dict] | None = None) -> dict:
+    """Full music catalog scrape.
+
+    Strategy:
+    1. Fetch music categories (if not provided).
+    2. For each sort type: paginate "all" (up to 3000 items).
+    3. For each sub-category: paginate with filter (up to 3000 items each).
+    4. Merge by songId.
+    """
     log.info(f"=== Scraping music catalog ===")
+
+    # Fetch categories if not provided
+    if categories is None:
+        try:
+            cats = graphql.root_categories("music")
+        except Exception as e:
+            log.error(f"  categories fetch failed: {e}")
+            cats = []
+    else:
+        cats = categories
+
+    flat = flatten_categories(cats)
+    sub_cats = [c for c in flat if c["parent"] != ""]
+    log.info(f"  {len(sub_cats)} sub-categories to iterate")
+
     all_songs: dict[str, dict] = {}
 
+    # Phase 1: per-sort "all" pass
     for sort_type in (sort_types or SORT_TYPES):
-        songs, total = scrape_one_sort(sort_type, take=config.MUSIC_PAGE_SIZE, max_pages=max_pages_per_sort)
-        log.info(f"  sort={sort_type}: collected {len(songs)} unique (reported total: {total})")
+        songs = scrape_one_filter(sort_type, take=config.MUSIC_PAGE_SIZE, max_pages=max_pages_per_filter)
+        log.info(f"  sort={sort_type} (all): collected {len(songs)} unique")
         all_songs.update(songs)
         log.info(f"  running unique total: {len(all_songs)}")
 
+    # Phase 2: per-sub-category pass (using STAFF_PICKS sort, which seems most diverse)
+    log.info(f"  Phase 2: per-sub-category pagination")
+    for i, c in enumerate(sub_cats, 1):
+        if i % 10 == 0:
+            log.info(f"  [{i}/{len(sub_cats)}] running total: {len(all_songs)}")
+        songs = scrape_one_filter("STAFF_PICKS", take=config.MUSIC_PAGE_SIZE,
+                                   max_pages=max_pages_per_filter,
+                                   category_ids=[c["id"]],
+                                   label=f"{c['parent']}/{c['name']}")
+        all_songs.update(songs)
+
+    log.info(f"=== Music scrape complete: {len(all_songs)} unique songs ===")
     return {
         "asset_type": "music",
         "total_unique": len(all_songs),
         "sort_types_used": sort_types or SORT_TYPES,
+        "category_count": len(sub_cats),
         "songs": list(all_songs.values()),
     }

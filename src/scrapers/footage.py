@@ -52,8 +52,11 @@ def _normalize_clip(c: dict) -> dict:
 
 
 def scrape_clips_for_filter(filter_categories: list[int], label: str = "",
-                             max_pages: int = 500, take: int = 50) -> dict[int, dict]:
-    """Paginate ClipList for a given filter. Returns clips_by_id."""
+                             max_pages: int = 60, take: int = 50) -> dict[int, dict]:
+    """Paginate ClipList for a given filter. Respects 3000-item cap.
+
+    With take=50, max page = 60 (3000 items). Use category filtering for full coverage.
+    """
     clips: dict[int, dict] = {}
     log.info(f"  filter={label or filter_categories} take={take}")
     last_total = 0
@@ -61,6 +64,9 @@ def scrape_clips_for_filter(filter_categories: list[int], label: str = "",
         try:
             data = graphql.clip_list(page=page, filter_categories=filter_categories, take=take)
         except Exception as e:
+            if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
+                log.info(f"    page {page}: pagination cap hit, stopping")
+                break
             log.error(f"    page {page} failed: {e}")
             time.sleep(2)
             continue
@@ -76,30 +82,25 @@ def scrape_clips_for_filter(filter_categories: list[int], label: str = "",
             if cid not in clips:
                 new_count += 1
             clips[cid] = _normalize_clip(c)
-        if page % 20 == 0 or page == 1:
+        if page % 10 == 0 or page == 1:
             log.info(f"    page {page}: {len(page_clips)} clips ({new_count} new). Total unique: {len(clips)}/{total}")
         last_total = total
         if len(page_clips) < take:
             break
-        # If we've collected 95% of reported total, stop
-        if total and len(clips) >= total * 0.95:
-            log.info(f"    page {page}: reached {len(clips)}/{total} (95%), stopping")
-            break
-        # Hard safety: if 5 pages no new items, stop
-        if new_count == 0 and page > 5:
+        if new_count == 0 and page > 3:
             log.info(f"    page {page}: no new items, stopping")
             break
     log.info(f"  filter={label or filter_categories}: {len(clips)} unique / {last_total} reported total")
     return clips
 
 
-def scrape_footage(categories: list[dict] | None = None, max_pages_per_filter: int = 500) -> dict:
-    """Full footage scrape.
+def scrape_footage(categories: list[dict] | None = None, max_pages_per_filter: int = 60) -> dict:
+    """Full footage scrape. Respects 3000-item pagination cap.
 
     Strategy:
     1. Fetch footage categories.
-    2. For each sub-category, paginate.
-    3. Also do an "all" pass.
+    2. "All" pass (no filter) — catches top 3000 clips.
+    3. Per-sub-category pass — each yields up to 3000 clips.
     4. Merge by clip id.
     """
     log.info(f"=== Scraping footage catalog ===")
