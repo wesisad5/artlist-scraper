@@ -14,7 +14,7 @@ from .categories import flatten_categories
 
 log = logging.getLogger(__name__)
 
-SORT_OPTIONS = ["STAFF_PICKS", "RECENT", "MOST_POPULAR"]
+SORT_OPTIONS = ["STAFF_PICKS", "NEWEST"]  # only valid enum values
 MAX_PAGE_PER_FILTER = 60  # 60 × 50 = 3000 (server cap)
 
 
@@ -47,8 +47,10 @@ def scrape_one_filter(sort_by: str, take: int = 50, max_pages: int = MAX_PAGE_PE
         try:
             data = graphql.sfx_list(page=page, sort_by=sort_by, category_ids=category_ids)
         except Exception as e:
-            if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
-                log.info(f"    page {page}: pagination cap hit, stopping")
+            err_str = str(e)
+            if "PaginationLimitValidator" in err_str or "Argument Validation Error" in err_str \
+               or "BAD_USER_INPUT" in err_str or "HTTP 400" in err_str:
+                log.info(f"    page {page}: stopping this filter ({err_str[:120]})")
                 break
             log.error(f"    page {page} failed: {e}")
             time.sleep(2)

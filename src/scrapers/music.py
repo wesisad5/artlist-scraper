@@ -13,7 +13,7 @@ from .categories import flatten_categories
 
 log = logging.getLogger(__name__)
 
-SORT_TYPES = ["STAFF_PICKS", "RECENT", "MOST_POPULAR", "BEST_MATCH"]
+SORT_TYPES = ["STAFF_PICKS", "NEWEST"]  # only valid enum values
 
 # Server cap: page × take ≤ 3000. With take=50, max page = 60.
 MAX_PAGE_PER_FILTER = 60
@@ -36,9 +36,11 @@ def scrape_one_filter(sort_type: str, take: int = 50, max_pages: int = MAX_PAGE_
                 excluded_song_ids=excluded_song_ids,
             )
         except Exception as e:
-            # If we hit PaginationLimitValidator or other validation error, stop this filter
-            if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
-                log.info(f"    page {page}: pagination cap hit, stopping this filter")
+            err_str = str(e)
+            # Stop on pagination cap or any 400 validation error (don't retry)
+            if "PaginationLimitValidator" in err_str or "Argument Validation Error" in err_str \
+               or "BAD_USER_INPUT" in err_str or "HTTP 400" in err_str:
+                log.info(f"    page {page}: stopping this filter ({err_str[:120]})")
                 break
             log.error(f"    page {page} failed: {e}")
             time.sleep(2)

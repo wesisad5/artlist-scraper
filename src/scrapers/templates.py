@@ -9,7 +9,7 @@ from .. import graphql
 
 log = logging.getLogger(__name__)
 
-SORT_OPTIONS = ["STAFF_PICKS", "RECENT", "MOST_POPULAR", "BEST_MATCH"]
+SORT_OPTIONS = ["STAFF_PICKS", "NEWEST"]  # only valid enum values
 MAX_PAGE_PER_FILTER = 60  # 60 × 50 = 3000 (server cap)
 
 
@@ -56,8 +56,10 @@ def scrape_templates(max_pages_per_sort: int = MAX_PAGE_PER_FILTER, sort_options
             try:
                 items = graphql.templates_list(page=page, take=50, sort_by=sb)
             except Exception as e:
-                if "PaginationLimitValidator" in str(e) or "Argument Validation Error" in str(e):
-                    log.info(f"    page {page}: pagination cap hit, stopping")
+                err_str = str(e)
+                if "PaginationLimitValidator" in err_str or "Argument Validation Error" in err_str \
+                   or "BAD_USER_INPUT" in err_str or "HTTP 400" in err_str:
+                    log.info(f"    page {page}: stopping this filter ({err_str[:120]})")
                     break
                 log.error(f"    page {page} failed: {e}")
                 time.sleep(2)

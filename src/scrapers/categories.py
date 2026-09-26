@@ -5,7 +5,7 @@ from .. import config
 
 log = logging.getLogger(__name__)
 
-ASSET_TYPES = ["music", "sfx", "footage", "template", "plugin", "software"]
+ASSET_TYPES = ["music", "sfx", "footage", "template"]  # only valid RootCategories asset types
 
 
 def scrape_all_categories() -> dict:
@@ -16,7 +16,8 @@ def scrape_all_categories() -> dict:
             cats = graphql.root_categories(at)
             out[at] = cats
             n_top = len(cats)
-            n_sub = sum(len(c.get("subCategory", [])) for c in cats)
+            # subCategory may be None (template) or a list
+            n_sub = sum(len(c.get("subCategory") or []) for c in cats)
             log.info(f"  {at}: {n_top} top categories, {n_sub} sub-categories")
         except Exception as e:
             log.error(f"  {at}: FAILED {e}")
@@ -42,7 +43,7 @@ def scrape_search_terms() -> dict:
 
 
 def flatten_categories(cats: list[dict], parent: str = "") -> list[dict]:
-    """Flatten the nested category tree into a list."""
+    """Flatten the nested category tree into a list. Handles None subCategory (template type)."""
     out = []
     for c in cats:
         out.append({
@@ -51,14 +52,14 @@ def flatten_categories(cats: list[dict], parent: str = "") -> list[dict]:
             "nameForUrl": c.get("nameForUrl"),
             "parent": parent,
         })
-        for sc in c.get("subCategory", []) or []:
+        for sc in (c.get("subCategory") or []):
             out.append({
                 "id": sc["id"],
                 "name": sc["name"],
                 "nameForUrl": sc.get("nameForUrl"),
                 "parent": c["name"],
             })
-            for ssc in sc.get("subCategory", []) or []:
+            for ssc in (sc.get("subCategory") or []):
                 out.append({
                     "id": ssc["id"],
                     "name": ssc["name"],
