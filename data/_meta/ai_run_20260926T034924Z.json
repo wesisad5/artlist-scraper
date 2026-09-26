@@ -1,0 +1,24 @@
+{
+  "run_id": "20260926T034924Z",
+  "started_at": "2026-09-26T03:49:24.586966+00:00",
+  "steps": {
+    "flows": {
+      "status": "ok",
+      "duration_sec": 15.7,
+      "error": null
+    },
+    "studio": {
+      "status": "ok",
+      "duration_sec": 5.7,
+      "error": null
+    }
+  },
+  "totals": {
+    "flow_templates": 10,
+    "user_flows": 1,
+    "flow_nodes": 5,
+    "studio_spotlight": 1,
+    "studio_user_projects": 0
+  },
+  "finished_at": "2026-09-26T03:49:45.984843+00:00"
+}

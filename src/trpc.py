@@ -227,7 +227,61 @@ def studio_get_characters() -> dict:
 
 
 def studio_get_model_groups() -> dict:
-    resp = studio_get("models.getModelGroups", {})
+    """Get model groups (features). Endpoint name from HAR: models.getModelGroupFeatures"""
+    # Try getModelGroupFeatures (verified from HAR)
+    resp = studio_get("models.getModelGroupFeatures", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_get_all_assets() -> dict:
+    """asset.getAllAssets"""
+    resp = studio_get("asset.getAllAssets", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_context_kits_list() -> dict:
+    """contextKit.listKits - context kits"""
+    resp = studio_get("contextKit.listKits", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_folders() -> dict:
+    """folder.getFolders"""
+    resp = studio_get("folder.getFolders", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_workflow_cost(shot_id: str, model_group_id: int | None = None) -> dict:
+    """models.getWorkflowCost"""
+    params = {"id": shot_id}
+    if model_group_id is not None:
+        params["modelGroupId"] = model_group_id
+    resp = studio_get("models.getWorkflowCost", params)
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_get_character(char_id: str) -> dict:
+    resp = studio_get("character.getCharacter", {"id": char_id})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_get_location(loc_id: str) -> dict:
+    resp = studio_get("location.getLocation", {"id": loc_id})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_user_agreements() -> dict:
+    resp = studio_get("userAgreementsRouter.getAgreementStatus", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_subscription_permissions() -> dict:
+    resp = studio_get("subscriptionPermissionRouter.getPermissions", {})
+    return resp.get("result", {}).get("data", {}).get("json", {})
+
+
+def studio_activities_list(page: int = 1, page_size: int = 100) -> dict:
+    resp = studio_get("activities.list", {"page": page, "pageSize": page_size})
     return resp.get("result", {}).get("data", {}).get("json", {})
 
 

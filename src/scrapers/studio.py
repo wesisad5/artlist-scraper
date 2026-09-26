@@ -18,7 +18,9 @@ log = logging.getLogger(__name__)
 def _classify_image_urls(obj):
     """Recursively classify all image/preview URLs in an object."""
     if isinstance(obj, dict):
-        for k, v in obj.items():
+        # Iterate over a copy of keys so we can add new keys during iteration
+        for k in list(obj.keys()):
+            v = obj[k]
             if isinstance(v, str) and any(s in k.lower() for s in ("url", "image", "preview", "thumb", "file")):
                 if v.startswith("http"):
                     obj[f"_{k}_classification"] = classify(v)
@@ -137,12 +139,50 @@ def scrape_predefined_assets() -> dict:
 def scrape_models() -> dict:
     """Scrape available AI models in Studio."""
     log.info(f"=== Scraping Studio models ===")
+    out = {}
     try:
-        models = trpc.studio_get_model_groups()
-        return {"models": models}
+        out["model_features"] = trpc.studio_get_model_groups()
     except Exception as e:
-        log.warning(f"  models failed: {e}")
-        return {"models": {}}
+        log.warning(f"  models.getModelGroupFeatures failed: {e}")
+    return out
+
+
+def scrape_extra_assets() -> dict:
+    """Scrape additional Studio asset endpoints discovered in HAR."""
+    log.info(f"=== Scraping Studio extra assets ===")
+    out = {}
+    try:
+        out["all_assets"] = trpc.studio_get_all_assets()
+    except Exception as e:
+        log.warning(f"  asset.getAllAssets failed: {e}")
+    try:
+        out["context_kits"] = trpc.studio_context_kits_list()
+    except Exception as e:
+        log.warning(f"  contextKit.listKits failed: {e}")
+    try:
+        out["folders"] = trpc.studio_folders()
+    except Exception as e:
+        log.warning(f"  folder.getFolders failed: {e}")
+    try:
+        out["activities"] = trpc.studio_activities_list(page=1, page_size=100)
+    except Exception as e:
+        log.warning(f"  activities.list failed: {e}")
+    try:
+        out["subscription_permissions"] = trpc.studio_subscription_permissions()
+    except Exception as e:
+        log.warning(f"  subscriptionPermissions failed: {e}")
+    return out
+
+
+def scrape_studio_all() -> dict:
+    out = {}
+    out.update(scrape_spotlight_projects())
+    out["user_projects"] = scrape_user_projects().get("user_projects", [])
+    out["predefined"] = scrape_predefined_assets()
+    out["models"] = scrape_models()
+    out["extra"] = scrape_extra_assets()
+    out["billing"] = scrape_studio_billing()
+    return out
 
 
 def scrape_studio_billing() -> dict:

@@ -18,14 +18,14 @@ from ..cdn import classify, normalize_cdn_url
 log = logging.getLogger(__name__)
 
 
-def scrape_flow_templates(max_templates: int = 100) -> dict:
-    """Scrape all Flow AI templates (example flows)."""
+def scrape_flow_templates(max_templates: int = 200) -> dict:
+    """Scrape all Flow AI templates (example flows). perPage capped at 50 by API."""
     log.info(f"=== Scraping Flow AI templates ===")
     templates = []
     cursor = 1
     while len(templates) < max_templates:
         try:
-            data = trpc.flows_template_list(per_page=100, cursor=cursor)
+            data = trpc.flows_template_list(per_page=50, cursor=cursor)
         except Exception as e:
             log.error(f"  cursor={cursor} failed: {e}")
             break
@@ -60,13 +60,13 @@ def scrape_flow_templates(max_templates: int = 100) -> dict:
 
 
 def scrape_user_flows() -> dict:
-    """Scrape user's own flows."""
+    """Scrape user's own flows. perPage capped at 50."""
     log.info(f"=== Scraping user flows ===")
     flows = []
     cursor = 1
     while True:
         try:
-            data = trpc.flows_flow_list(per_page=100, cursor=cursor)
+            data = trpc.flows_flow_list(per_page=50, cursor=cursor)
         except Exception as e:
             log.error(f"  cursor={cursor} failed: {e}")
             break
