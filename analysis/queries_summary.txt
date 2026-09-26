@@ -1,0 +1,498 @@
+GraphQL operations: 81
+tRPC operations: 51
+
+Unique GraphQL ops: 2
+
+--- search-api.artlist.io/v1/graphql  op=?  (artlist.collection.har) ---
+QUERY:
+
+query RootCategories($assetType: String!) {
+    rootCategories(assetType: $assetType) {
+      id
+      name
+      nameForUrl
+      subCategory {
+        id
+        name
+        nameForUrl
+        subCategory {
+          id
+          name
+          nameForUrl
+        }
+      }
+    }
+  }
+
+VARIABLES: {
+  "assetType": "music"
+}
+RESP preview: {
+  "data": {
+    "rootCategories": [
+      {
+        "id": 56,
+        "name": "Genre",
+        "nameForUrl": "genre",
+        "subCategory": [
+          {
+            "id": 65,
+            "name": "Acoustic",
+            "nameForUrl": "acoustic",
+            "subCategory": []
+          },
+          {
+            "id": 57,
+            "name": "Ambient",
+            "nameForUrl": "ambient",
+            "subCategory": []
+          },
+          {
+            "id": 58,
+            "name": "Blues",
+            "nameForUrl": "blues",
+            "subCategory": []
+          },
+          {
+            "id": 88,
+            "name": "Children",
+            "nameForUrl": "children",
+            "subCategory": []
+          },
+          {
+            "id": 62,
+            "name": "Cinematic",
+            "nameForUrl": "cinematic",
+            "subCategory": []
+          },
+          {
+            "id": 72,
+            "name": "Classical",
+            "nameForUrl": "classical",
+            "subCate
+
+--- search-api.artlist.io/v2/graphql  op=?  (artlist.lut.har) ---
+QUERY:
+query TemplatesList($payload: TemplatesListSearchRequest!) {
+  templatesList(payload: $payload) {
+    id
+    name
+    artistId
+    artistName
+    artistNameForUrl
+    isNew
+    thumbnailUrl
+    previewVideoFileUrl
+    files {
+      softwareName
+      softwareVersionName
+    },
+    availableFormats {
+      id
+      displayName
+    },
+    nameForUrl
+    resolutions
+    isOriginal
+  }
+}
+VARIABLES: {
+  "payload": {
+    "page": 1,
+    "take": 50,
+    "softwareNames": [],
+    "softwareVersions": [],
+    "resolutions": [],
+    "aspectRatios": [],
+    "plugins": [],
+    "categories": [],
+    "searchTerms": [],
+    "sortBy": "STAFF_PICKS"
+  }
+}
+RESP preview: {
+  "data": {
+    "templatesList": [
+      {
+        "id": "1003064",
+        "name": "Retro Food Photography Cereal Box Intro",
+        "artistId": "2241",
+        "artistName": "Boxcar",
+        "artistNameForUrl": "boxcar",
+        "isNew": false,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Retro_Food_Photography_Cereal_Box_Intro-Boxcar.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/4ff7ed9f-192b-43c0-a040-672228150a4c_playlist_1786011936.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "retro-food-photography-cereal-box-intro",
+        "resolutions": [
+          "HD"
+        ],
+        "isOriginal": true
+      }
+
+
+Unique tRPC ops: 31
+
+--- artlist.io  ops=downloads.dailyCount,lead.getBusinessFlag (artlist.collection.har) ---
+  input: {"0":{"json":{"subscriptionId":null},"meta":{"values":{"subscriptionId":["undefined"]},"v":1}},"1":{"json":null,"meta":{"values":["undefined"],"v":1}}}
+  res preview: [
+  {
+    "result": {
+      "data": {
+        "json": {
+          "downloadsCountByAssetType": {
+            "footage": 0,
+            "music": 0,
+            "stem": 0,
+            "sfx": 0,
+            "template": 0,
+            "lut": 0
+          },
+          "numberOfAllowedDownloadsByAssetType": {
+            "footage": 100,
+            "music": 40
+          }
+        }
+      }
+    }
+  },
+  {
+
+--- artlist.io  ops=tiktok.getTiktokId (artlist.collection.har) ---
+  input: {"0":{"json":null,"meta":{"values":["undefined"],"v":1}}}
+  res preview: [
+  {
+    "result": {
+      "data": {
+        "json": {
+          "tiktokId": null
+        }
+      }
+    }
+  }
+]
+
+--- flows.artlist.io  ops=assets.resolveUrl (flows.artlist.har) ---
+  input: {"json":{"fileKey":"92cc0e86-cb55-412f-98ed-bbf42ce46b9e"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "url": "https://cms-artifacts.artlist.io/content/artlist-flows/reference-uploads/92cc0e86-cb55-412f-98ed-bbf42ce46b9e-sunglasses.jpg?Expires=2105752482&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=or8qb3tEzKG8Wj5H81uYEE8e~QTR1poY-w5XCRtVerYCDejzMc0KjIB5FIKW-GagacdMf43z5I8Pqu4gTtpHqiX0iS2FzwUTN5duN4tTau4z0dmBsmMoEM~65QU8N5RLPL3TdP~iEtdth7KqEELtppTqLodWJ
+
+--- flows.artlist.io  ops=assets.resolveUrls (flows.artlist.har) ---
+  input: {"json":{"fileKeys":["a8adc824-ccc8-4d14-a9c6-ab408815b458"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "urls": {
+          "a8adc824-ccc8-4d14-a9c6-ab408815b458": "https://cms-toolkit-artifacts.artlist.io/content/-m-u-l-t-i_-t-o_-v-i-d-e-o-v1/media__6/-m-u-l-t-i_-t-o_-v-i-d-e-o-a8adc824-ccc8-4d14-a9c6-ab408815b458.mp4?Expires=2105752482&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=pzO5PwHbOo12qL-mm9MwM66bDEBRkzhyvEhQG8ovvcbxlnx0WpiF7VQtxd9rM4VipHh~VUsR9
+
+--- flows.artlist.io  ops=catalog.getNodeCatalog (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "nodes": [
+          {
+            "slug": "prompt",
+            "nodeType": "util",
+            "outputType": "text"
+          },
+          {
+            "slug": "assistant",
+            "nodeType": "model",
+            "outputType": "text",
+            "modelGroups": [],
+            "defaultModelGroupId": null
+          },
+          {
+       
+
+--- flows.artlist.io  ops=chatSession.getFreeGenerations (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "success": true,
+        "data": {
+          "freeGenerations": {
+            "perGenerationType": [
+              {
+                "name": "generatedImage",
+                "used": 0,
+                "limit": 2
+              },
+              {
+                "name": "generatedVideo",
+                "used": 0,
+                "limit": 1
+    
+
+--- flows.artlist.io  ops=flow.create (flows.artlist.har) ---
+  input: (none)
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "id": "64914",
+        "name": "Copy of Product Visualization",
+        "flowConfig": {
+          "nodes": [
+            {
+              "id": "assistant-1",
+              "slug": "assistant",
+              "nodeType": "model",
+              "position": {
+                "x": 325.4496000000004,
+                "y": 936.0176
+              },
+   
+
+--- flows.artlist.io  ops=flow.get (flows.artlist.har) ---
+  input: {"json":{"id":"64914"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "id": "64914",
+        "name": "Copy of Product Visualization",
+        "flowConfig": {
+          "nodes": [
+            {
+              "id": "assistant-1",
+              "slug": "assistant",
+              "nodeType": "model",
+              "position": {
+                "x": 325.4496000000004,
+                "y": 936.0176
+              },
+   
+
+--- flows.artlist.io  ops=flow.list (flows.artlist.har) ---
+  input: {"json":{"perPage":12,"cursor":1,"direction":"forward"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "items": [],
+        "nextCursor": null
+      }
+    }
+  }
+}
+
+--- flows.artlist.io  ops=flow.nodeOutputs (flows.artlist.har) ---
+  input: {"json":{"id":"64914","nodeId":"video-generator-5","perPage":4,"cursor":1,"direction":"forward"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "items": [],
+        "nextCursor": null,
+        "total": 0
+      }
+    }
+  }
+}
+
+--- flows.artlist.io  ops=flow.outputs (flows.artlist.har) ---
+  input: {"json":{"id":"64914"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {}
+    }
+  }
+}
+
+--- flows.artlist.io  ops=journeys.getBillingInformation (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "vatNumber": null,
+        "companyName": null,
+        "address": null,
+        "city": null,
+        "state": null,
+        "country": null,
+        "zip": null,
+        "firstName": null,
+        "validation_status": null,
+        "vatId": null,
+        "generatedCustomerId": null
+      },
+      "meta": {
+        "values": {
+          "vatNu
+
+--- flows.artlist.io  ops=journeys.getLastActiveSubscription (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "success": true,
+        "data": null
+      }
+    }
+  }
+}
+
+--- flows.artlist.io  ops=node.costQuote (flows.artlist.har) ---
+  input: {"json":{"nodeId":"video-generator-7","modelGroupId":415,"inputs":{"aspect_ratio":"auto","resolution":"1080p","duration":10,"image_urls":["https://cms-artifacts.artlist.io/content/artlist-flows/reference-uploads/92cc0e86-cb55-412f-98ed-bbf42ce46b9e-sunglasses.jpg?Expires=2102334724&Key-Pair-Id=K2ZDL
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "digitalSignature": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiY29zdFwiOjQyMDAsXCJpbnB1dFwiOntcImFzcGVjdF9yYXRpb1wiOlwiYXV0b1wiLFwiZHVyYXRpb25cIjoxMCxcImltYWdlX3VybHNcIjpbXCJodHRwczovL2Ntcy1hcnRpZmFjdHMuYXJ0bGlzdC5pby9jb250ZW50L2FydGxpc3QtZmxvd3MvcmVmZXJlbmNlLXVwbG9hZHMvOTJjYzBlODYtY2I1NS00MTJmLTk4ZWQtYmJmNDJjZTQ2YjllLXN1bmdsYXNzZXMu
+
+--- flows.artlist.io  ops=node.getUiConfig (flows.artlist.har) ---
+  input: {"json":{"slug":"video-generator","modelGroupId":515}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "settings": [
+          {
+            "setting_api_name": "prompt",
+            "setting_input_type": "string",
+            "setting_is_primary": true,
+            "setting_description": "",
+            "setting_display_name": "Prompt",
+            "setting_display_order": 0,
+            "setting_is_required": false,
+            "setting_compon
+
+--- flows.artlist.io  ops=subscriptionPermissions.getAvatarMenuVersion (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "version": "free"
+      }
+    }
+  }
+}
+
+--- flows.artlist.io  ops=template.get (flows.artlist.har) ---
+  input: {"json":{"id":"33"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "id": "33",
+        "name": "Product Visualization",
+        "flowConfig": {
+          "nodes": [
+            {
+              "id": "assistant-1",
+              "slug": "assistant",
+              "nodeType": "model",
+              "position": {
+                "x": 325.4496000000004,
+                "y": 936.0176
+              },
+              
+
+--- flows.artlist.io  ops=template.list (flows.artlist.har) ---
+  input: {"json":{"perPage":12,"cursor":1,"direction":"forward"}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "items": [
+          {
+            "id": "1",
+            "name": "Multi-Model Video",
+            "description": "Run one prompt through several video models and compare.",
+            "thumbnailUrl": "https://cms-toolkit-artifacts.artlist.io/content/artlist-ai-toolkit/reference-file-uploads/c8246439-2e40-4e50-86b2-6aff84d96e83-Multi_Video.web
+
+--- flows.artlist.io  ops=wallet.getMoreCreditsRoute (flows.artlist.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: {
+  "result": {
+    "data": {
+      "json": {
+        "route": "/page/pricing/max?source=flows"
+      }
+    }
+  }
+}
+
+--- studio.artlist.io  ops=growth.getAccountManager,growth.getLastActiveSubscription,activities.list,growth (studio.artlist.detail.har) ---
+  input: {"0":{"json":null,"meta":{"values":["undefined"]}},"1":{"json":null,"meta":{"values":["undefined"]}},"2":{"json":{"page":1,"pageSize":20}},"3":{"json":null,"meta":{"values":["undefined"]}},"4":{"json":null,"meta":{"values":["undefined"]}},"5":{"json":null,"meta":{"values":["undefined"]}},"6":{"json"
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]],\"4\":[[0],[null,0,4]],\"5\":[[0],[null,0,5]],\"6\":[[0],[null,0,6]],\"7\":[[0],[null,0,7]],\"8\":[[0],[null,0,8]]}}\n{\"json\":[7,0,[[{\"result\":0}],[\"result\",0,9]]]}\n{\"json\":[9,0,[[{\"data\":0}],[\"data\",0,10]]]}\n{\"json\":[10,0,[[{\"id\":\"fedbcd0f-95a9-4c83-af2e-2
+
+--- studio.artlist.io  ops=growth.getWalletBalance (studio.artlist.detail.har) ---
+  input: {"0":{"json":null,"meta":{"values":["undefined"]}}}
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]]}}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,1]]]}\n{\"json\":[1,0,[[{\"data\":0}],[\"data\",0,2]]]}\n{\"json\":[2,0,[[{\"id\":null,\"balance\":0,\"initialAmount\":0,\"lastUpdated\":\"2026-09-26T03:16:02.087Z\",\"application\":\"artlist\",\"subscriptionId\":\"49619108\",\"creditsUsed\":null,\"usageLimit\":null,\"additionalBalanceList\":[{
+
+--- studio.artlist.io  ops=location.getPredefinedLocations,location.getLocations,location.getLocationCreati (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"page":1,"pageSize":12,"randomizeSeed":-0.5450198772073798}},"1":{"json":{"page":1,"pageSize":12}},"2":{"json":{"page":1,"pageSize":12}},"3":{"json":{"workflowModelId":null,"feature":"location-create","inputData":{"generations":1,"inputImages":false,"duration":null,"audioType":null,"re
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]]}}\n{\"json\":[2,0,[[{\"result\":0}],[\"result\",0,4]]]}\n{\"json\":[4,0,[[{\"data\":0}],[\"data\",0,5]]]}\n{\"json\":[5,0,[[{\"data\":[],\"pagination\":{\"page\":1,\"pageSize\":12,\"total\":0},\"shouldRefetch\":false}]]]}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,6]]]}\
+
+--- studio.artlist.io  ops=messaging.onNewMessage (studio.artlist.detail.har) ---
+  input: {"json":null,"meta":{"values":["undefined"]}}
+  res preview: 
+
+--- studio.artlist.io  ops=project.getProjects (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"page":1,"pageSize":10}}}
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]]}}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,1]]]}\n{\"json\":[1,0,[[{\"data\":0}],[\"data\",0,2]]]}\n{\"json\":[2,0,[[{\"pagination\":{\"page\":1,\"pageSize\":10,\"total\":0},\"data\":[]}]]]}\n"
+}
+
+--- studio.artlist.io  ops=project.getSpotlightProjects,project.getProjects (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"page":1,"pageSize":10}},"1":{"json":{"page":1,"pageSize":9}}}
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]]}}\n{\"json\":[1,0,[[{\"result\":0}],[\"result\",0,2]]]}\n{\"json\":[2,0,[[{\"data\":0}],[\"data\",0,3]]]}\n{\"json\":[3,0,[[{\"pagination\":{\"page\":1,\"pageSize\":9,\"total\":0},\"data\":[]}]]]}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,4]]]}\n{\"json\":[4,0,[[{\"data\":0}],[\"data\",0,5]]]}\n{\"json\":[5,0,[[{\"
+
+--- studio.artlist.io  ops=prop.getPredefinedProps (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"page":2,"pageSize":12,"randomizeSeed":0.09773144494888175}}}
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]]}}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,1]]]}\n{\"json\":[1,0,[[{\"data\":0}],[\"data\",0,2]]]}\n{\"json\":[2,0,[[{\"pagination\":{\"page\":2,\"pageSize\":12,\"total\":79},\"data\":[{\"id\":\"20443639-4e13-489d-a47d-9861a6760bfb\",\"name\":\"Classic Helmet\",\"previewImageUrl\":\"https://artlist-studio-proxy.imgix.net/https%3A%2F%2Fc
+
+--- studio.artlist.io  ops=prop.getPredefinedProps,prop.getProps,prop.getPropCreationSetGenerations,models. (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"page":1,"pageSize":12,"randomizeSeed":0.09773144494888175}},"1":{"json":{"page":1,"pageSize":12,"imgixParams":{"ar":"16:9","w":1200}}},"2":{"json":{"page":1,"pageSize":12}},"3":{"json":{"workflowModelId":null,"feature":"prop-create","inputData":{"generations":1,"inputImages":false,"du
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]]}}\n{\"json\":[2,0,[[{\"result\":0}],[\"result\",0,4]]]}\n{\"json\":[4,0,[[{\"data\":0}],[\"data\",0,5]]]}\n{\"json\":[5,0,[[{\"data\":[],\"pagination\":{\"page\":1,\"pageSize\":12,\"total\":0},\"shouldRefetch\":false}]]]}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,6]]]}\
+
+--- studio.artlist.io  ops=shot.getShot (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"id":"9f92f096-9b3a-4580-89c3-bc0cf51c80c5"}}}
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]]}}\n{\"json\":[0,0,[[{\"result\":0}],[\"result\",0,1]]]}\n{\"json\":[1,0,[[{\"data\":0}],[\"data\",0,2]]]}\n{\"json\":[2,0,[[{\"id\":\"9f92f096-9b3a-4580-89c3-bc0cf51c80c5\",\"name\":\"Shot 9\",\"folderId\":\"1907e767-2d6e-410d-a362-cc21f6c33c10\",\"projectId\":\"fedbcd0f-95a9-4c83-af2e-2b2055cfae59\",\"startFrame\":{\"id\":\"a4ce48aa-c60d-4187
+
+--- studio.artlist.io  ops=shot.getShotFrames,shot.getShot,shot.getShots,models.getWorkflowCost,models.getW (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"id":"a18466fe-cc91-4be0-90a0-640e3eb6ea40","page":1,"pageSize":30,"thumbnailImgixParams":{"w":256,"h":256,"fit":"max","auto":"format"},"withFavorites":true}},"1":{"json":{"id":"a18466fe-cc91-4be0-90a0-640e3eb6ea40"}},"2":{"json":{"folderId":"1907e767-2d6e-410d-a362-cc21f6c33c10","page
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]],\"4\":[[0],[null,0,4]],\"5\":[[0],[null,0,5]],\"6\":[[0],[null,0,6]]}}\n{\"json\":[2,0,[[{\"result\":0}],[\"result\",0,7]]]}\n{\"json\":[7,0,[[{\"data\":0}],[\"data\",0,8]]]}\n{\"json\":[8,0,[[{\"pagination\":{\"page\":1,\"pageSize\":100,\"total\":9},\"data\":[{\"id\":\"3d0aa
+
+--- studio.artlist.io  ops=shot.getShotHistory,character.getCharacter,shot.getShot,shot.getShotFrames,shot. (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"id":"9f92f096-9b3a-4580-89c3-bc0cf51c80c5","page":1,"pageSize":30,"imgixParams":{"w":256,"h":256,"fit":"max","auto":"format"},"hasVideo":true,"withFavorites":true}},"1":{"json":{"id":"61aac73d-09bd-489e-b577-fa384f8aa56c","imgixParams":{"w":128,"h":128,"fit":"facearea","facepad":3}}},
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]],\"4\":[[0],[null,0,4]],\"5\":[[0],[null,0,5]],\"6\":[[0],[null,0,6]],\"7\":[[0],[null,0,7]]}}\n{\"json\":[1,0,[[{\"result\":0}],[\"result\",0,8]]]}\n{\"json\":[8,0,[[{\"data\":0}],[\"data\",0,9]]]}\n{\"json\":[9,0,[[{\"id\":\"61aac73d-09bd-489e-b577-fa384f8aa56c\",\"name\":\"
+
+--- studio.artlist.io  ops=shot.getShotHistory,generation.getGenerationSettings,models.getModelGroupFeature (studio.artlist.detail.har) ---
+  input: {"0":{"json":{"id":"a18466fe-cc91-4be0-90a0-640e3eb6ea40","page":1,"pageSize":30,"imgixParams":{"w":256,"h":256,"fit":"max","auto":"format"},"hasVideo":true,"withFavorites":true}},"1":{"json":{"imgixParams":{"w":300,"h":300,"auto":"format"}}},"2":{"json":{}},"3":{"json":{"limit":30,"offset":0}},"4":
+  res preview: {
+  "_raw_preview": "{\"json\":{\"0\":[[0],[null,0,0]],\"1\":[[0],[null,0,1]],\"2\":[[0],[null,0,2]],\"3\":[[0],[null,0,3]],\"4\":[[0],[null,0,4]],\"5\":[[0],[null,0,5]],\"6\":[[0],[null,0,6]],\"7\":[[0],[null,0,7]],\"8\":[[0],[null,0,8]],\"9\":[[0],[null,0,9]],\"10\":[[0],[null,0,10]],\"11\":[[0],[null,0,11]],\"12\":[[0],[null,0,12]],\"13\":[[0],[null,0,13]],\"14\":[[0],[null,0,14]],\"15\":[[0],[

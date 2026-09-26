@@ -1,0 +1,2421 @@
+
+======================================================================
+QUERY #1  (first seen in artlist.collection.har)
+======================================================================
+
+QUERY TEXT:
+query RootCategories($assetType: String!) {
+    rootCategories(assetType: $assetType) {
+      id
+      name
+      nameForUrl
+      subCategory {
+        id
+        name
+        nameForUrl
+        subCategory {
+          id
+          name
+          nameForUrl
+        }
+      }
+    }
+  }
+
+--- sample (artlist.collection.har, op=None) ---
+VARIABLES: {
+  "assetType": "music"
+}
+RESP preview: {
+  "data": {
+    "rootCategories": [
+      {
+        "id": 56,
+        "name": "Genre",
+        "nameForUrl": "genre",
+        "subCategory": [
+          {
+            "id": 65,
+            "name": "Acoustic",
+            "nameForUrl": "acoustic",
+            "subCategory": []
+          },
+          {
+            "id": 57,
+            "name": "Ambient",
+            "nameForUrl": "ambient",
+            "subCategory": []
+          },
+          {
+            "id": 58,
+            "name": "Blues",
+            "nameForUrl": "blues",
+            "subCategory": []
+          },
+          {
+            "id": 88,
+            "name": "Children",
+            "nameForUrl": "children",
+            "subCategory": []
+          },
+          {
+            "id": 62,
+            "name": "Cinematic",
+            "nameForUrl": "cinematic",
+            "subCategory": []
+          },
+          {
+            "id": 72,
+            "name": "Classical",
+            "nameForUrl": "classical",
+            "subCategory": []
+          },
+          {
+            "id": 95,
+            "name": "Corporate",
+            "nameForUrl": "corporate",
+            "subCategory": []
+          },
+          {
+            "id": 60,
+            "name": "Country",
+            "nameForUrl": "country",
+            "subCategory": []
+          },
+          {
+            "id": 64,
+            "name": "Electronic",
+            "nameForUrl": "electronic",
+            "subCategory": []
+          },
+          {
+            "id": 96,
+            "name": "Fantasy",
+            "nameForUrl": "fantasy",
+            "subCategory": []
+          },
+          {
+            "id": 71,
+            "name": "Folk",
+            "nameForUrl": "folk",
+            "subCategory": []
+          },
+          {
+            "id": 89,
+            "name": "Funk",
+            "nameForUrl": "funk",
+            "subCategory": []
+          },
+          {
+            "id": 85,
+            "name": "Hip Hop",
+            "nameForUrl": "hip-hop",
+       
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "assetType": "music"
+}
+RESP preview: {
+  "data": {
+    "rootCategories": [
+      {
+        "id": 56,
+        "name": "Genre",
+        "nameForUrl": "genre",
+        "subCategory": [
+          {
+            "id": 65,
+            "name": "Acoustic",
+            "nameForUrl": "acoustic",
+            "subCategory": []
+          },
+          {
+            "id": 57,
+            "name": "Ambient",
+            "nameForUrl": "ambient",
+            "subCategory": []
+          },
+          {
+            "id": 58,
+            "name": "Blues",
+            "nameForUrl": "blues",
+            "subCategory": []
+          },
+          {
+            "id": 88,
+            "name": "Children",
+            "nameForUrl": "children",
+            "subCategory": []
+          },
+          {
+            "id": 62,
+            "name": "Cinematic",
+            "nameForUrl": "cinematic",
+            "subCategory": []
+          },
+          {
+            "id": 72,
+            "name": "Classical",
+            "nameForUrl": "classical",
+            "subCategory": []
+          },
+          {
+            "id": 95,
+            "name": "Corporate",
+            "nameForUrl": "corporate",
+            "subCategory": []
+          },
+          {
+            "id": 60,
+            "name": "Country",
+            "nameForUrl": "country",
+            "subCategory": []
+          },
+          {
+            "id": 64,
+            "name": "Electronic",
+            "nameForUrl": "electronic",
+            "subCategory": []
+          },
+          {
+            "id": 96,
+            "name": "Fantasy",
+            "nameForUrl": "fantasy",
+            "subCategory": []
+          },
+          {
+            "id": 71,
+            "name": "Folk",
+            "nameForUrl": "folk",
+            "subCategory": []
+          },
+          {
+            "id": 89,
+            "name": "Funk",
+            "nameForUrl": "funk",
+            "subCategory": []
+          },
+          {
+            "id": 85,
+            "name": "Hip Hop",
+            "nameForUrl": "hip-hop",
+       
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "assetType": "footage"
+}
+RESP preview: {
+  "data": {
+    "rootCategories": [
+      {
+        "id": 137,
+        "name": "Video Theme",
+        "nameForUrl": "video-theme",
+        "subCategory": [
+          {
+            "id": 177,
+            "name": "Abstract",
+            "nameForUrl": "abstract",
+            "subCategory": []
+          },
+          {
+            "id": 259,
+            "name": "Social Aesthetic",
+            "nameForUrl": "social-aesthetic",
+            "subCategory": []
+          },
+          {
+            "id": 184,
+            "name": "Elements of Nature",
+            "nameForUrl": "elements-of-nature",
+            "subCategory": []
+          },
+          {
+            "id": 182,
+            "name": "Business",
+            "nameForUrl": "business",
+            "subCategory": []
+          },
+          {
+            "id": 712,
+            "name": "VFX Overlay",
+            "nameForUrl": "vfx-overlay",
+            "subCategory": []
+          },
+          {
+            "id": 254,
+            "name": "Animation",
+            "nameForUrl": "animation",
+            "subCategory": []
+          },
+          {
+            "id": 178,
+            "name": "Aerials",
+            "nameForUrl": "aerials",
+            "subCategory": []
+          },
+          {
+            "id": 192,
+            "name": "Nature & Landscapes",
+            "nameForUrl": "nature--landscapes",
+            "subCategory": []
+          },
+          {
+            "id": 197,
+            "name": "Technology",
+            "nameForUrl": "technology",
+            "subCategory": []
+          },
+          {
+            "id": 180,
+            "name": "Animals & Wildlife",
+            "nameForUrl": "animals--wildlife",
+            "subCategory": []
+          },
+          {
+            "id": 190,
+            "name": "Lifestyle",
+            "nameForUrl": "lifestyle",
+            "subCategory": []
+          },
+          {
+            "id": 185,
+            "name": "Fashion",
+            "nameForUrl": "fashion",
+            "subCategor
+
+======================================================================
+QUERY #2  (first seen in artlist.collection.har)
+======================================================================
+
+QUERY TEXT:
+query trendingSearchTerm(
+    $assetType: SearchTermsAutosuggestionsSupportedAssetType!
+    ) {
+    searchTermsAutosuggestions(assetType: $assetType) {
+        terms
+    }
+    }
+
+--- sample (artlist.collection.har, op=None) ---
+VARIABLES: {
+  "assetType": "MUSIC"
+}
+RESP preview: {
+  "data": {
+    "searchTermsAutosuggestions": {
+      "terms": [
+        "Pop Funk",
+        "Halloween",
+        "Oktoberfest",
+        "Football",
+        "Hope",
+        "Spooky",
+        "Fall",
+        "Serious",
+        "Bluegrass",
+        "Film Score",
+        "Greek",
+        "Time",
+        "Fashion",
+        "Lofi",
+        "Rock",
+        "Orchestra",
+        "Dramatic",
+        "Kids",
+        "Military",
+        "Corporate Pop",
+        "Ambient Cinematic",
+        "Emotional",
+        "Dance",
+        "Trap",
+        "Impact",
+        "Cumbia",
+        "Cooking",
+        "Real Estate",
+        "Country",
+        "Workout"
+      ]
+    }
+  }
+}
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "assetType": "MUSIC"
+}
+RESP preview: {
+  "data": {
+    "searchTermsAutosuggestions": {
+      "terms": [
+        "Pop Funk",
+        "Halloween",
+        "Oktoberfest",
+        "Football",
+        "Hope",
+        "Spooky",
+        "Fall",
+        "Serious",
+        "Bluegrass",
+        "Film Score",
+        "Greek",
+        "Time",
+        "Fashion",
+        "Lofi",
+        "Rock",
+        "Orchestra",
+        "Dramatic",
+        "Kids",
+        "Military",
+        "Corporate Pop",
+        "Ambient Cinematic",
+        "Emotional",
+        "Dance",
+        "Trap",
+        "Impact",
+        "Cumbia",
+        "Cooking",
+        "Real Estate",
+        "Country",
+        "Workout"
+      ]
+    }
+  }
+}
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "assetType": "FOOTAGE"
+}
+RESP preview: {
+  "data": {
+    "searchTermsAutosuggestions": {
+      "terms": [
+        "San Francisco",
+        "Las Vegas",
+        "Data Center",
+        "Neighborhood",
+        "Airport",
+        "Ambulance",
+        "Coding",
+        "Arizona",
+        "Handshake",
+        "Eye",
+        "Bank",
+        "Autumn",
+        "Corporate",
+        "911",
+        "Halloween",
+        "Politics",
+        "Rain",
+        "Travel",
+        "Sun",
+        "Forest",
+        "Homeless",
+        "Nature",
+        "New York City",
+        "Blood",
+        "School",
+        "Fireworks",
+        "American Flag",
+        "Clouds",
+        "Vhs",
+        "Chicago"
+      ]
+    }
+  }
+}
+
+======================================================================
+QUERY #3  (first seen in artlist.footage.har)
+======================================================================
+
+QUERY TEXT:
+query Catalog($page: Int, $take: Int) {
+  catalog(page: $page, take: $take) {
+    platformCode,
+    results {
+      slug,
+      name,
+      countryCode
+      fromDate
+      toDate
+    }
+  }
+}
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "page": 1,
+  "take": 100
+}
+RESP preview: {
+  "data": {
+    "catalog": [
+      {
+        "platformCode": "spotify",
+        "results": [
+          {
+            "slug": "top-songs",
+            "name": "Top Songs",
+            "countryCode": null,
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-8",
+            "name": "Top Songs",
+            "countryCode": "CA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-58",
+            "name": "Top Songs",
+            "countryCode": "ES",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-34",
+            "name": "Top Songs",
+            "countryCode": "JP",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-56",
+            "name": "Top Songs",
+            "countryCode": "ZA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-14",
+            "name": "Top Songs",
+            "countryCode": "DK",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-66",
+            "name": "Top Songs",
+            "countryCode": "GB",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-21",
+            "name": "Top Songs",
+            "countryCode": "FR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-6",
+            "name": "Top Songs",
+            "countryCode": "BR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-60",
+            "name": "Top Songs",
+            "countryCode": "C
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "page": 1,
+  "take": 100
+}
+RESP preview: {
+  "data": {
+    "catalog": [
+      {
+        "platformCode": "spotify",
+        "results": [
+          {
+            "slug": "top-songs",
+            "name": "Top Songs",
+            "countryCode": null,
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-8",
+            "name": "Top Songs",
+            "countryCode": "CA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-58",
+            "name": "Top Songs",
+            "countryCode": "ES",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-34",
+            "name": "Top Songs",
+            "countryCode": "JP",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-56",
+            "name": "Top Songs",
+            "countryCode": "ZA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-14",
+            "name": "Top Songs",
+            "countryCode": "DK",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-66",
+            "name": "Top Songs",
+            "countryCode": "GB",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-21",
+            "name": "Top Songs",
+            "countryCode": "FR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-6",
+            "name": "Top Songs",
+            "countryCode": "BR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-60",
+            "name": "Top Songs",
+            "countryCode": "C
+
+--- sample (artlist.sfx.har, op=None) ---
+VARIABLES: {
+  "page": 1,
+  "take": 100
+}
+RESP preview: {
+  "data": {
+    "catalog": [
+      {
+        "platformCode": "spotify",
+        "results": [
+          {
+            "slug": "top-songs",
+            "name": "Top Songs",
+            "countryCode": null,
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-8",
+            "name": "Top Songs",
+            "countryCode": "CA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-58",
+            "name": "Top Songs",
+            "countryCode": "ES",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-34",
+            "name": "Top Songs",
+            "countryCode": "JP",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-56",
+            "name": "Top Songs",
+            "countryCode": "ZA",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-14",
+            "name": "Top Songs",
+            "countryCode": "DK",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-66",
+            "name": "Top Songs",
+            "countryCode": "GB",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-21",
+            "name": "Top Songs",
+            "countryCode": "FR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-6",
+            "name": "Top Songs",
+            "countryCode": "BR",
+            "fromDate": "2026-09-11",
+            "toDate": "2026-09-17"
+          },
+          {
+            "slug": "top-songs-60",
+            "name": "Top Songs",
+            "countryCode": "C
+
+======================================================================
+QUERY #4  (first seen in artlist.footage.har)
+======================================================================
+
+QUERY TEXT:
+query ClipList($filterCategories: [Int!], $searchTerms: [String], $sortType: Int, $queryType: Int, $page: Int, $durationMin: Int, $durationMax: Int, $orientation: ClipOrientation, $frameRate: ClipFPS, $includeAIContent: Boolean) {
+  clipList(filterCategories: $filterCategories, searchTerms: $searchTerms, sortType: $sortType, queryType: $queryType, page: $page, durationMin: $durationMin, durationMax: $durationMax, orientation: $orientation, frameRate: $frameRate, includeAIContent: $includeAIContent) {
+    isGeoSearch
+    querySearchType
+    exactResults {
+      
+id
+clipName
+clipNameForUrl
+thumbnailUrl
+clipPath
+isInFavorites
+isInDownloadHistory
+isNew
+isVfx
+isInFolder
+filmMakerDisplayName
+storyId
+storyNameForURL
+isLicensed
+isOriginal
+storyName
+duration
+width
+height
+orientation
+isMadeWithAi
+geoLocationGridDisplay
+aiFrames {
+  thumbnailUrl
+  timestampSec
+}
+
+      
+availableFormats {
+  id
+  displayName
+}
+
+      
+filmMakerId
+filmMakerNameForUrl
+
+    }
+    similarResults {
+      
+id
+clipName
+clipNameForUrl
+thumbnailUrl
+clipPath
+isInFavorites
+isInDownloadHistory
+isNew
+isVfx
+isInFolder
+filmMakerDisplayName
+storyId
+storyNameForURL
+isLicensed
+isOriginal
+storyName
+duration
+width
+height
+orientation
+isMadeWithAi
+geoLocationGridDisplay
+aiFrames {
+  thumbnailUrl
+  timestampSec
+}
+
+    }
+    totalExact
+    totalSimilar
+    topDownloadedClipsCount
+    totalLexicalResults
+    totalSemanticResults
+  }
+}
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "page": 1,
+  "queryType": 1,
+  "filterCategories": [],
+  "searchTerms": [],
+  "sortType": 1,
+  "includeAIContent": true
+}
+RESP preview: {
+  "data": {
+    "clipList": {
+      "isGeoSearch": false,
+      "querySearchType": null,
+      "exactResults": [
+        {
+          "id": 6623401,
+          "clipName": "Burning Money, Money, Flame, Dollar Bill",
+          "clipNameForUrl": "burning-money-money-flame-dollar-bill",
+          "thumbnailUrl": "https://artlist-content-images.imgix.net/jpg/5033355b-d0df-429a-8563-ec2ea692bda8-gradedThumbnail_w800px_12baac93-fb3c-4071-b52a-30afe735427e_1785308686593.jpeg",
+          "clipPath": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/5033355b-d0df-429a-8563-ec2ea692bda8_playlist_1785235940.m3u8",
+          "isInFavorites": false,
+          "isInDownloadHistory": false,
+          "isNew": false,
+          "isVfx": false,
+          "isInFolder": false,
+          "filmMakerDisplayName": "Brad Day",
+          "storyId": 6021637,
+          "storyNameForURL": "money-under-pressure",
+          "isLicensed": false,
+          "isOriginal": false,
+          "storyName": "Money under Pressure",
+          "duration": 14400,
+          "width": 7680,
+          "height": 4320,
+          "orientation": "HORIZONTAL",
+          "isMadeWithAi": false,
+          "geoLocationGridDisplay": null,
+          "aiFrames": [],
+          "availableFormats": [
+            {
+              "id": "hd_preview",
+              "displayName": "HD Preview"
+            },
+            {
+              "id": "hd_graded",
+              "displayName": "HD"
+            },
+            {
+              "id": "hq_graded",
+              "displayName": "8K ProRes"
+            },
+            {
+              "id": "hq_not_graded",
+              "displayName": "4K MP4"
+            },
+            {
+              "id": "log",
+              "displayName": "RAW"
+            }
+          ],
+          "filmMakerId": 358,
+          "filmMakerNameForUrl": "brad-day"
+        },
+        {
+          "id": 6623046,
+          "clipName": "Sci-fi, Cybernetic, Retro-futuristic, Futuristic",
+          "clipNam
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "page": 2,
+  "queryType": 1,
+  "filterCategories": [],
+  "searchTerms": [],
+  "sortType": 1,
+  "includeAIContent": true
+}
+RESP preview: {
+  "data": {
+    "clipList": {
+      "isGeoSearch": false,
+      "querySearchType": null,
+      "exactResults": [
+        {
+          "id": 286418,
+          "clipName": "Night Lights, Planet Earth, Space Station, Earth Orbit",
+          "clipNameForUrl": "night-lights-planet-earth-space-station-earth-orbit",
+          "thumbnailUrl": "https://artgrid.imgix.net/footage-graded-thumbnail/8fb042af-4c49-434f-b4d1-b4d6cd5a3b1f_gradedThumbnail_w800px_1341787b-c08f-4c28-8529-7e26ca6aed0e_1771507971683.jpeg",
+          "clipPath": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/8fb042af-4c49-434f-b4d1-b4d6cd5a3b1f_playlist_1771508036.m3u8",
+          "isInFavorites": false,
+          "isInDownloadHistory": false,
+          "isNew": false,
+          "isVfx": false,
+          "isInFolder": false,
+          "filmMakerDisplayName": "Stav Sobolov",
+          "storyId": 21314,
+          "storyNameForURL": "space-exploration",
+          "isLicensed": false,
+          "isOriginal": true,
+          "storyName": "Space Exploration ",
+          "duration": 12458,
+          "width": 3840,
+          "height": 2160,
+          "orientation": "HORIZONTAL",
+          "isMadeWithAi": false,
+          "geoLocationGridDisplay": null,
+          "aiFrames": [
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/8fb042af-4c49-434f-b4d1-b4d6cd5a3b1f_aiThumbnail_dfc80758-1f3f-4b56-aae0-8d0589eb564f_1774272962421.jpeg",
+              "timestampSec": 2
+            },
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/8fb042af-4c49-434f-b4d1-b4d6cd5a3b1f_aiThumbnail_1b2bcdad-3431-4403-b244-86c116d1fe28_1774272962423.jpeg",
+              "timestampSec": 5
+            },
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/8fb042af-4c49-434f-b4d1-b4d6cd5a3b1f_aiThumbnail_4d718
+
+--- sample (artlist.footage.har, op=None) ---
+VARIABLES: {
+  "page": 3,
+  "queryType": 1,
+  "filterCategories": [],
+  "searchTerms": [],
+  "sortType": 1,
+  "includeAIContent": true
+}
+RESP preview: {
+  "data": {
+    "clipList": {
+      "isGeoSearch": false,
+      "querySearchType": null,
+      "exactResults": [
+        {
+          "id": 6616543,
+          "clipName": "Money Bags, Bank Heist, Action, Money",
+          "clipNameForUrl": "money-bags-bank-heist-action-money",
+          "thumbnailUrl": "https://artlist-content-images.imgix.net/jpg/a9c67d46-7a10-4aaf-9349-d230033c79ce-gradedThumbnail_w800px_e6844895-90b5-4629-a21c-6ec68429895a_1780821286592.jpeg",
+          "clipPath": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-hls/a9c67d46-7a10-4aaf-9349-d230033c79ce_playlist_1780815451.m3u8",
+          "isInFavorites": false,
+          "isInDownloadHistory": false,
+          "isNew": false,
+          "isVfx": false,
+          "isInFolder": false,
+          "filmMakerDisplayName": "LUKAS VOSS",
+          "storyId": 6021343,
+          "storyNameForURL": "bank-heist",
+          "isLicensed": false,
+          "isOriginal": true,
+          "storyName": "Bank Heist",
+          "duration": 7042,
+          "width": 3840,
+          "height": 2160,
+          "orientation": "HORIZONTAL",
+          "isMadeWithAi": true,
+          "geoLocationGridDisplay": null,
+          "aiFrames": [
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/a9c67d46-7a10-4aaf-9349-d230033c79ce_aiThumbnail_c7a64e2d-d769-4b84-9494-4a86761c9c79_1780815668134.jpeg",
+              "timestampSec": 0
+            },
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/a9c67d46-7a10-4aaf-9349-d230033c79ce_aiThumbnail_0c7c62b3-9b3d-4321-a682-6c47c64afd7c_1780815668214.jpeg",
+              "timestampSec": 2
+            },
+            {
+              "thumbnailUrl": "https://cms-public-artifacts.artlist.io/content/artgrid/footage-ai-thumbnail/a9c67d46-7a10-4aaf-9349-d230033c79ce_aiThumbnail_43e7174b-eb5d-489c-947d-716bdc61dec4_1780815668209.jpeg",
+   
+
+======================================================================
+QUERY #5  (first seen in artlist.lut.har)
+======================================================================
+
+QUERY TEXT:
+query TemplateRootCategories {
+  templateRootCategories {
+    name
+    id
+    uniqueId
+  }
+}
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateRootCategories": [
+      {
+        "name": "Typography & Titles",
+        "id": "530",
+        "uniqueId": "4_529_530"
+      },
+      {
+        "name": "Lower Thirds",
+        "id": "531",
+        "uniqueId": "4_529_531"
+      },
+      {
+        "name": "Logos",
+        "id": "532",
+        "uniqueId": "4_529_532"
+      },
+      {
+        "name": "Intros",
+        "id": "533",
+        "uniqueId": "4_529_533"
+      },
+      {
+        "name": "Slideshows",
+        "id": "534",
+        "uniqueId": "4_529_534"
+      },
+      {
+        "name": "Infographics",
+        "id": "535",
+        "uniqueId": "4_529_535"
+      },
+      {
+        "name": "Presentations",
+        "id": "536",
+        "uniqueId": "4_529_536"
+      },
+      {
+        "name": "Elements",
+        "id": "537",
+        "uniqueId": "4_529_537"
+      },
+      {
+        "name": "Transitions",
+        "id": "538",
+        "uniqueId": "4_529_538"
+      },
+      {
+        "name": "Tools",
+        "id": "539",
+        "uniqueId": "4_529_539"
+      },
+      {
+        "name": "Music Visualizer",
+        "id": "540",
+        "uniqueId": "4_529_540"
+      },
+      {
+        "name": "Mock-Ups",
+        "id": "541",
+        "uniqueId": "4_529_541"
+      },
+      {
+        "name": "Macros",
+        "id": "548",
+        "uniqueId": "4_529_548"
+      },
+      {
+        "name": "Presets",
+        "id": "998",
+        "uniqueId": "4_529_998"
+      }
+    ]
+  }
+}
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateRootCategories": [
+      {
+        "name": "Typography & Titles",
+        "id": "530",
+        "uniqueId": "4_529_530"
+      },
+      {
+        "name": "Lower Thirds",
+        "id": "531",
+        "uniqueId": "4_529_531"
+      },
+      {
+        "name": "Logos",
+        "id": "532",
+        "uniqueId": "4_529_532"
+      },
+      {
+        "name": "Intros",
+        "id": "533",
+        "uniqueId": "4_529_533"
+      },
+      {
+        "name": "Slideshows",
+        "id": "534",
+        "uniqueId": "4_529_534"
+      },
+      {
+        "name": "Infographics",
+        "id": "535",
+        "uniqueId": "4_529_535"
+      },
+      {
+        "name": "Presentations",
+        "id": "536",
+        "uniqueId": "4_529_536"
+      },
+      {
+        "name": "Elements",
+        "id": "537",
+        "uniqueId": "4_529_537"
+      },
+      {
+        "name": "Transitions",
+        "id": "538",
+        "uniqueId": "4_529_538"
+      },
+      {
+        "name": "Tools",
+        "id": "539",
+        "uniqueId": "4_529_539"
+      },
+      {
+        "name": "Music Visualizer",
+        "id": "540",
+        "uniqueId": "4_529_540"
+      },
+      {
+        "name": "Mock-Ups",
+        "id": "541",
+        "uniqueId": "4_529_541"
+      },
+      {
+        "name": "Macros",
+        "id": "548",
+        "uniqueId": "4_529_548"
+      },
+      {
+        "name": "Presets",
+        "id": "998",
+        "uniqueId": "4_529_998"
+      }
+    ]
+  }
+}
+
+--- sample (artlist.videotemplate.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateRootCategories": [
+      {
+        "name": "Typography & Titles",
+        "id": "530",
+        "uniqueId": "4_529_530"
+      },
+      {
+        "name": "Lower Thirds",
+        "id": "531",
+        "uniqueId": "4_529_531"
+      },
+      {
+        "name": "Logos",
+        "id": "532",
+        "uniqueId": "4_529_532"
+      },
+      {
+        "name": "Intros",
+        "id": "533",
+        "uniqueId": "4_529_533"
+      },
+      {
+        "name": "Slideshows",
+        "id": "534",
+        "uniqueId": "4_529_534"
+      },
+      {
+        "name": "Infographics",
+        "id": "535",
+        "uniqueId": "4_529_535"
+      },
+      {
+        "name": "Presentations",
+        "id": "536",
+        "uniqueId": "4_529_536"
+      },
+      {
+        "name": "Elements",
+        "id": "537",
+        "uniqueId": "4_529_537"
+      },
+      {
+        "name": "Transitions",
+        "id": "538",
+        "uniqueId": "4_529_538"
+      },
+      {
+        "name": "Tools",
+        "id": "539",
+        "uniqueId": "4_529_539"
+      },
+      {
+        "name": "Music Visualizer",
+        "id": "540",
+        "uniqueId": "4_529_540"
+      },
+      {
+        "name": "Mock-Ups",
+        "id": "541",
+        "uniqueId": "4_529_541"
+      },
+      {
+        "name": "Macros",
+        "id": "548",
+        "uniqueId": "4_529_548"
+      },
+      {
+        "name": "Presets",
+        "id": "998",
+        "uniqueId": "4_529_998"
+      }
+    ]
+  }
+}
+
+======================================================================
+QUERY #6  (first seen in artlist.lut.har)
+======================================================================
+
+QUERY TEXT:
+query TemplateRootCategories {
+  templateSearchFilters {
+    softwareNames {
+      id
+      name
+    }
+    resolutions {
+      id
+      name
+    }
+    aspectRatios {
+      id
+      name
+    }
+    softwareVersions {
+      id
+      name
+    }    
+  }
+}
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateSearchFilters": {
+      "softwareNames": [
+        {
+          "id": "33cee035-a696-42a8-ac96-7460aa1ba22b",
+          "name": "Final Cut Pro"
+        },
+        {
+          "id": "6f1fd688-109b-4625-8039-f7b3f6cd6829",
+          "name": "Adobe After Effects"
+        },
+        {
+          "id": "1e2aa680-7024-492d-859e-c0a1510a88ea",
+          "name": "Adobe Premiere Pro"
+        },
+        {
+          "id": "2a9aad17-ddc3-44e7-a7cb-fc69df3f96e0",
+          "name": "DaVinci Resolve"
+        }
+      ],
+      "resolutions": [
+        {
+          "id": "914c02f2-5115-46d8-a2a1-b541b845a485",
+          "name": "2K"
+        },
+        {
+          "id": "c73b146c-bc61-46f0-829d-c52491de2d31",
+          "name": "4K"
+        },
+        {
+          "id": "edaf7c72-3094-41b4-89a1-a4dfe6406d73",
+          "name": "HD"
+        }
+      ],
+      "aspectRatios": [
+        {
+          "id": "a4b5c6d7-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Vertical"
+        },
+        {
+          "id": "b6d5c4b3-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Square"
+        },
+        {
+          "id": "f7e8d9c8-5a2f-4b6d-9e8c-1f0a5b2c3d4e",
+          "name": "Wide"
+        }
+      ],
+      "softwareVersions": [
+        {
+          "id": "764889d3-517c-4486-bad4-036c4da2b861",
+          "name": "Final Cut Pro X 10.8"
+        },
+        {
+          "id": "f55c9c56-eeb2-49b6-abe2-c493d213ab03",
+          "name": "Final Cut Pro X 10.7"
+        },
+        {
+          "id": "dfd76a32-2077-4d73-9129-917e84028ca3",
+          "name": "Final Cut Pro X 10.6"
+        },
+        {
+          "id": "34efe3bd-aafa-4734-8cea-67c009e64e3a",
+          "name": "Final Cut Pro X 10.5"
+        },
+        {
+          "id": "2c7e3615-7531-4613-98c6-3ae0cb0750a8",
+          "name": "Final Cut Pro X 10.4"
+        },
+        {
+          "id": "de01f394-9a9e-417c-ae6f-d3fa2dec2996",
+          "name": "Final Cut Pro 12"
+        },
+        {
+          "id": "48e0d6b9-9a12-44b1-bc84-ed3fb47
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateSearchFilters": {
+      "softwareNames": [
+        {
+          "id": "33cee035-a696-42a8-ac96-7460aa1ba22b",
+          "name": "Final Cut Pro"
+        },
+        {
+          "id": "6f1fd688-109b-4625-8039-f7b3f6cd6829",
+          "name": "Adobe After Effects"
+        },
+        {
+          "id": "1e2aa680-7024-492d-859e-c0a1510a88ea",
+          "name": "Adobe Premiere Pro"
+        },
+        {
+          "id": "2a9aad17-ddc3-44e7-a7cb-fc69df3f96e0",
+          "name": "DaVinci Resolve"
+        }
+      ],
+      "resolutions": [
+        {
+          "id": "914c02f2-5115-46d8-a2a1-b541b845a485",
+          "name": "2K"
+        },
+        {
+          "id": "c73b146c-bc61-46f0-829d-c52491de2d31",
+          "name": "4K"
+        },
+        {
+          "id": "edaf7c72-3094-41b4-89a1-a4dfe6406d73",
+          "name": "HD"
+        }
+      ],
+      "aspectRatios": [
+        {
+          "id": "a4b5c6d7-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Vertical"
+        },
+        {
+          "id": "b6d5c4b3-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Square"
+        },
+        {
+          "id": "f7e8d9c8-5a2f-4b6d-9e8c-1f0a5b2c3d4e",
+          "name": "Wide"
+        }
+      ],
+      "softwareVersions": [
+        {
+          "id": "764889d3-517c-4486-bad4-036c4da2b861",
+          "name": "Final Cut Pro X 10.8"
+        },
+        {
+          "id": "f55c9c56-eeb2-49b6-abe2-c493d213ab03",
+          "name": "Final Cut Pro X 10.7"
+        },
+        {
+          "id": "dfd76a32-2077-4d73-9129-917e84028ca3",
+          "name": "Final Cut Pro X 10.6"
+        },
+        {
+          "id": "34efe3bd-aafa-4734-8cea-67c009e64e3a",
+          "name": "Final Cut Pro X 10.5"
+        },
+        {
+          "id": "2c7e3615-7531-4613-98c6-3ae0cb0750a8",
+          "name": "Final Cut Pro X 10.4"
+        },
+        {
+          "id": "de01f394-9a9e-417c-ae6f-d3fa2dec2996",
+          "name": "Final Cut Pro 12"
+        },
+        {
+          "id": "48e0d6b9-9a12-44b1-bc84-ed3fb47
+
+--- sample (artlist.videotemplate.har, op=None) ---
+VARIABLES: (none)
+RESP preview: {
+  "data": {
+    "templateSearchFilters": {
+      "softwareNames": [
+        {
+          "id": "33cee035-a696-42a8-ac96-7460aa1ba22b",
+          "name": "Final Cut Pro"
+        },
+        {
+          "id": "6f1fd688-109b-4625-8039-f7b3f6cd6829",
+          "name": "Adobe After Effects"
+        },
+        {
+          "id": "1e2aa680-7024-492d-859e-c0a1510a88ea",
+          "name": "Adobe Premiere Pro"
+        },
+        {
+          "id": "2a9aad17-ddc3-44e7-a7cb-fc69df3f96e0",
+          "name": "DaVinci Resolve"
+        }
+      ],
+      "resolutions": [
+        {
+          "id": "914c02f2-5115-46d8-a2a1-b541b845a485",
+          "name": "2K"
+        },
+        {
+          "id": "c73b146c-bc61-46f0-829d-c52491de2d31",
+          "name": "4K"
+        },
+        {
+          "id": "edaf7c72-3094-41b4-89a1-a4dfe6406d73",
+          "name": "HD"
+        }
+      ],
+      "aspectRatios": [
+        {
+          "id": "a4b5c6d7-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Vertical"
+        },
+        {
+          "id": "b6d5c4b3-6a2d-4b9e-8c3f-1d0e2a4b5c6d",
+          "name": "Square"
+        },
+        {
+          "id": "f7e8d9c8-5a2f-4b6d-9e8c-1f0a5b2c3d4e",
+          "name": "Wide"
+        }
+      ],
+      "softwareVersions": [
+        {
+          "id": "764889d3-517c-4486-bad4-036c4da2b861",
+          "name": "Final Cut Pro X 10.8"
+        },
+        {
+          "id": "f55c9c56-eeb2-49b6-abe2-c493d213ab03",
+          "name": "Final Cut Pro X 10.7"
+        },
+        {
+          "id": "dfd76a32-2077-4d73-9129-917e84028ca3",
+          "name": "Final Cut Pro X 10.6"
+        },
+        {
+          "id": "34efe3bd-aafa-4734-8cea-67c009e64e3a",
+          "name": "Final Cut Pro X 10.5"
+        },
+        {
+          "id": "2c7e3615-7531-4613-98c6-3ae0cb0750a8",
+          "name": "Final Cut Pro X 10.4"
+        },
+        {
+          "id": "de01f394-9a9e-417c-ae6f-d3fa2dec2996",
+          "name": "Final Cut Pro 12"
+        },
+        {
+          "id": "48e0d6b9-9a12-44b1-bc84-ed3fb47
+
+======================================================================
+QUERY #7  (first seen in artlist.lut.har)
+======================================================================
+
+QUERY TEXT:
+query TemplatesList($payload: TemplatesListSearchRequest!) {
+  templatesList(payload: $payload) {
+    id
+    name
+    artistId
+    artistName
+    artistNameForUrl
+    isNew
+    thumbnailUrl
+    previewVideoFileUrl
+    files {
+      softwareName
+      softwareVersionName
+    },
+    availableFormats {
+      id
+      displayName
+    },
+    nameForUrl
+    resolutions
+    isOriginal
+  }
+}
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "payload": {
+    "page": 1,
+    "take": 50,
+    "softwareNames": [],
+    "softwareVersions": [],
+    "resolutions": [],
+    "aspectRatios": [],
+    "plugins": [],
+    "categories": [],
+    "searchTerms": [],
+    "sortBy": "STAFF_PICKS"
+  }
+}
+RESP preview: {
+  "data": {
+    "templatesList": [
+      {
+        "id": "1003064",
+        "name": "Retro Food Photography Cereal Box Intro",
+        "artistId": "2241",
+        "artistName": "Boxcar",
+        "artistNameForUrl": "boxcar",
+        "isNew": false,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Retro_Food_Photography_Cereal_Box_Intro-Boxcar.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/4ff7ed9f-192b-43c0-a040-672228150a4c_playlist_1786011936.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "retro-food-photography-cereal-box-intro",
+        "resolutions": [
+          "HD"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003128",
+        "name": "Expressive Hands Toolkit",
+        "artistId": "2234",
+        "artistName": "US3R",
+        "artistNameForUrl": "us3r",
+        "isNew": true,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Expressive_Hands_Toolkit-us3r.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/c4fd1d22-3e96-4df8-a3ae-58045659a59d_playlist_1788172052.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "expressive-hands-toolkit",
+        "resolutions": [
+          "4K",
+          "HD"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003070",
+        "name": "Colorful Glass Info
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "payload": {
+    "page": 1,
+    "take": 50,
+    "softwareNames": [],
+    "softwareVersions": [],
+    "resolutions": [
+      "4K"
+    ],
+    "aspectRatios": [],
+    "plugins": [],
+    "categories": [],
+    "searchTerms": [],
+    "sortBy": "STAFF_PICKS"
+  }
+}
+RESP preview: {
+  "data": {
+    "templatesList": [
+      {
+        "id": "1003128",
+        "name": "Expressive Hands Toolkit",
+        "artistId": "2234",
+        "artistName": "US3R",
+        "artistNameForUrl": "us3r",
+        "isNew": true,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Expressive_Hands_Toolkit-us3r.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/c4fd1d22-3e96-4df8-a3ae-58045659a59d_playlist_1788172052.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "expressive-hands-toolkit",
+        "resolutions": [
+          "4K",
+          "HD"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003081",
+        "name": "Product Teaser",
+        "artistId": "2234",
+        "artistName": "US3R",
+        "artistNameForUrl": "us3r",
+        "isNew": false,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Product_Teaser-US3R.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/7324eb87-607c-4cec-9ea7-d7b11f5fef4e_playlist_1786529681.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "product-teaser",
+        "resolutions": [
+          "4K"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003061",
+        "name": "Clayworld Logo Reveal",
+        "artistId": "2241",
+        "artistName": "Boxcar",
+        "artistN
+
+--- sample (artlist.videotemplate.har, op=None) ---
+VARIABLES: {
+  "payload": {
+    "page": 1,
+    "take": 50,
+    "softwareNames": [],
+    "softwareVersions": [],
+    "resolutions": [],
+    "aspectRatios": [],
+    "plugins": [],
+    "categories": [],
+    "searchTerms": [],
+    "sortBy": "STAFF_PICKS"
+  }
+}
+RESP preview: {
+  "data": {
+    "templatesList": [
+      {
+        "id": "1003064",
+        "name": "Retro Food Photography Cereal Box Intro",
+        "artistId": "2241",
+        "artistName": "Boxcar",
+        "artistNameForUrl": "boxcar",
+        "isNew": false,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Retro_Food_Photography_Cereal_Box_Intro-Boxcar.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/4ff7ed9f-192b-43c0-a040-672228150a4c_playlist_1786011936.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "retro-food-photography-cereal-box-intro",
+        "resolutions": [
+          "HD"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003128",
+        "name": "Expressive Hands Toolkit",
+        "artistId": "2234",
+        "artistName": "US3R",
+        "artistNameForUrl": "us3r",
+        "isNew": true,
+        "thumbnailUrl": "https://artlist-templates.imgix.net/image/Expressive_Hands_Toolkit-us3r.png",
+        "previewVideoFileUrl": "https://cms-public-artifacts.artlist.io/content/artlist/template-hls/c4fd1d22-3e96-4df8-a3ae-58045659a59d_playlist_1788172052.m3u8",
+        "files": [
+          {
+            "softwareName": "Adobe After Effects",
+            "softwareVersionName": "Adobe After Effects 2025"
+          }
+        ],
+        "availableFormats": [
+          {
+            "id": "after_effects_zip",
+            "displayName": "After Effects"
+          }
+        ],
+        "nameForUrl": "expressive-hands-toolkit",
+        "resolutions": [
+          "4K",
+          "HD"
+        ],
+        "isOriginal": true
+      },
+      {
+        "id": "1003070",
+        "name": "Colorful Glass Info
+
+======================================================================
+QUERY #8  (first seen in artlist.lut.har)
+======================================================================
+
+QUERY TEXT:
+query Luts(
+    $lutBasePreviewId: String!
+    $saturation: [String!]
+    $temperature: [String!]
+    $contrast: [String!]
+    $videoCategoryName: [String!]
+    $moodCategoryName: [String!]
+    $page: Float
+    $take: Float
+  ) {
+    luts(
+      lutBasePreviewId: $lutBasePreviewId
+      contrast: $contrast
+      saturation: $saturation
+      temperature: $temperature
+      videoCategoryName: $videoCategoryName
+      moodCategoryName: $moodCategoryName
+      page: $page
+      take: $take
+    ) {
+      id
+      name
+      thumbnailUrl
+      hlsUrl
+      videoCategoryName
+      moodCategoryName
+      contrast
+      saturation
+      temperature
+    }
+  }
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "lutBasePreviewId": "3c517c9f-8a96-4eb6-b221-225162ea475a",
+  "page": 1,
+  "take": 20
+}
+RESP preview: {
+  "data": {
+    "luts": [
+      {
+        "id": "c0260860-9758-43cb-88f6-795acad2e5f4",
+        "name": "Apex",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/c0260860-9758-43cb-88f6-795acad2e5f4_lutThumbnail_40af1588-c1c9-4fd2-8912-87bc6dd015b7_1790253853025.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/17f03f9d-b88a-49af-b70c-b73cb58a476e_playlist.m3u8",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Bold",
+        "contrast": "High",
+        "saturation": "Mid",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "ce039f36-f67c-48a7-b849-323bda0b753f",
+        "name": "Firestorm",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/ce039f36-f67c-48a7-b849-323bda0b753f_lutThumbnail_f0391ad3-4869-43b7-9255-283f8a30b30c_1790246331943.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/a30a7a80-2ba4-4183-96fe-afa2aaeacc46_playlist.m3u8",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Dramatic",
+        "contrast": "High",
+        "saturation": "Mid",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "d78bed60-4339-4c2a-a3de-4710c98ef8f6",
+        "name": "Frostbite",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/d78bed60-4339-4c2a-a3de-4710c98ef8f6_lutThumbnail_333dab58-2906-421f-8977-8630a6f4bc08_1790246601522.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/0693e032-ff6c-4dda-9819-7a1f4748bc2c_playlist.m3u8",
+        "videoCategoryName": "Experimental",
+        "moodCategoryName": "Bleak",
+        "contrast": "Mid",
+        "saturation": "Low",
+        "temperature": "Cool"
+      },
+      {
+        "id": "1284395f-470f-4afd-b5b9-c7e186cafaf5",
+        "name": "Inferno",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/1284395f-470f-4afd-b5b9-c7e186cafaf5_lutThumbnail_e2f25b32-9b6e-44e9-a12a-659de232bc7e_1790247370999.jpeg",
+        "hlsUrl": "https://c
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "lutBasePreviewId": "3c517c9f-8a96-4eb6-b221-225162ea475a",
+  "page": 2,
+  "take": 20
+}
+RESP preview: {
+  "data": {
+    "luts": [
+      {
+        "id": "9a9e29d0-6b6a-472d-986e-508c056e040e",
+        "name": "Vibrant Decay",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/9a9e29d0-6b6a-472d-986e-508c056e040e_lutThumbnail_c48f63d7-ab0e-4df5-8742-08d6086679e5_1790260030215.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/c5d08acf-3fc9-42c5-b8c8-52f06e7ec19d_playlist.m3u8",
+        "videoCategoryName": "Retro",
+        "moodCategoryName": "Dramatic",
+        "contrast": "Mid",
+        "saturation": "Mid",
+        "temperature": "Warm"
+      },
+      {
+        "id": "13b26f54-5c87-4bd8-a36a-bfd2b0d8b5be",
+        "name": "Videotape",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/13b26f54-5c87-4bd8-a36a-bfd2b0d8b5be_lutThumbnail_24eee10f-b5c3-4a2c-9e95-148d4c50723b_1790260657119.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/667e913e-594f-43dd-b49c-eca616874729_playlist.m3u8",
+        "videoCategoryName": "Retro",
+        "moodCategoryName": "Gritty",
+        "contrast": "Mid",
+        "saturation": "Mid",
+        "temperature": "Warm"
+      },
+      {
+        "id": "44b4d02f-5228-4e02-a7ce-3acc5eb9f624",
+        "name": "Rewind",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/44b4d02f-5228-4e02-a7ce-3acc5eb9f624_lutThumbnail_aed3317c-534e-4e6d-99e5-31fec0eeeabb_1790260959041.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/d2239e3f-8b39-427a-b5e4-c8e67a9f46ff_playlist.m3u8",
+        "videoCategoryName": "Retro",
+        "moodCategoryName": "Muted",
+        "contrast": "Mid",
+        "saturation": "Mid",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "520a6c2c-91a2-421c-876b-1d990720c2a3",
+        "name": "Tracking",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/520a6c2c-91a2-421c-876b-1d990720c2a3_lutThumbnail_b596c4f0-8593-446f-ba61-d25f59d7e057_1790261279705.jpeg",
+        "hlsUrl": "https://cms-public-a
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "lutBasePreviewId": "3c517c9f-8a96-4eb6-b221-225162ea475a",
+  "page": 3,
+  "take": 20
+}
+RESP preview: {
+  "data": {
+    "luts": [
+      {
+        "id": "3248007b-af9f-4257-afd2-e894bb4561e0",
+        "name": "Noir",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/3248007b-af9f-4257-afd2-e894bb4561e0_lutThumbnail_a1995fe3-ef4b-4534-b567-f3ca6dbb821e_1790242202205.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/cc76991c-589e-466e-a748-95612a67ee37_playlist.m3u8",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Bleak",
+        "contrast": "High",
+        "saturation": "Low",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "5514ad36-940a-4a46-93be-ad4eb6dbc2c8",
+        "name": "Burnished",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/5514ad36-940a-4a46-93be-ad4eb6dbc2c8_lutThumbnail_e79b5a04-c484-4eda-b152-d705b582bfe9_1790176413225.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/8d9d186c-e3af-4ce4-af60-86970123f34f_playlist.m3u8",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Bold",
+        "contrast": "Mid",
+        "saturation": "Mid",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "00aaeb8e-624d-474a-afd9-e975a89cbbaa",
+        "name": "Contrast",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/00aaeb8e-624d-474a-afd9-e975a89cbbaa_lutThumbnail_f0cabfd1-1b2a-4f75-bb13-f5b6ad9928ef_1790243576568.jpeg",
+        "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/6d447035-f2d6-4c05-8504-6886d9fae3c1_playlist.m3u8",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Bold",
+        "contrast": "High",
+        "saturation": "Low",
+        "temperature": "Neutral"
+      },
+      {
+        "id": "396237a6-1e2a-4573-aeec-d3cbaea20941",
+        "name": "Obsidian",
+        "thumbnailUrl": "https://artlist-luts.imgix.net/396237a6-1e2a-4573-aeec-d3cbaea20941_lutThumbnail_e89b1739-7eac-41b2-9aad-7c2e843fc3ec_1790243854607.jpeg",
+        "hlsUrl": "https://cms-p
+
+======================================================================
+QUERY #9  (first seen in artlist.lut.har)
+======================================================================
+
+QUERY TEXT:
+query LutsByIds($ids: [String!]!) {
+  lutsByIds(ids: $ids) {
+    id
+    name
+    videoCategoryName
+    moodCategoryName
+    contrast
+    saturation
+    temperature
+    files {
+      hlsUrl
+      thumbnailUrl
+      lutBasePreviewId
+    }
+  }
+}
+
+--- sample (artlist.lut.har, op=None) ---
+VARIABLES: {
+  "ids": [
+    "ce039f36-f67c-48a7-b849-323bda0b753f"
+  ]
+}
+RESP preview: {
+  "data": {
+    "lutsByIds": [
+      {
+        "id": "ce039f36-f67c-48a7-b849-323bda0b753f",
+        "name": "Firestorm",
+        "videoCategoryName": "Cinematic",
+        "moodCategoryName": "Dramatic",
+        "contrast": "High",
+        "saturation": "Mid",
+        "temperature": "Neutral",
+        "files": [
+          {
+            "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/93f9d282-d9d6-4408-ab7a-ec73731754c0_playlist.m3u8",
+            "thumbnailUrl": "https://artlist-luts.imgix.net/ce039f36-f67c-48a7-b849-323bda0b753f_lutThumbnail_faf1ef73-d94b-4285-8d1e-bfbe7a322f95_1790246488512.jpeg",
+            "lutBasePreviewId": "658be352-7f01-4ce9-968d-2821d74e3621"
+          },
+          {
+            "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/18603a3e-bd6e-4b8c-88c2-ef374dcd7ecc_playlist.m3u8",
+            "thumbnailUrl": "https://artlist-luts.imgix.net/ce039f36-f67c-48a7-b849-323bda0b753f_lutThumbnail_1c9b5279-8d0c-4975-aa6d-17fea80a0556_1790246414008.jpeg",
+            "lutBasePreviewId": "5f756c82-c0cc-4b5b-a149-a977e355b12d"
+          },
+          {
+            "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/4802ac26-e80d-4c41-8bbb-c2a895e30588_playlist.m3u8",
+            "thumbnailUrl": "https://artlist-luts.imgix.net/ce039f36-f67c-48a7-b849-323bda0b753f_lutThumbnail_e5d473a3-a4e6-481b-8fed-538634da92ec_1790246394366.jpeg",
+            "lutBasePreviewId": "6483fc1e-a379-43d0-8c25-6f9a4066d696"
+          },
+          {
+            "hlsUrl": "https://cms-public-artifacts.artlist.io/content/lut/lut-hls/cb6bfeae-7108-490a-ac55-d71957ad8681_playlist.m3u8",
+            "thumbnailUrl": "https://artlist-luts.imgix.net/ce039f36-f67c-48a7-b849-323bda0b753f_lutThumbnail_619d45f8-de83-4273-9068-a6116924c603_1790246376184.jpeg",
+            "lutBasePreviewId": "a3c7a84c-5e2e-47ca-86dc-8fb11020f8ec"
+          },
+          {
+            "hlsUrl": "https://cms-public-artifacts.artlist.io/content/l
+
+======================================================================
+QUERY #10  (first seen in artlist.music.har)
+======================================================================
+
+QUERY TEXT:
+query SongList($page: Int!, $songSortType: SongSortType!, $take: Int!, $vocalType: VocalType!, $bpmMax: Int, $bpmMin: Int, $durationMax: Int, $durationMin: Int, $excludedCategoryIds: [Int], $categoryIds: [Int], $searchTerm: String, $isWithStemsOnly: Boolean, $excludedSongIds: [String]) {
+    songList(page: $page, songSortType: $songSortType, take: $take, vocalType: $vocalType, bpmMax: $bpmMax, bpmMin: $bpmMin, durationMax: $durationMax, durationMin: $durationMin, excludedCategoryIds: $excludedCategoryIds, categoryIds: $categoryIds, searchTerm: $searchTerm, isWithStemsOnly: $isWithStemsOnly, excludedSongIds: $excludedSongIds){
+      songs {
+        
+albumThumbFilePath
+albumImageFilePath
+albumId
+albumName
+albumNameForURL
+artistId
+artistName
+duration
+durationTime
+explicit
+featuredArtists
+isOriginal
+isNew
+lyrics
+nameForURL
+originalVersionID
+primaryArtists
+assetTypeId
+sitePlayableFilePath
+songName
+songId
+waveSurferFilePath
+numberOfStems
+isPreRelease
+officialReleaseDate
+genreCategories {
+  id
+  name
+  parentName
+}
+hook30End
+hook30Start
+
+        
+versions {
+  albumThumbFilePath
+  albumImageFilePath
+  albumId
+  albumName
+  albumNameForURL
+  artistId
+  artistName
+  duration
+  durationTime
+  explicit
+  featuredArtists
+  isOriginal
+  isNew
+  isPreRelease
+  officialReleaseDate
+  lyrics
+  nameForURL
+  primaryArtists
+  assetTypeId
+  sitePlayableFilePath
+  songName
+  songId
+  waveSurferFilePath
+  genreCategories {
+    id
+    name
+    parentName
+  }
+  hook30End
+  hook30Start
+}
+
+      }
+      totalResults
+    }
+  }
+
+--- sample (artlist.music.har, op=None) ---
+VARIABLES: {
+  "isAuthenticated": true,
+  "searchTerm": "",
+  "typeId": 1,
+  "take": 20,
+  "page": 1,
+  "songSortType": "STAFF_PICKS",
+  "vocalType": "VOCAL_AND_INSTRUMENTS",
+  "categoryIds": [],
+  "excludedCategoryIds": [],
+  "isWithStemsOnly": false
+}
+RESP preview: {
+  "data": {
+    "songList": {
+      "songs": [
+        {
+          "albumThumbFilePath": "https://artlist-albums.imgix.net/images/0fac17f0-ae08-4673-9953-a5cd6e604ef6_THUMBNAIL_72ea55df-4ead-4f75-a2a1-3ca9b01e6ba4_1779628548128.jpg",
+          "albumImageFilePath": "https://artlist-albums.imgix.net/images/0fac17f0-ae08-4673-9953-a5cd6e604ef6_IMAGE_698f8a56-b84f-4d26-9f73-a2d59acd862d_1779628547532.jpg",
+          "albumId": "1000596",
+          "albumName": "Fast Bow",
+          "albumNameForURL": "fast-bow",
+          "artistId": "2722",
+          "artistName": "FableForte",
+          "duration": "1:44",
+          "durationTime": 104,
+          "explicit": false,
+          "featuredArtists": "[]",
+          "isOriginal": true,
+          "isNew": true,
+          "lyrics": null,
+          "nameForURL": "fast-bow",
+          "originalVersionID": "-1",
+          "primaryArtists": "[]",
+          "assetTypeId": 1,
+          "sitePlayableFilePath": "https://cms-public-artifacts.artlist.io/Y29udGVudC9hcnRsaXN0L3NvbmctYWFjLzk3YzE0MThiLTcyYzEtNDFmMi1iMjNjLTExMzU0NTg1NTlmOV9hYWNfNDQ3MGEyODItYTc4Ny00NjI0LTk4NzMtNmQwZTdmM2VhYzI3XzE3Nzk2Mjg4NzM0OTQuYWFj",
+          "songName": "Fast Bow",
+          "songId": "6001661",
+          "waveSurferFilePath": "https://cms-public-artifacts.artlist.io/content/artlist/song-wavesurfer/97c1418b-72c1-41f2-b23c-1135458559f9_wavesurfer_98aeec44-317f-442e-9891-15b953da4cb2_1779629355308.json",
+          "numberOfStems": 8,
+          "isPreRelease": false,
+          "officialReleaseDate": "2026-08-11T06:02:49.966Z",
+          "genreCategories": [
+            {
+              "id": 62,
+              "name": "Cinematic",
+              "parentName": "Genre"
+            }
+          ],
+          "hook30End": 96.63,
+          "hook30Start": 71.63,
+          "versions": null
+        },
+        {
+          "albumThumbFilePath": "https://artlist-albums.imgix.net/images/20b2efe6-5674-457b-bcf0-29c842483dcc_THUMBNAIL_7aed6f51-3fdf-4594-b0ba-070166003378_17
+
+--- sample (artlist.music.har, op=None) ---
+VARIABLES: {
+  "isAuthenticated": true,
+  "searchTerm": "",
+  "typeId": 1,
+  "take": 20,
+  "page": 2,
+  "songSortType": "STAFF_PICKS",
+  "vocalType": "VOCAL_AND_INSTRUMENTS",
+  "categoryIds": [],
+  "excludedCategoryIds": [],
+  "isWithStemsOnly": false
+}
+RESP preview: {
+  "data": {
+    "songList": {
+      "songs": [
+        {
+          "albumThumbFilePath": "https://artlist-albums.imgix.net/images/bed8a7fe-2afa-4075-8965-76e53611ff63_THUMBNAIL_df708cb4-830f-494c-a469-285f5c3e6b2b_1784621988475.png",
+          "albumImageFilePath": "https://artlist-albums.imgix.net/images/bed8a7fe-2afa-4075-8965-76e53611ff63_IMAGE_e07605a9-f071-4dde-9977-fefb23f3b9cb_1784621988413.png",
+          "albumId": "1000765",
+          "albumName": "easy",
+          "albumNameForURL": "easy",
+          "artistId": "2678",
+          "artistName": "messwave",
+          "duration": "2:35",
+          "durationTime": 155,
+          "explicit": false,
+          "featuredArtists": "[]",
+          "isOriginal": true,
+          "isNew": false,
+          "lyrics": "Anything you like<br />Baby, I'll be down for<br />Where you at tonight?<br />Got me going psycho<br />Walking through my mind<br />Looking like an icon<br />Everything I like<br /><br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it<br /><br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it<br /><br />Anything you like<br />Baby, I'll be down for<br />Where you at tonight?<br />Got me going psycho<br />Walking through my mind<br />Looking like an icon<br />Everything I like<br /><br />Promise you that I'ma take it easy<br />Easy<br />Easy<br />Promise you that I'ma take it easy<br />Easy<br />Easy<br />Promise you that I'ma take it<br /><br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it easy<br />Take it easy<br />Promise you that I'ma take it",
+          "nameForURL": "easy",
+          "originalVersionID": "-1",
+          "primaryArtists": "[{\"id\":3869,\"name\":\"Moody\"},{\"id\":2815,\"name\":\"Danny Shields\"}]",
+          "assetTypeId": 1,
+          "sitePlayabl
+
+--- sample (artlist.music.har, op=None) ---
+VARIABLES: {
+  "isAuthenticated": true,
+  "searchTerm": "",
+  "typeId": 1,
+  "take": 20,
+  "page": 3,
+  "songSortType": "STAFF_PICKS",
+  "vocalType": "VOCAL_AND_INSTRUMENTS",
+  "categoryIds": [],
+  "excludedCategoryIds": [],
+  "isWithStemsOnly": false
+}
+RESP preview: {
+  "data": {
+    "songList": {
+      "songs": [
+        {
+          "albumThumbFilePath": "https://artlist-albums.imgix.net/images/7e9e6413-545a-4ab6-aaa8-43af8622bc4a_THUMBNAIL_8d31f9a6-4b04-4ea8-976d-efabfb45f33e_1771744184950.png",
+          "albumImageFilePath": "https://artlist-albums.imgix.net/images/7e9e6413-545a-4ab6-aaa8-43af8622bc4a_IMAGE_9e471b39-3156-47fa-ad77-b8c544c8492c_1771744184787.png",
+          "albumId": "1000429",
+          "albumName": "Rise Again",
+          "albumNameForURL": "rise-again",
+          "artistId": "585",
+          "artistName": "Francesco D'Andrea",
+          "duration": "2:44",
+          "durationTime": 164,
+          "explicit": false,
+          "featuredArtists": "[]",
+          "isOriginal": true,
+          "isNew": false,
+          "lyrics": null,
+          "nameForURL": "rise-again",
+          "originalVersionID": "-1",
+          "primaryArtists": "[]",
+          "assetTypeId": 1,
+          "sitePlayableFilePath": "https://cms-public-artifacts.artlist.io/Y29udGVudC9hcnRsaXN0L3NvbmctYWFjLzhlZjJkOGY5LTAwMjktNDM3Ni1iYjZkLWRiNmM5MDQ2ZjA0NV9hYWNfYWEzMDg4ZjQtZTdkNi00MWQzLTg2MGYtN2I1MGUwM2IzZWJkXzE3NzE3NDQ1MzI5MjcuYWFj",
+          "songName": "Rise Again",
+          "songId": "6001172",
+          "waveSurferFilePath": "https://cms-public-artifacts.artlist.io/content/artlist/song-wavesurfer/8ef2d8f9-0029-4376-bb6d-db6c9046f045_wavesurfer_8bf090fa-4a18-428b-9ce9-698cd5a1c15c_1771745020445.json",
+          "numberOfStems": 6,
+          "isPreRelease": false,
+          "officialReleaseDate": "2026-06-10T06:19:04.109Z",
+          "genreCategories": [
+            {
+              "id": 62,
+              "name": "Cinematic",
+              "parentName": "Genre"
+            }
+          ],
+          "hook30End": 155.14,
+          "hook30Start": 130.14,
+          "versions": [
+            {
+              "albumThumbFilePath": "https://artlist-albums.imgix.net/images/7e9e6413-545a-4ab6-aaa8-43af8622bc4a_THUMBNAIL_8d31f9a6-4b04-4ea8-976d-efa
+
+======================================================================
+QUERY #11  (first seen in artlist.sfx.har)
+======================================================================
+
+QUERY TEXT:
+query SfxList($categoryIds: String!, $page: Float!, $tags: String!, $term: String!, $sortBy: SfxListRequestSortByOptions!) {
+  sfxList(categoryIds: $categoryIds, page: $page, tags: $tags, term: $term, sortBy: $sortBy) {
+    page
+    songs {
+      albumId
+      albumImageFilePath
+      albumName
+      albumNameForURL
+      artistId
+      artistName
+      assetTypeId
+      durationTime
+      grandChildCategories {
+        id
+        name
+        parentName
+      }
+      isNew
+      nameForURL
+      sitePlayableFilePath
+      songId
+      songName
+      waveSurferFilePath
+    }
+    suggestion {
+      displayOrder
+      id
+      name
+    }
+  }
+}
+
+--- sample (artlist.sfx.har, op=None) ---
+VARIABLES: {
+  "categoryIds": "",
+  "page": 1,
+  "tags": "",
+  "term": "",
+  "sortBy": "STAFF_PICKS"
+}
+RESP preview: {
+  "data": {
+    "sfxList": {
+      "page": 1,
+      "songs": [
+        {
+          "albumId": "13350",
+          "albumImageFilePath": "https://artlist-images.imgix.net/1009128_Artlist_Original_-_Epic_Orchestral_-_A.jpg",
+          "albumName": "Epic Orchestral",
+          "albumNameForURL": "epic-orchestral",
+          "artistId": "847",
+          "artistName": "Artlist Original",
+          "assetTypeId": 2,
+          "durationTime": 8,
+          "grandChildCategories": [
+            {
+              "id": 257,
+              "name": "Cinematic Impacts",
+              "parentName": "Impacts"
+            },
+            {
+              "id": 258,
+              "name": "Hard Impacts",
+              "parentName": "Impacts"
+            },
+            {
+              "id": 280,
+              "name": "Outros",
+              "parentName": "Logos"
+            }
+          ],
+          "isNew": false,
+          "nameForURL": "epic-orchestral---heavy-cinematic-impact",
+          "sitePlayableFilePath": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzEwMDg5MThfMTAwODkxMl9FcGljX09yY2hlc3RyYWxfQ3V0c181Xy1fU0ZPLTI1LTAwMDY3NV9fLV9NQVNURVJFRF8tXzI0OTYuYWFj",
+          "songId": "140171",
+          "songName": "Epic Orchestral - Heavy Cinematic Impact",
+          "waveSurferFilePath": "https://cms-public-artifacts.artlist.io/content/sfx/wavesurfer/1008925_1008924_1008912_Epic_Orchestral_Cuts_5_-_SFO-25-000675__-_MASTERED_-_2496.json"
+        },
+        {
+          "albumId": "3526",
+          "albumImageFilePath": "https://artlist-images.imgix.net/413292_Sound_Ex_Machina_-_UI_Sounds_-_Organic_-_A.jpg",
+          "albumName": "UI Sounds - Organic",
+          "albumNameForURL": "ui-sounds---organic",
+          "artistId": "1167",
+          "artistName": "Sound Ex Machina ",
+          "assetTypeId": 2,
+          "durationTime": 2,
+          "grandChildCategories": [
+            {
+              "id": 206,
+              "name": "Bodily Functions",
+              "parentName"
+
+--- sample (artlist.sfx.har, op=None) ---
+VARIABLES: {
+  "categoryIds": "",
+  "page": 2,
+  "tags": "",
+  "term": "",
+  "sortBy": "STAFF_PICKS"
+}
+RESP preview: {
+  "data": {
+    "sfxList": {
+      "page": 2,
+      "songs": [
+        {
+          "albumId": "8614",
+          "albumImageFilePath": "https://artlist-images.imgix.net/792404_2496_SFX_-_Retro_Machines_-_A.jpg",
+          "albumName": "Retro Machines",
+          "albumNameForURL": "retro-machines",
+          "artistId": "2282",
+          "artistName": "2496 SFX",
+          "assetTypeId": 2,
+          "durationTime": 5,
+          "grandChildCategories": [
+            {
+              "id": 151,
+              "name": "Machines",
+              "parentName": "Industry & Commercial"
+            },
+            {
+              "id": 152,
+              "name": "Business & Office",
+              "parentName": "Industry & Commercial"
+            },
+            {
+              "id": 210,
+              "name": "Metal",
+              "parentName": "Materials"
+            },
+            {
+              "id": 253,
+              "name": "Alerts",
+              "parentName": "Technology"
+            }
+          ],
+          "isNew": false,
+          "nameForURL": "retro-machines---vintage-cash-register-cha-ching-bell",
+          "sitePlayableFilePath": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzc2NjQwM183NjYzODlfUmV0cm9fTWFjaGluZXNfLV9NRUNITWlzY19fX19DYXNoX1JlZ2lzdGVyLV9WaW50YWdlXzE5MTJfVHJhbnNhY3Rpb25fNV8tX01BU1RFUkVEXy1fMjQ5Ni5hYWM=",
+          "songId": "106848",
+          "songName": "Retro Machines - Vintage Cash Register, Cha Ching Bell",
+          "waveSurferFilePath": "https://cms-public-artifacts.artlist.io/content/sfx/wavesurfer/766435_Retro_Machines_-_MECHMisc.json"
+        },
+        {
+          "albumId": "10894",
+          "albumImageFilePath": "https://artlist-images.imgix.net/907558_Artlist_Original_-_Lady_Voice_-_A.jpg",
+          "albumName": "Musical Brazil",
+          "albumNameForURL": "musical-brazil",
+          "artistId": "847",
+          "artistName": "Artlist Original",
+          "assetTypeId": 2,
+          "durationTime": 8,
+          "
+
+--- sample (artlist.sfx.har, op=None) ---
+VARIABLES: {
+  "categoryIds": "",
+  "page": 3,
+  "tags": "",
+  "term": "",
+  "sortBy": "STAFF_PICKS"
+}
+RESP preview: {
+  "data": {
+    "sfxList": {
+      "page": 3,
+      "songs": [
+        {
+          "albumId": "12081",
+          "albumImageFilePath": "https://artlist-images.imgix.net/1007752_SoundCrib_-_AnimeA.jpg",
+          "albumName": "Anime",
+          "albumNameForURL": "anime",
+          "artistId": "2382",
+          "artistName": "SoundCrib",
+          "assetTypeId": 2,
+          "durationTime": 2,
+          "grandChildCategories": [
+            {
+              "id": 240,
+              "name": "Boings and Dings",
+              "parentName": "Cartoon"
+            },
+            {
+              "id": 317,
+              "name": "Fantasy & Magic",
+              "parentName": "Sci-Fi & Fantasy"
+            }
+          ],
+          "isNew": false,
+          "nameForURL": "anime---laser",
+          "sitePlayableFilePath": "https://cms-public-artifacts.artlist.io/Y29udGVudC9zZngvYWFjLzEwMDExMTdfMTAwMTA5Ml9BbmltZV8xMV8tX1NGTy0yNC0wMDA2MTJfXy1fTUFTVEVSRURfLV8yNDk2LmFhYw==",
+          "songId": "138483",
+          "songName": "Anime - Laser",
+          "waveSurferFilePath": "https://cms-public-artifacts.artlist.io/content/sfx/wavesurfer/1001193_1001170_1001092_Anime_11_-_SFO-24-000612__-_MASTERED_-_2496.json"
+        },
+        {
+          "albumId": "13219",
+          "albumImageFilePath": "https://artlist-images.imgix.net/1009095_Ilufeinm_-_Monster_Truck_-_A.jpg",
+          "albumName": "Monster Trucks",
+          "albumNameForURL": "monster-trucks",
+          "artistId": "3838",
+          "artistName": "Ilufeinm",
+          "assetTypeId": 2,
+          "durationTime": 7,
+          "grandChildCategories": [
+            {
+              "id": 124,
+              "name": "Motorsports",
+              "parentName": "Sports"
+            },
+            {
+              "id": 133,
+              "name": "Cars",
+              "parentName": "Transport"
+            }
+          ],
+          "isNew": false,
+          "nameForURL": "monster-trucks---engine-start",
+          "sitePlayableFilePath"
