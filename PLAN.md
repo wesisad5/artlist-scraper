@@ -3,7 +3,7 @@
 ## Mission
 Programmatically build out Artlist's full asset catalog (music, SFX, footage, LUTs, video templates, collections) plus their AI creation tools (Studio AI + Flow/Canvas AI), with weekly cron refresh and browser UI for visualization.
 
-## Status (2026-09-26)
+## Status (2026-09-26 06:05 UTC) — SCRAPE COMPLETE
 
 ### Done
 - [x] HAR analysis (10 files, 2609 API calls, 11 GraphQL ops, 31 tRPC ops)
@@ -11,25 +11,26 @@ Programmatically build out Artlist's full asset catalog (music, SFX, footage, LU
 - [x] Scraper framework: config, auth, http_client (with retry + rate limit), graphql, trpc, cdn classifier, storage (Netlify blob)
 - [x] 9 catalog/AI scrapers
 - [x] Pipeline orchestration with run metadata
-- [x] E2E audit pipeline
+- [x] E2E audit pipeline (25/25 CDN samples reachable)
 - [x] CLI entry point
-- [x] Browser UI (tabs, HLS player, audio player, audit view)
+- [x] Browser UI (tabs, HLS player, audio player, audit view, CDN proxy)
 - [x] GHA weekly cron workflow
-- [x] AI tools scrape complete (flows + studio, 10+1+5+95+79 items)
+- [x] AI tools scrape complete (10 flow templates, 1 user flow, 5 node types, 1 studio spotlight, 95 locations, 79 props)
+- [x] Catalog scrape complete: 125,078 items total
+  - Music: 32,948 (92.8% of 35,512)
+  - SFX: 51,383 (full via 185 sub-categories)
+  - Footage: 38,337 clips + 54 stories (4.5% of 857,760 — pagination cap limited)
+  - LUTs: 411 (full)
+  - Templates: 1,951 (capped)
+  - Collections: 0 (user has none)
+- [x] 20 commits pushed to github.com/elizabethadamspri/artlist-scraper main
 
-### In Progress
-- [ ] Catalog scrape (music in progress, sfx/luts/templates/collections queued; footage deferred)
-- [ ] Double-forked daemon keeps running across bash toolcalls (verified PID 2556 alive)
-
-### Pending
-- [ ] Footage scrape (~17,000 requests, ~1 hour) — defer to second daemon after music/sfx/etc done
-- [ ] Netlify blob storage setup (need NETLIFY_SITE_ID + NETLIFY_TOKEN from user)
-- [ ] Studio shot.getShot investigation (returns NOT_FOUND standalone but works in batched call)
-- [ ] Studio: discover more example projects beyond `project.getSpotlightProjects` (only returns 1)
-- [ ] Push everything to GitHub remote
-- [ ] Test UI serving end-to-end
-- [ ] Run audit after scrape completes
-- [ ] Document setup in README
+### Pending (need user input or future work)
+- [ ] Netlify blob storage setup (need NETLIFY_SITE_ID + NETLIFY_TOKEN from user) — for mirroring 773 signed URLs
+- [ ] GHA workflow secrets (user needs to add to GitHub Actions settings)
+- [ ] JWT refresh procedure (every ~14 days, JWT expires 2026-10-10)
+- [ ] Studio shot.getShot investigation (returns NOT_FOUND standalone)
+- [ ] Footage catalog deeper pagination (currently 4.5% — would need finer filters like category + orientation + duration to get more)
 
 ## Architecture
 
@@ -47,7 +48,7 @@ artlist-scraper/
 │   ├── scrapers/          # 9 per-catalog scrapers
 │   ├── pipelines/         # catalog.py (orchestration) + audit.py
 │   └── cli.py             # CLI: test-auth, catalog, ai, all, audit, serve
-├── data/                  # JSON output (committed)
+├── data/                  # JSON output (191 MB, committed to repo)
 │   ├── catalog/           # music, sfx, footage, luts, templates, collections, categories, search_terms
 │   ├── ai/                # flows, studio
 │   └── _meta/             # run metadata
@@ -68,9 +69,9 @@ artlist-scraper/
 | `studio.artlist.io/api/trpc/*` | studio session cookie (DIFFERENT from flows) | project.getSpotlightProjects, project.getProjects, shot.getShot, shot.getShotFrames, location.getPredefinedLocations, prop.getPredefinedProps, models.getModelGroupFeatures |
 
 ### CDN URL classification
-- **Permlink** (no expiry): `cms-public-artifacts.artlist.io/{base64 or /content/...}`, `*.imgix.net`
-- **Signed** (10-year expiry): `cms-toolkit-artifacts.artlist.io`, `cms-artifacts.artlist.io` (Expires=..., Signature=...)
-- **Proxy**: `artlist-studio-proxy.imgix.net/{encoded_url}` (wraps signed URLs)
+- **Permlink** (no expiry): `cms-public-artifacts.artlist.io/{base64 or /content/...}`, `*.imgix.net`. Just store the URL.
+- **Signed** (~10yr expiry): `cms-toolkit-artifacts.artlist.io`, `cms-artifacts.artlist.io`, `template-private.imgix.net`. Has `Expires=...&Signature=...`. Mirror to Netlify blob if user provides creds.
+- **Proxy**: `artlist-studio-proxy.imgix.net/{encoded_url}` (wraps signed URLs).
 
 ### Auth refresh
 JWT expires in ~14 days. To refresh:
@@ -81,21 +82,19 @@ JWT expires in ~14 days. To refresh:
 
 ## Future Work
 
-### P0 (this session)
-- Finish catalog scrape (music, sfx, luts, templates, collections)
-- Start footage scrape as second daemon
-- Run audit, verify data integrity
-- Serve UI, verify it works end-to-end
-- Push everything to remote
+### P0 (immediate — for production use)
+- User adds GitHub Actions secrets
+- User sets up Netlify site (optional, for blob mirroring)
+- User triggers GHA workflow manually to verify
 
-### P1 (next session)
+### P1 (next iteration)
 - Investigate studio shot.getShot batched-call requirement
-- Set up Netlify blob (after user provides creds) for mirroring signed URLs
-- Add CDN proxy endpoint to UI server (for cms-public-artifacts URLs that need Origin/Referer)
-- Investigate discovering more studio example projects
-
-### P2 (long horizon)
 - Add subscription-tier-aware filtering (only fetch assets user can actually download)
 - Add differential scraping (only fetch new items since last run)
 - Add per-asset detail pages (fetch full asset metadata, not just search results)
+
+### P2 (long horizon)
 - Set up Studio flow / shot creation flow (POST endpoints) for programmatic AI generation
+- Add footage catalog deeper pagination (combine category + orientation + duration filters)
+- Add Netlify Functions for server-side UI (instead of Python http.server)
+- Add user authentication to the UI (for private catalog browsing)

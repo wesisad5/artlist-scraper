@@ -1,102 +1,135 @@
 # HANDOFF — Artlist Catalog Scraper (next session)
 
-## Current State (2026-09-26 04:20 UTC)
+## Current State (2026-09-26 06:05 UTC) — SCRAPE COMPLETE
 
-### What's working
-- ✅ All 3 auth methods (Bearer JWT, flows session cookie, studio session cookie)
-- ✅ All 9 scrapers (categories, music, sfx, footage, luts, templates, collections, flows, studio)
-- ✅ AI tools scrape complete: 10 flow templates, 1 user flow, 5 node types, 1 studio spotlight project, 95 locations, 79 props
-- ✅ Browser UI with CDN proxy (port 9000 via daemon)
+### Final catalog totals
+| Catalog | Items | Coverage | File size |
+|---|---|---|---|
+| Music | 32,948 songs | 92.8% of 35,512 total | 57.9 MB |
+| SFX | 51,383 items | Full (185 sub-categories) | 61.5 MB |
+| Footage | 38,337 clips + 54 stories | 4.5% of 857,760 (server pagination cap) | 69.7 MB |
+| LUTs | 411 | Full | 233 KB |
+| Templates | 1,951 | Capped at 3000-item pagination | 2.2 MB |
+| Collections | 0 | User has none | 67 B |
+| **Total catalog** | **125,078 items** | | **191 MB** |
+
+### AI tools data
+| Source | Items |
+|---|---|
+| Flow AI templates | 10 (Multi-Model Video, Camera Angles, Character Sheet, etc.) |
+| Flow AI user flows | 1 (Copy of Product Visualization) |
+| Flow AI node types | 5 (prompt, assistant, file-uploader, image-generator, video-generator) |
+| Studio AI spotlight | 1 (Rooftop Chase — 9 shots, 2 characters) |
+| Studio AI user projects | 0 |
+| Studio predefined locations | 95 |
+| Studio predefined props | 79 |
+| **Total AI** | **191 items** |
+
+### Audit results
+- ✅ All 6 catalog files exist, valid JSON
+- ✅ Both AI files exist, valid JSON
+- ✅ 25/25 CDN samples reachable (100%)
+- ✅ All music/sfx/luts URLs are permlinks (no mirroring needed)
+- ⚠️ 514 footage + 259 template + 0 = 773 signed URLs (10-year expiry, not mirrored — Netlify blob setup pending)
+- ⚠️ Blob manifest empty (Netlify creds not provided by user)
+
+## What's done
+
+### Code (all committed to github.com/elizabethadamspri/artlist-scraper main)
+- ✅ Python scraper package: src/{config,auth,http_client,graphql,trpc,cdn,storage,cli}
+- ✅ 9 scrapers: categories, music, sfx, footage, luts, templates, collections, flows, studio
+- ✅ Pipeline orchestration with run metadata + audit
+- ✅ CLI: test-auth, catalog, ai, all, audit, serve
+- ✅ Browser UI (dark theme, HLS player, audio player, audit view, CDN proxy)
 - ✅ GHA weekly cron workflow
-- ✅ Pipeline orchestration + audit
-- ✅ Pagination cap (3000 items) handled via category-based pagination
+- ✅ PLAN.md, HANDOFF.md, .agents/SKILL.md
+- ✅ 20 commits pushed
 
-### What's in progress
-- 🔄 Catalog scrape running as daemon (PID 3154) — music at category 40/97, ~30K unique songs so far
-  - Music should finish in ~30 more min
-  - Then: sfx (~15 min), luts (~2 min), templates (~10 min), collections (~1 min)
-  - Footage SKIPPED in current run (deferred to separate daemon)
-- 🔄 UI daemon running (port 9000) — accessible via Z.ai preview `?XTransformPort=9000`
+### Daemons running
+- ✅ UI daemon (port 9000) — accessible via Z.ai preview with `?XTransformPort=9000`
+- ✅ Catalog daemon — exited (done)
+- ✅ Footage daemon — exited (done)
 
-### What's NOT done
-- ❌ Footage scrape (deferred — ~1-2 hours of API calls)
-- ❌ Netlify blob storage setup (need NETLIFY_SITE_ID + NETLIFY_TOKEN from user)
-- ❌ Studio shot.getShot investigation (returns NOT_FOUND standalone; works in batched call with project.getProject)
-- ❌ Studio: only 1 spotlight project returned; may be more discoverable
-- ❌ Audit run on final data
-- ❌ Final push to remote
+## What's NOT done
 
-## Immediate next steps (in priority order)
+1. **Netlify blob storage** — need `NETLIFY_SITE_ID` + `NETLIFY_TOKEN` from user to enable mirroring of signed URLs. Without this, 773 signed URLs (10-year expiry) are tracked but not mirrored.
 
-### 1. Wait for catalog scrape to finish
-```bash
-tail -f /tmp/catalog_scrape.log
-cat /home/sync/catalog_scrape.heartbeat
-```
-Daemon PID 3154. When done, `data/_meta/latest.json` will be updated with totals.
+2. **Studio shot.getShot investigation** — returns NOT_FOUND standalone; in HAR it worked as part of batched call with `project.getProject`. Both project.getProject and shot.getShot fail when called now, suggesting the example project from the HAR may have been deleted or requires different session state.
 
-### 2. Start footage scrape as separate daemon
-```bash
-# After music/sfx/luts/templates/collections are done
-python3 /home/z/my-project/scripts/daemon_catalog.py  # no --skip this time, but footage will be the only thing left
-# OR more targeted:
-python3 -c "
-import sys; sys.path.insert(0, '/home/z/artlist-work/artlist-scraper')
-from src.scrapers import footage
-data = footage.scrape_footage(max_pages_per_filter=60)
-import json; json.dump(data, open('/home/z/artlist-work/artlist-scraper/data/catalog/footage.json', 'w'), indent=2)
-"
-```
+3. **GHA workflow secrets** — user needs to add these as GitHub Actions secrets:
+   - `ARTLIST_JWT`
+   - `ARTLIST_FLOWS_SESSION_TOKEN`, `ARTLIST_FLOWS_CF_CLEARANCE`, `ARTLIST_FLOWS_CF_BM`
+   - `ARTLIST_STUDIO_SESSION_TOKEN`, `ARTLIST_STUDIO_CF_CLEARANCE`, `ARTLIST_STUDIO_CF_BM`, `ARTLIST_STUDIO_CSRF_TOKEN`
+   - `ARTLIST_USER_SESSION`, `ARTLIST_VISITOR_ID`, `ARTLIST_USER_ID`
+   - (optional) `NETLIFY_SITE_ID`, `NETLIFY_TOKEN`
 
-### 3. Run audit
-```bash
-cd /home/z/artlist-work/artlist-scraper && python3 -m src.cli audit > audit_report.json
-cat audit_report.json
-```
+4. **JWT refresh procedure** — JWT expires 2026-10-10 (~14 days). To refresh:
+   - User logs into artlist.io in browser, captures HARs for artlist.io + flows.artlist.io + studio.artlist.io
+   - Place HARs in `/home/z/artlist-work/hars/` (as `*.har` files)
+   - Run `python3 /home/z/my-project/scripts/extract_auth.py`
+   - Re-build `.env` (see .agents/SKILL.md for the one-liner)
+   - Update GitHub Actions secrets
 
-### 4. Test UI end-to-end
-```bash
-# UI daemon should still be running on port 9000
-curl -s http://localhost:9000/api/catalog  # verify data loads
-# Open in browser via Z.ai preview URL with ?XTransformPort=9000
-```
+## Immediate next steps for a new session
 
-### 5. Commit + push final data
-```bash
-cd /home/z/artlist-work/artlist-scraper
-git add -A
-git commit -m "Catalog scrape complete + audit"
-git push origin main
-```
+1. **Verify everything is committed**:
+   ```bash
+   cd /home/z/artlist-work/artlist-scraper
+   git status
+   git log --oneline -5
+   ```
+
+2. **Test the UI**:
+   ```bash
+   # Start UI daemon (if not running)
+   python3 /home/z/my-project/scripts/daemon_ui.py
+   # Verify
+   curl -s http://localhost:9000/api/catalog
+   # Open in browser via Z.ai preview URL with ?XTransformPort=9000
+   ```
+
+3. **Test the GHA workflow** (manual trigger):
+   - Go to https://github.com/elizabethadamspri/artlist-scraper/actions
+   - Click "Weekly Catalog Refresh" → "Run workflow"
+   - Set the required secrets first (Settings → Secrets and variables → Actions)
+
+4. **Set up Netlify blob** (optional, for signed URL mirroring):
+   - Create a Netlify site, get `NETLIFY_SITE_ID` and `NETLIFY_TOKEN`
+   - Add to `.env` and GitHub Actions secrets
+   - Run `python -m src.cli catalog --skip music,sfx,footage,luts,templates,collections` to test blob mirroring
 
 ## Key files / paths
 
-### Project repo (push to remote for persistence)
-- `/home/z/artlist-work/artlist-scraper/` — main project, pushes to github.com/elizabethadamspri/artlist-scraper
+### Project repo (pushed to GitHub)
+- `/home/z/artlist-work/artlist-scraper/` — main project, 20 commits on main
 - `.env` — secrets (committed; GIT IS THE DISK)
 - `src/` — Python scraper code
-- `data/` — scraped JSON data (committed)
+- `data/` — scraped JSON data (191 MB catalog + 1 MB AI)
 - `ui/` — browser UI (HTML/CSS/JS)
 - `.github/workflows/weekly-refresh.yml` — GHA cron
-- `PLAN.md` — long-horizon plan
-- `.agents/SKILL.md` — meta context for sub-agents
+- `audit_report.json` — latest audit report
+- `PLAN.md`, `HANDOFF.md`, `.agents/SKILL.md` — docs
 
 ### Helper scripts (in /home/z/my-project/scripts/)
-- `daemon_catalog.py` — double-forked daemon for catalog scrape (survives bash toolcalls)
+- `daemon_catalog.py` — double-forked daemon for catalog scrape
+- `daemon_footage.py` — double-forked daemon for footage scrape
 - `daemon_ui.py` — double-forked daemon for UI server (port 9000)
-- `parse_hars.py` — HAR parser (extracts API endpoints + auth)
-- `extract_auth.py` — extracts JWT + cookies from HARs
-- `extract_queries.py` — extracts GraphQL/tRPC queries from HARs
-- `smoke_test.py` — quick test of all scrapers (1 page each)
+- `parse_hars.py` — HAR parser
+- `extract_auth.py` — JWT + cookies extractor
+- `extract_queries.py` — GraphQL/tRPC query extractor
+- `smoke_test.py` — quick test of all scrapers
 
-### Logs / state
-- `/tmp/catalog_scrape.log` — catalog daemon log
+### Logs / state (ephemeral)
+- `/tmp/catalog_scrape.log` — catalog daemon log (95 min of music+sfx+luts+templates+collections)
+- `/tmp/footage_scrape.log` — footage daemon log (25 min)
 - `/tmp/ui_server.log` — UI server log
-- `/home/sync/catalog_scrape.heartbeat` — heartbeat from catalog daemon (proves it's alive across toolcalls)
+- `/home/sync/catalog_scrape.heartbeat` — catalog daemon heartbeat (proves it finished)
+- `/home/sync/footage_scrape.heartbeat` — footage daemon heartbeat (proves it finished)
 
-### Secrets (extracted from HARs, in /home/z/artlist-work/secrets/)
-- `JWT.txt` — Bearer JWT for search-api.artlist.io
-- `COOKIES_BY_HOST.json` — per-host cookies (flows.artlist.io, studio.artlist.io)
+### Secrets (extracted from HARs)
+- `/home/z/artlist-work/secrets/JWT.txt` — Bearer JWT for search-api.artlist.io
+- `/home/z/artlist-work/secrets/COOKIES_BY_HOST.json` — per-host cookies (flows/studio)
+- Also in `.env` (committed to repo)
 
 ## Key technical learnings (also in .agents/SKILL.md)
 
@@ -108,23 +141,13 @@ git push origin main
 6. **api.artlist.io/v1/directory** needs `service-host: content.directories-api` header.
 7. **CDN permlinks** (cms-public-artifacts.artlist.io) need Origin + Referer headers matching artlist.io. Browser can't set these (forbidden), so we proxy via /api/cdn-proxy.
 8. **JWT expires in ~14 days**. Refresh by re-capturing HARs and running scripts/extract_auth.py.
-
-## Known issues / TODOs for future sessions
-
-1. **Studio shot.getShot** returns NOT_FOUND when called standalone. In the HAR, it works as part of a batched call with `project.getProject?id={projectId}`. Need to investigate if there's session state required, or if a different endpoint should be used.
-
-2. **Studio spotlight projects**: only 1 returned (`Rooftop Chase`). The HAR showed 2 example URLs (`/example/9f92f096...` and `/example/a18466fe...`). Maybe there are more example projects accessible via a different endpoint (e.g. user projects? or a separate examples endpoint?).
-
-3. **Netlify blob storage**: storage.py has the API implemented but untested. Need NETLIFY_SITE_ID + NETLIFY_TOKEN from user to enable mirroring of signed URLs (10-year expiry but still signed).
-
-4. **Footage catalog size**: 857,760 clips total. With 3000-item cap per filter and 38 sub-categories, max coverage = 38 × 3000 = 114,000 (13% of total). To get more, would need finer-grained filters (e.g. combine category + orientation + duration).
-
-5. **GHA workflow**: has a step to deploy UI to Netlify but it requires NETLIFY_SITE_ID. Without it, the workflow still runs the scrape but skips the deploy.
+9. **clip_list doesn't accept `take`** — server uses default 50.
+10. **Footage `totalExact` of 857,760 is misleading** — actual scrapable count is limited by pagination cap × number of sub-categories. With 75 sub-categories × 3000 cap = 225K max theoretical, but dedup yields ~38K unique in practice.
 
 ## Environment notes
 
 - Z.ai sandbox: Debian 13, 2 vCPU, 4GB RAM, no swap
 - GIT IS THE DISK: push to remote often (local disk not durable across sessions)
 - The Git HEAD watchdog runs `git switch main` before every toolcall. Work on main inside /home/z/my-project/, or use /home/z/artlist-work/ (watchdog-free path).
-- Double-forked daemons (daemon_catalog.py, daemon_ui.py) survive bash toolcall ends.
+- Double-forked daemons (daemon_catalog.py, daemon_footage.py, daemon_ui.py) survive bash toolcall ends.
 - Don't loop caddy commands (causes session lockout). Don't curl-loop internal ports 12600, 19001, 19005, 19006.
