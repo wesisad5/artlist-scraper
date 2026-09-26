@@ -57,7 +57,9 @@ def _normalize_song(s: dict) -> dict:
 
 def _paginate_filter(sort_type: str, take: int, category_ids: list[int] | None,
                      vocal_type: str, bpm_min: int | None, bpm_max: int | None,
-                     max_pages: int, label: str) -> tuple[dict[str, dict], int]:
+                     max_pages: int, label: str,
+                     duration_min: int | None = None,
+                     duration_max: int | None = None) -> tuple[dict[str, dict], int]:
     """Paginate one filter combo. Returns (songs_by_id, total_reported)."""
     songs: dict[str, dict] = {}
     total_reported = 0
@@ -67,6 +69,7 @@ def _paginate_filter(sort_type: str, take: int, category_ids: list[int] | None,
                 page=page, take=take, sort_type=sort_type,
                 vocal_type=vocal_type, category_ids=category_ids,
                 bpm_min=bpm_min, bpm_max=bpm_max,
+                duration_min=duration_min, duration_max=duration_max,
             )
         except Exception as e:
             err_str = str(e)
@@ -104,15 +107,26 @@ def scrape_one_filter_full(sort_type: str, take: int = 50,
         )
         songs.update(vt_songs)
 
-        # If this vocalType had > 2900 items (close to cap), subdivide by bpm
-        if total > 2900:
-            log.info(f"    {label} vt={vt} total={total} > 2900, subdividing by bpm")
+        # Only subdivide if we actually hit the 3000-item cap (not just reported total > 2900)
+        # The cap is hit when we fetched exactly MAX_PAGE_PER_FILTER * take items
+        if len(vt_songs) >= MAX_PAGE_PER_FILTER * take - 50:  # within 1 page of cap
+            log.info(f"    {label} vt={vt} hit cap ({len(vt_songs)} fetched), subdividing by bpm")
             for bpm_min, bpm_max in BPM_RANGES:
-                bpm_songs, _ = _paginate_filter(
+                bpm_songs, bpm_total = _paginate_filter(
                     sort_type, take, category_ids, vt, bpm_min, bpm_max,
                     MAX_PAGE_PER_FILTER, f"{label} vt={vt} bpm={bpm_min}-{bpm_max}"
                 )
                 songs.update(bpm_songs)
+                # If bpm range also hit cap, subdivide by duration
+                if len(bpm_songs) >= MAX_PAGE_PER_FILTER * take - 50:
+                    log.info(f"      {label} vt={vt} bpm={bpm_min}-{bpm_max} hit cap, subdividing by duration")
+                    for d_min, d_max in [(0, 60), (60, 120), (120, 180), (180, 240), (240, 300), (300, 999)]:
+                        dur_songs, _ = _paginate_filter(
+                            sort_type, take, category_ids, vt, bpm_min, bpm_max,
+                            MAX_PAGE_PER_FILTER, f"{label} vt={vt} bpm={bpm_min}-{bpm_max} dur={d_min}-{d_max}",
+                            duration_min=d_min, duration_max=d_max,
+                        )
+                        songs.update(dur_songs)
 
     return songs
 

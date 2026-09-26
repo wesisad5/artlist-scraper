@@ -2086,7 +2086,90 @@
       ]
     }
   ],
-  "template": [],
-  "plugin": [],
-  "software": []
+  "template": [
+    {
+      "id": 530,
+      "name": "Typography & Titles",
+      "nameForUrl": "typography-titles",
+      "subCategory": null
+    },
+    {
+      "id": 531,
+      "name": "Lower Thirds",
+      "nameForUrl": "lower-thirds",
+      "subCategory": null
+    },
+    {
+      "id": 532,
+      "name": "Logos",
+      "nameForUrl": "logos",
+      "subCategory": null
+    },
+    {
+      "id": 533,
+      "name": "Intros",
+      "nameForUrl": "intros",
+      "subCategory": null
+    },
+    {
+      "id": 534,
+      "name": "Slideshows",
+      "nameForUrl": "slideshows",
+      "subCategory": null
+    },
+    {
+      "id": 535,
+      "name": "Infographics",
+      "nameForUrl": "infographics",
+      "subCategory": null
+    },
+    {
+      "id": 536,
+      "name": "Presentations",
+      "nameForUrl": "presentations",
+      "subCategory": null
+    },
+    {
+      "id": 537,
+      "name": "Elements",
+      "nameForUrl": "elements",
+      "subCategory": null
+    },
+    {
+      "id": 538,
+      "name": "Transitions",
+      "nameForUrl": "transitions",
+      "subCategory": null
+    },
+    {
+      "id": 539,
+      "name": "Tools",
+      "nameForUrl": "tools",
+      "subCategory": null
+    },
+    {
+      "id": 540,
+      "name": "Music Visualizer",
+      "nameForUrl": "music-visualizer",
+      "subCategory": null
+    },
+    {
+      "id": 541,
+      "name": "Mock-Ups",
+      "nameForUrl": "mock-ups",
+      "subCategory": null
+    },
+    {
+      "id": 548,
+      "name": "Macros",
+      "nameForUrl": "macros",
+      "subCategory": null
+    },
+    {
+      "id": 998,
+      "name": "Presets",
+      "nameForUrl": "presets",
+      "subCategory": null
+    }
+  ]
 }
