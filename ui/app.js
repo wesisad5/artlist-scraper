@@ -24,11 +24,21 @@ const API = {
   },
 };
 
-// CDN headers (we need to add Origin/Referer for cms-public-artifacts.artlist.io permlinks)
-// But browser fetch can't set Origin/Referer — they're forbidden headers.
-// Workaround: use a CORS proxy or our own /api/cdn-proxy endpoint.
-// For now, the imgix URLs are CORS-friendly (no Origin check).
-// The cms-public-artifacts URLs may fail in browser due to CORS — we'll handle that.
+// CDN URL handling: imgix URLs work directly in browser; cms-public-artifacts.artlist.io
+// needs Origin/Referer headers (forbidden in browser fetch), so we proxy via /api/cdn-proxy.
+function proxiedUrl(url) {
+  if (!url) return url;
+  // imgix URLs work directly (CORS-friendly)
+  if (url.includes('.imgix.net/')) return url;
+  // artlist CDN URLs need proxy
+  if (url.includes('cms-public-artifacts.artlist.io') ||
+      url.includes('cms-toolkit-artifacts.artlist.io') ||
+      url.includes('cms-artifacts.artlist.io') ||
+      url.includes('artlist-studio-proxy.imgix.net')) {
+    return '/api/cdn-proxy?url=' + encodeURIComponent(url);
+  }
+  return url;
+}
 
 // State
 const state = {
@@ -217,7 +227,7 @@ function renderAudioGrid(items, titleKey, subKey, audioKey, imageKey, durationKe
     const img = tpl.querySelector('img');
     const imgSrc = item[imageKey];
     if (imgSrc) {
-      img.src = imgSrc;
+      img.src = proxiedUrl(imgSrc);
       img.classList.add('lazy-load');
       img.addEventListener('load', () => img.classList.add('loaded'));
     } else {
@@ -234,17 +244,18 @@ function renderAudioGrid(items, titleKey, subKey, audioKey, imageKey, durationKe
     if (audioUrl) {
       const cls = classifyUrl(audioUrl);
       meta.innerHTML += `<span class="tag ${cls}">${cls}</span>`;
-      // Set audio src (may fail CORS — handled below)
+      // Use CDN proxy for artlist CDN URLs (imgix works directly)
+      const playableUrl = proxiedUrl(audioUrl);
       const audio = tpl.querySelector('.audio-player');
       const playBtn = tpl.querySelector('.play-btn');
       playBtn.addEventListener('click', () => {
         if (!audio.src) {
-          audio.src = audioUrl;
+          audio.src = playableUrl;
         }
         if (audio.paused) {
           audio.play().catch(err => {
-            // If CORS fails, open in new tab
-            window.open(audioUrl, '_blank');
+            console.warn('Audio play failed, opening in new tab:', err);
+            window.open(playableUrl, '_blank');
           });
           playBtn.textContent = '⏸ Pause';
         } else {
@@ -255,7 +266,7 @@ function renderAudioGrid(items, titleKey, subKey, audioKey, imageKey, durationKe
       audio.addEventListener('play', () => playBtn.textContent = '⏸ Pause');
       audio.addEventListener('pause', () => playBtn.textContent = '▶ Play');
       const dl = tpl.querySelector('.dl-btn');
-      dl.href = audioUrl;
+      dl.href = playableUrl;
     } else {
       tpl.querySelector('.play-btn').disabled = true;
       tpl.querySelector('.dl-btn').style.display = 'none';
@@ -323,19 +334,20 @@ function renderVideoGrid(items, titleKey, subKey, thumbKey, videoKey, idKey, ...
     meta.innerHTML = metaHtml;
     // HLS player
     const watchBtn = tpl.querySelector('.watch-btn');
-    if (videoUrl && videoUrl.endsWith('.m3u8')) {
-      watchBtn.href = videoUrl;
+    const playableUrl = videoUrl ? proxiedUrl(videoUrl) : null;
+    if (playableUrl && playableUrl.endsWith('.m3u8')) {
+      watchBtn.href = playableUrl;
       watchBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        openHlsPlayer(videoUrl, item[titleKey]);
+        openHlsPlayer(playableUrl, item[titleKey]);
       });
-    } else if (videoUrl) {
-      watchBtn.href = videoUrl;
+    } else if (playableUrl) {
+      watchBtn.href = playableUrl;
     } else {
       watchBtn.style.display = 'none';
     }
     const dl = tpl.querySelector('.dl-btn');
-    if (videoUrl) dl.href = videoUrl;
+    if (playableUrl) dl.href = playableUrl;
     else dl.style.display = 'none';
     tpl.querySelector('.card-title').style.cursor = 'pointer';
     tpl.querySelector('.card-title').addEventListener('click', () => showDetail(item));
@@ -345,7 +357,7 @@ function renderVideoGrid(items, titleKey, subKey, thumbKey, videoKey, idKey, ...
   main.innerHTML = `
     <div class="section">
       <div class="section-header">
-        <h2>${state.currentTab.charAt(0).toUpperCase() + state.currentTag?.slice(1) || state.currentTab} (${formatNum(total)})</h2>
+        <h2>${state.currentTab.charAt(0).toUpperCase() + state.currentTab.slice(1)} (${formatNum(total)})</h2>
       </div>
       <div class="cards-grid" id="cards-grid"></div>
       ${renderPagination(state.page, Math.ceil(total / state.pageSize), total)}
@@ -384,7 +396,7 @@ function renderSimpleGrid(items, titleKey, subKey, thumbKey, videoKey, idKey, me
     const img = tpl.querySelector('img');
     const thumb = item[thumbKey];
     if (thumb) {
-      img.src = thumb;
+      img.src = proxiedUrl(thumb);
       img.classList.add('lazy-load');
       img.addEventListener('load', () => img.classList.add('loaded'));
     }
@@ -405,19 +417,20 @@ function renderSimpleGrid(items, titleKey, subKey, thumbKey, videoKey, idKey, me
     }
     meta.innerHTML = metaHtml;
     const watchBtn = tpl.querySelector('.watch-btn');
-    if (videoUrl && videoUrl.endsWith('.m3u8')) {
-      watchBtn.href = videoUrl;
+    const playableUrl = videoUrl ? proxiedUrl(videoUrl) : null;
+    if (playableUrl && playableUrl.endsWith('.m3u8')) {
+      watchBtn.href = playableUrl;
       watchBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        openHlsPlayer(videoUrl, item[titleKey]);
+        openHlsPlayer(playableUrl, item[titleKey]);
       });
-    } else if (videoUrl) {
-      watchBtn.href = videoUrl;
+    } else if (playableUrl) {
+      watchBtn.href = playableUrl;
     } else {
       watchBtn.style.display = 'none';
     }
     const dl = tpl.querySelector('.dl-btn');
-    if (videoUrl) dl.href = videoUrl;
+    if (playableUrl) dl.href = playableUrl;
     else dl.style.display = 'none';
     tpl.querySelector('.card-title').style.cursor = 'pointer';
     tpl.querySelector('.card-title').addEventListener('click', () => showDetail(item));

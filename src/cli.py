@@ -76,10 +76,12 @@ def cmd_audit(args):
 
 
 def cmd_serve(args):
-    """Serve the UI + data files."""
+    """Serve the UI + data files + CDN proxy."""
     import http.server
     import socketserver
     import os
+    import urllib.parse
+    import urllib.request
     from pathlib import Path
 
     ui_dir = Path(__file__).parent.parent / "ui"
@@ -90,64 +92,139 @@ def cmd_serve(args):
             # Map /data/* to project data dir
             if path.startswith("/data/"):
                 return str(project_root / path.lstrip("/"))
-            if path.startswith("/api/"):
-                return self._api(path)
             return str(ui_dir / path.lstrip("/")) or str(ui_dir / "index.html")
 
-        def _api(self, path):
-            return str(ui_dir / "index.html")  # fallback
+        def log_message(self, fmt, *args):
+            # Log to stderr for debugging
+            import sys
+            sys.stderr.write(f"[UI] {self.address_string()} - {fmt % args}\n")
 
         def do_GET(self):
-            # Special routes
+            # Parse path explicitly
+            from urllib.parse import urlparse, parse_qs
+            parsed = urlparse(self.path)
+            path_only = parsed.path
+            qs = parse_qs(parsed.query)
+
+            # CDN proxy: /api/cdn-proxy?url=<encoded_url>
+            if path_only == "/api/cdn-proxy":
+                self._handle_cdn_proxy(qs)
+                return
+
+            # JSON API endpoints
+            if path_only == "/api/catalog":
+                self._handle_catalog_summary()
+                return
+            if path_only == "/api/latest":
+                self._handle_latest()
+                return
+
+            # Default: serve static files (UI or data)
             if self.path == "/" or self.path == "":
                 self.path = "/index.html"
-            if self.path.startswith("/api/"):
-                self._handle_api(self.path)
-                return
             super().do_GET()
 
-        def _handle_api(self, path):
-            from urllib.parse import urlparse, parse_qs
+        def _handle_cdn_proxy(self, qs):
+            import urllib.request, urllib.error
+            url = qs.get("url", [None])[0]
+            if not url:
+                self.send_error(400, "Missing url parameter")
+                return
+            # Security: only allow artlist CDN hosts
+            from urllib.parse import urlparse as up
+            host = up(url).netloc
+            allowed_hosts = (
+                "cms-public-artifacts.artlist.io",
+                "cms-toolkit-artifacts.artlist.io",
+                "cms-artifacts.artlist.io",
+                "artlist-studio-proxy.imgix.net",
+            )
+            if not (host in allowed_hosts or host.endswith(".imgix.net")):
+                self.send_error(403, f"Host {host} not allowed")
+                return
+            # Determine origin based on URL host
+            origin = "https://artlist.io"
+            if "flows.artlist.io" in host:
+                origin = "https://flows.artlist.io"
+            elif "studio.artlist.io" in host:
+                origin = "https://studio.artlist.io"
+            # Forward request with proper headers
+            try:
+                req = urllib.request.Request(url, method="GET", headers={
+                    "User-Agent": config.USER_AGENT,
+                    "Origin": origin,
+                    "Referer": origin + "/",
+                    "Accept": "*/*",
+                })
+                opener = urllib.request.build_opener(urllib.request.HTTPRedirectHandler)
+                resp = opener.open(req, timeout=30)
+                try:
+                    self.send_response(resp.status)
+                    for h in ("Content-Type", "Content-Length", "Cache-Control", "ETag", "Last-Modified"):
+                        v = resp.headers.get(h)
+                        if v:
+                            self.send_header(h, v)
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.end_headers()
+                    total = 0
+                    while True:
+                        chunk = resp.read(64 * 1024)
+                        if not chunk:
+                            break
+                        try:
+                            self.wfile.write(chunk)
+                            total += len(chunk)
+                        except BrokenPipeError:
+                            break
+                finally:
+                    resp.close()
+            except urllib.error.HTTPError as e:
+                self.send_error(e.code, f"Upstream error: {e}")
+            except Exception as e:
+                self.send_error(502, f"Proxy error: {e}")
+
+        def _handle_catalog_summary(self):
             import json
-            p = urlparse(path)
-            qs = parse_qs(p.query)
+            summary = {}
+            for name in ["music", "sfx", "footage", "luts", "templates", "collections"]:
+                f = config.CATALOG_DIR / f"{name}.json"
+                if f.exists():
+                    try:
+                        data = json.loads(f.read_text())
+                        items_key = {"music": "songs", "sfx": "items", "footage": "clips",
+                                     "luts": "luts", "templates": "templates",
+                                     "collections": "collections"}.get(name, "")
+                        summary[name] = {
+                            "count": len(data.get(items_key, [])),
+                            "size_kb": round(f.stat().st_size / 1024, 1),
+                        }
+                    except Exception:
+                        summary[name] = {"error": "parse_failed"}
+                else:
+                    summary[name] = {"missing": True}
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
-            if p.path == "/api/catalog":
-                # Return catalog summary
-                summary = {}
-                for name in ["music", "sfx", "footage", "luts", "templates", "collections"]:
-                    f = config.CATALOG_DIR / f"{name}.json"
-                    if f.exists():
-                        try:
-                            data = json.loads(f.read_text())
-                            items_key = {"music": "songs", "sfx": "items", "footage": "clips",
-                                         "luts": "luts", "templates": "templates",
-                                         "collections": "collections"}.get(name, "")
-                            summary[name] = {
-                                "count": len(data.get(items_key, [])),
-                                "size_kb": round(f.stat().st_size / 1024, 1),
-                            }
-                        except Exception:
-                            summary[name] = {"error": "parse_failed"}
-                    else:
-                        summary[name] = {"missing": True}
-                self.wfile.write(json.dumps(summary).encode())
-                return
-            if p.path == "/api/latest":
-                f = config.META_DIR / "latest.json"
-                if f.exists():
-                    self.wfile.write(f.read_bytes())
-                else:
-                    self.wfile.write(b"{}")
-                return
-            # Default: serve catalog files
-            self.wfile.write(b"{}")
+            self.wfile.write(json.dumps(summary).encode())
+
+        def _handle_latest(self):
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            f = config.META_DIR / "latest.json"
+            if f.exists():
+                self.wfile.write(f.read_bytes())
+            else:
+                self.wfile.write(b"{}")
 
     port = args.port
     print(f"Serving UI from {ui_dir} on http://localhost:{port}")
     print(f"Data dir: {config.DATA_DIR}")
+    print(f"CDN proxy: /api/cdn-proxy?url=<encoded_url>")
+    # Enable SO_REUSEADDR to avoid "Address already in use" after restart
+    socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("0.0.0.0", port), Handler) as httpd:
         httpd.serve_forever()
 
