@@ -5,7 +5,7 @@ from .. import config
 
 log = logging.getLogger(__name__)
 
-ASSET_TYPES = ["music", "sfx", "footage", "luts", "template"]
+ASSET_TYPES = ["music", "sfx", "footage", "template", "plugin", "software"]
 
 
 def scrape_all_categories() -> dict:
@@ -25,9 +25,12 @@ def scrape_all_categories() -> dict:
 
 
 def scrape_search_terms() -> dict:
-    """Fetch trending search terms per asset type."""
+    """Fetch trending search terms per asset type.
+
+    SearchTermsAutosuggestionsSupportedAssetType enum: only MUSIC and FOOTAGE observed working
+    in the HAR. SFX, LUT, TEMPLATE values are not in the enum."""
     out = {}
-    for at in ["MUSIC", "SFX", "FOOTAGE", "LUT", "TEMPLATE"]:
+    for at in ["MUSIC", "FOOTAGE"]:  # only these are valid in the enum
         try:
             terms = graphql.search_terms_autosuggestions(at)
             out[at] = terms

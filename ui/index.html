@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artlist Catalog Explorer</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://artlist-albums.imgix.net">
+<link rel="preconnect" href="https://artlist-content-images.imgix.net">
+<link rel="preconnect" href="https://artlist-templates.imgix.net">
+<link rel="preconnect" href="https://cms-public-artifacts.artlist.io">
+</head>
+<body>
+<header class="app-header">
+  <div class="header-inner">
+    <h1>🎵 Artlist Catalog Explorer</h1>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="music">Music</button>
+      <button class="tab" data-tab="sfx">SFX</button>
+      <button class="tab" data-tab="footage">Footage</button>
+      <button class="tab" data-tab="luts">LUTs</button>
+      <button class="tab" data-tab="templates">Templates</button>
+      <button class="tab" data-tab="collections">Collections</button>
+      <button class="tab" data-tab="flows">Flow AI</button>
+      <button class="tab" data-tab="studio">Studio AI</button>
+      <button class="tab" data-tab="audit">Audit</button>
+    </nav>
+    <div class="header-actions">
+      <input type="search" id="global-search" placeholder="Search catalog..." />
+      <button id="refresh-btn" title="Reload data">↻</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Loading catalog data...</p>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <span id="last-run">Loading...</span>
+  <span id="item-counts"></span>
+</footer>
+
+<template id="tpl-card">
+  <article class="card">
+    <div class="card-thumb"></div>
+    <div class="card-body">
+      <h3 class="card-title"></h3>
+      <p class="card-sub"></p>
+      <div class="card-meta"></div>
+      <div class="card-actions"></div>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-audio-card">
+  <article class="card audio-card">
+    <div class="card-thumb"><img loading="lazy" /></div>
+    <div class="card-body">
+      <h3 class="card-title"></h3>
+      <p class="card-sub"></p>
+      <div class="card-meta"></div>
+      <div class="card-actions">
+        <button class="play-btn">▶ Play</button>
+        <a class="dl-btn" target="_blank">Download</a>
+      </div>
+      <audio class="audio-player" preload="none" controls></audio>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-video-card">
+  <article class="card video-card">
+    <div class="card-thumb"><img loading="lazy" /></div>
+    <div class="card-body">
+      <h3 class="card-title"></h3>
+      <p class="card-sub"></p>
+      <div class="card-meta"></div>
+      <div class="card-actions">
+        <a class="watch-btn" target="_blank">Watch HLS</a>
+        <a class="dl-btn" target="_blank">Open</a>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
