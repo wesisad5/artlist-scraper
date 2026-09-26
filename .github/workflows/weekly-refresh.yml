@@ -1,0 +1,118 @@
+# Weekly Artlist Catalog Refresh
+#
+# Runs every Sunday at 00:00 UTC (configurable via repository variables).
+# Scrapes the full catalog and AI tools, then commits the data back to the repo.
+# Also runs the audit pipeline and uploads the report as an artifact.
+#
+# Required secrets (Settings → Secrets and variables → Actions):
+#   ARTLIST_JWT                  - Bearer JWT for search-api.artlist.io
+#   ARTLIST_FLOWS_SESSION_TOKEN  - __Secure-session.artlist-prod.session-token (flows.artlist.io)
+#   ARTLIST_FLOWS_CF_CLEARANCE   - cf_clearance cookie
+#   ARTLIST_FLOWS_CF_BM          - __cf_bm cookie (flows)
+#   ARTLIST_STUDIO_SESSION_TOKEN - studio session-token (different from flows)
+#   ARTLIST_STUDIO_CF_CLEARANCE  - usually same as flows
+#   ARTLIST_STUDIO_CF_BM         - studio-specific __cf_bm
+#   ARTLIST_STUDIO_CSRF_TOKEN    - __Host-session.artlist-prod.csrf-token
+#   NETLIFY_SITE_ID              - for blob storage (optional)
+#   NETLIFY_TOKEN                - for blob storage (optional)
+#
+# JWT expires ~14 days — re-capture HARs and refresh the secrets when this fails with 401.
+
+name: Weekly Catalog Refresh
+
+on:
+  schedule:
+    # Every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    inputs:
+      skip:
+        description: 'Comma-separated list of steps to skip (e.g. footage,collections)'
+        required: false
+        default: ''
+      only:
+        description: 'Only run this step (e.g. music or ai). Overrides skip.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create .env
+        run: |
+          cat > .env << EOF
+          ARTLIST_JWT=${{ secrets.ARTLIST_JWT }}
+          ARTLIST_FLOWS_SESSION_TOKEN=${{ secrets.ARTLIST_FLOWS_SESSION_TOKEN }}
+          ARTLIST_FLOWS_CF_CLEARANCE=${{ secrets.ARTLIST_FLOWS_CF_CLEARANCE }}
+          ARTLIST_FLOWS_CF_BM=${{ secrets.ARTLIST_FLOWS_CF_BM }}
+          ARTLIST_STUDIO_SESSION_TOKEN=${{ secrets.ARTLIST_STUDIO_SESSION_TOKEN }}
+          ARTLIST_STUDIO_CF_CLEARANCE=${{ secrets.ARTLIST_STUDIO_CF_CLEARANCE }}
+          ARTLIST_STUDIO_CF_BM=${{ secrets.ARTLIST_STUDIO_CF_BM }}
+          ARTLIST_STUDIO_CSRF_TOKEN=${{ secrets.ARTLIST_STUDIO_CSRF_TOKEN }}
+          ARTLIST_USER_SESSION=${{ secrets.ARTLIST_USER_SESSION }}
+          ARTLIST_VISITOR_ID=${{ secrets.ARTLIST_VISITOR_ID }}
+          ARTLIST_USER_ID=${{ secrets.ARTLIST_USER_ID }}
+          NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_TOKEN=${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_BLOB_NAMESPACE=artlist-scraper
+          HTTP_RATE_LIMIT_RPS=3.0
+          HTTP_MAX_RETRIES=5
+          EOF
+
+      - name: Test auth
+        run: python -m src.cli test-auth
+
+      - name: Run catalog scrape
+        if: github.event.inputs.only != 'ai'
+        run: |
+          SKIP="${{ github.event.inputs.skip || '' }}"
+          python -m src.cli catalog ${SKIP:+--skip $SKIP}
+
+      - name: Run AI tools scrape
+        if: github.event.inputs.only != 'catalog'
+        run: python -m src.cli ai
+
+      - name: Run audit
+        run: python -m src.cli audit > audit_report.json
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: audit_report.json
+          retention-days: 30
+
+      - name: Commit data
+        run: |
+          git config user.email "scraper-bot@users.noreply.github.com"
+          git config user.name "artlist-scraper-bot"
+          git add data/ || true
+          git commit -m "Weekly catalog refresh $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "No changes"
+          git push
+
+      - name: Serve UI (deploy preview)
+        if: github.event_name == 'workflow_dispatch'
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=ui --message "Preview UI"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
