@@ -1,0 +1,204 @@
+{
+  "urls": {
+    "https://footage-private.imgix.net/footage-graded/cdd73f82f9_1780104_0-second_w800px.jpeg?Expires=2105758488&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=ePwZN-mWMoD5yu6MUCKP69~BhZoXsW4B6BQhXG50tSsLachaeLXGO2A8tFkS6--xGaFbXY0TUD1LDT5tHZs-ka~u8J0hao2k87FPrAkh~1GtS6JbECZkEiA16AxDg5gagtjBFV3KtIsw1g~JfLSODRcV~IQyfIhTZ66BUpHgl-OvVYMCye~j5N6fgpsBd6o~a9Yg4fq6~Nvh1HEi0jVGdx4oigrEUdm57EnXf~4mVp1lMC7wHiJMk1hrhFhNxat7MjL-qLSgpSU7LX9Xt0wSXnU8FR5EsDm3f~zBiqTsTaWZ3hm-1WH4YrXuaJehh9RomQx3BvbU-Qly6fy0HfIq8Q__": {
+      "key": "efd222d0a38b76868fe13c47eceb913a69794aa1",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 33840,
+      "mirrored_at": "1792489903",
+      "source_url": "https://footage-private.imgix.net/footage-graded/cdd73f82f9_1780104_0-second_w800px.jpeg?Expires=2105758488&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=ePwZN-mWMoD5yu6MUCKP69~BhZoXsW4B6BQhXG50tSsLachaeLXGO2A8tFkS6--xGaFbXY0TUD1LDT5tHZs-ka~u8J0hao2k87FPrAkh~1GtS6JbECZkEiA16AxDg5gagtjBFV3KtIsw1g~JfLSODRcV~IQyfIhTZ66BUpHgl-OvVYMCye~j5N6fgpsBd6o~a9Yg4fq6~Nvh1HEi0jVGdx4oigrEUdm57EnXf~4mVp1lMC7wHiJMk1hrhFhNxat7MjL-qLSgpSU7LX9Xt0wSXnU8FR5EsDm3f~zBiqTsTaWZ3hm-1WH4YrXuaJehh9RomQx3BvbU-Qly6fy0HfIq8Q__"
+    },
+    "https://footage-private.imgix.net/footage-graded/34ec0da879_1844030_0-second_w800px.jpeg?Expires=2105758157&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=KKonNDHSRs-SN1NxeWPDdkE3CWjhz8i3zf7AaOBHjhyLhA17HrluSJxz69I2l-SHB4VMUAL0Vo~IpGexcPNhCUl7tpv7vAt0faUhQsglKHrhn3jfYuDhoQFRerFCPZCH2VR0e4cPqt1OvCtVwUtGRd1a8ImSSZT~-x6uyGvwb95ing-iWVPa3piYTsZzSgxD2in-ud8wY66Vt~zOMrywXfkTzFhWqgp3wNMdqa1C-6EHz~zx5ea2KfNU3GXlDWtHsUb3vLsvSzFqolt3t8ZBFf2J2pTsRXdBAmmKlvRz2CF9S2D3JRNuqR8S98LSukI8sKownl2Fz33lXwMa5Zignw__": {
+      "key": "da87e0d823892eea564eac6be70e10e051a79c4e",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 8527,
+      "mirrored_at": "1792489906",
+      "source_url": "https://footage-private.imgix.net/footage-graded/34ec0da879_1844030_0-second_w800px.jpeg?Expires=2105758157&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=KKonNDHSRs-SN1NxeWPDdkE3CWjhz8i3zf7AaOBHjhyLhA17HrluSJxz69I2l-SHB4VMUAL0Vo~IpGexcPNhCUl7tpv7vAt0faUhQsglKHrhn3jfYuDhoQFRerFCPZCH2VR0e4cPqt1OvCtVwUtGRd1a8ImSSZT~-x6uyGvwb95ing-iWVPa3piYTsZzSgxD2in-ud8wY66Vt~zOMrywXfkTzFhWqgp3wNMdqa1C-6EHz~zx5ea2KfNU3GXlDWtHsUb3vLsvSzFqolt3t8ZBFf2J2pTsRXdBAmmKlvRz2CF9S2D3JRNuqR8S98LSukI8sKownl2Fz33lXwMa5Zignw__"
+    },
+    "https://footage-private.imgix.net/footage-graded/e7740063de_1850145_0-second_w800px.jpeg?Expires=2105758758&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=wikSSD9VSCml6WMP2InxFtbiYUP4K5Bv88Zo6ZIqewwr7QrnUKlpsZx3bncaCTYUJ3hhuZFaKohwYUw9dnsK~rEZQjjNuBAufgL-NGVl92d6Q3YOtHJgJ7GRPig3ehz4IiWptE8TuexhEzMWWtSOGwFOMBMiYMR-rIwZowepV~EHOZrOW73monqnUKYCPQH4gCUQmtbrZMYFeULzLLTVFHT5ayawz2I0I3X9RU7F7W-n26toFGRJNCE-lxtJiYliY3o6b4lmLms2khPrBtqn2o56Qmn9CCPfx85ZnEsAiZo6ZyHLblKaZMzysdVkMvuakaQl5VxL8c32RVkqK6xe5g__": {
+      "key": "ca57f1dd497cd0394d40c0325a02a38371f90164",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 71256,
+      "mirrored_at": "1792489908",
+      "source_url": "https://footage-private.imgix.net/footage-graded/e7740063de_1850145_0-second_w800px.jpeg?Expires=2105758758&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=wikSSD9VSCml6WMP2InxFtbiYUP4K5Bv88Zo6ZIqewwr7QrnUKlpsZx3bncaCTYUJ3hhuZFaKohwYUw9dnsK~rEZQjjNuBAufgL-NGVl92d6Q3YOtHJgJ7GRPig3ehz4IiWptE8TuexhEzMWWtSOGwFOMBMiYMR-rIwZowepV~EHOZrOW73monqnUKYCPQH4gCUQmtbrZMYFeULzLLTVFHT5ayawz2I0I3X9RU7F7W-n26toFGRJNCE-lxtJiYliY3o6b4lmLms2khPrBtqn2o56Qmn9CCPfx85ZnEsAiZo6ZyHLblKaZMzysdVkMvuakaQl5VxL8c32RVkqK6xe5g__"
+    },
+    "https://footage-private.imgix.net/footage-graded/265112c4ea_1845005_0-second_w800px.jpeg?Expires=2105758162&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=t5k6V8CWJKKtETMUlwE5ZzOOjkHnn73ilpxGZ1okchqMOHXRpgO1Flrn20WRwA7zro243TaqO1hmxp00xJWOsjb2SWOI1yeg0FrvrTIW62rujBXY1cLYRTgMJQ~6OioYanFO7TO9n3SyfgY1jgPixs-NIgquSyLr4Vuq6kbTm768DO8F6tMd3yxNMJu-HQUNQYtjji5vHeaPXGItrvz9fEt7mCEtR2YHQoi~pIoPEIGDehZSygREoJ3Vj6XJfrealLX06FsRrETnXOkyUvgyauc5x77nDgT2O0uZ1vkxGgbfOH2KogBPSS8vTWb5hTuex73FJmOm4nQM-7VfGiJ88w__": {
+      "key": "59b13adcc74fa21deec06d2c4c908966a32406a3",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 30242,
+      "mirrored_at": "1792489962",
+      "source_url": "https://footage-private.imgix.net/footage-graded/265112c4ea_1845005_0-second_w800px.jpeg?Expires=2105758162&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=t5k6V8CWJKKtETMUlwE5ZzOOjkHnn73ilpxGZ1okchqMOHXRpgO1Flrn20WRwA7zro243TaqO1hmxp00xJWOsjb2SWOI1yeg0FrvrTIW62rujBXY1cLYRTgMJQ~6OioYanFO7TO9n3SyfgY1jgPixs-NIgquSyLr4Vuq6kbTm768DO8F6tMd3yxNMJu-HQUNQYtjji5vHeaPXGItrvz9fEt7mCEtR2YHQoi~pIoPEIGDehZSygREoJ3Vj6XJfrealLX06FsRrETnXOkyUvgyauc5x77nDgT2O0uZ1vkxGgbfOH2KogBPSS8vTWb5hTuex73FJmOm4nQM-7VfGiJ88w__"
+    },
+    "https://footage-private.imgix.net/footage-graded/f5f86e5d16_1800685_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=16TWQq52Amr2pervQx8-hWMDAREy77JSLtGnBxeYxtcGBI8IHTXJI4C5ZOM1Jiw~Cj3Hovl70XdhMCP8vssQ2Pd0Njgphq8K9HAnSmDjetidQEMdQ8GGQLaJqizicKImu8jFSSEd1~wS6N~n49JWBSiH5BgXk2TSINPXMRZX6wAyLhxpqrN4l7Wql7GfpqZl7-rfKmBa7IzqCQUWIGRrqvdfVUnZxoghSGeNx2ySOzR9zYsG1JFSn0zNmPHHw5jC~M5FEHoaSlRycqd7yymMNqtTg50XhsZLjZfG~i4UpSpufGTzW3NOmBBd-9igmSOF~s3ishVUpCnRpS9RVTqXkw__": {
+      "key": "244030455d7c771dfaae78aa34847e7e4ed31b08",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 33197,
+      "mirrored_at": "1792489964",
+      "source_url": "https://footage-private.imgix.net/footage-graded/f5f86e5d16_1800685_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=16TWQq52Amr2pervQx8-hWMDAREy77JSLtGnBxeYxtcGBI8IHTXJI4C5ZOM1Jiw~Cj3Hovl70XdhMCP8vssQ2Pd0Njgphq8K9HAnSmDjetidQEMdQ8GGQLaJqizicKImu8jFSSEd1~wS6N~n49JWBSiH5BgXk2TSINPXMRZX6wAyLhxpqrN4l7Wql7GfpqZl7-rfKmBa7IzqCQUWIGRrqvdfVUnZxoghSGeNx2ySOzR9zYsG1JFSn0zNmPHHw5jC~M5FEHoaSlRycqd7yymMNqtTg50XhsZLjZfG~i4UpSpufGTzW3NOmBBd-9igmSOF~s3ishVUpCnRpS9RVTqXkw__"
+    },
+    "https://footage-private.imgix.net/footage-graded/683a8b8099_1850143_0-second_w800px.jpeg?Expires=2105758758&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=cyrNiXhHd6w3nROgZWP8nAfk8HMgB7sjrI10V0WpR6wN1ZpVMkrZJNvIha-AL26gTYEY3M60hk8fVEsT7wBQHttFvbKeGdgYZRtTsUgmxyJQp57vvJe~oIPXvPSJGG4z7mmJAohlMpmkwSljaT6BMhYynNrIba3xBHAxzTD5DYg~UJxGVzYdgwHqetHyUAwAJtMBDlsLHw0MBgn0v1Az-bf~xUZp8l8ncbgJgamhtzeGOzywhJ3x~iLazhC0k88u5~OqNgEViOVfFoNUCnVsbQMKzb3ImTFDcJqld5tXwUCqYELPEUBbaTma6N7bQ~aAwMy2XowROFMS--aDIq~MwA__": {
+      "key": "a58f5e40bb56f7db9fcd581709019e723a48bf3a",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 52107,
+      "mirrored_at": "1792489966",
+      "source_url": "https://footage-private.imgix.net/footage-graded/683a8b8099_1850143_0-second_w800px.jpeg?Expires=2105758758&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=cyrNiXhHd6w3nROgZWP8nAfk8HMgB7sjrI10V0WpR6wN1ZpVMkrZJNvIha-AL26gTYEY3M60hk8fVEsT7wBQHttFvbKeGdgYZRtTsUgmxyJQp57vvJe~oIPXvPSJGG4z7mmJAohlMpmkwSljaT6BMhYynNrIba3xBHAxzTD5DYg~UJxGVzYdgwHqetHyUAwAJtMBDlsLHw0MBgn0v1Az-bf~xUZp8l8ncbgJgamhtzeGOzywhJ3x~iLazhC0k88u5~OqNgEViOVfFoNUCnVsbQMKzb3ImTFDcJqld5tXwUCqYELPEUBbaTma6N7bQ~aAwMy2XowROFMS--aDIq~MwA__"
+    },
+    "https://footage-private.imgix.net/footage-graded/14ad80f0cd_1801780_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=q5IzBWVUnhIVNk3YNq~0Kz2rOklcMgRShLFcPfCg3BsYk0d62YGCggAY2Ie5V~JJL5Ap8Jufrf3C9uoz2YHMR8bupZJVehjK9IfkAIEHjL0JdAI0Hgtn1Z3vY85ywlB4hG6x3jhwrDit3Ysysq6uoJmmvAnjEGbPy3-mVbvAlBtj81QKyM7gaP01p3eP1DZHE~VrnxHEHJuAcBBdfoSnqzGOUnUPQAbMhRhNdkeO9qvBOM9X7C94K8YxPpd7nOesBmGRZ7pr45AkuFjwHVEjbKrB~YzVhjCq7-St2~r0ydGr0CI0OtVz0W9nNEeL~oQcFPDE-68nc6uGv8x8FHki6A__": {
+      "key": "e2f2a2f3e461c6b040917cc8415f534cee54c1b1",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 26964,
+      "mirrored_at": "1792489969",
+      "source_url": "https://footage-private.imgix.net/footage-graded/14ad80f0cd_1801780_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=q5IzBWVUnhIVNk3YNq~0Kz2rOklcMgRShLFcPfCg3BsYk0d62YGCggAY2Ie5V~JJL5Ap8Jufrf3C9uoz2YHMR8bupZJVehjK9IfkAIEHjL0JdAI0Hgtn1Z3vY85ywlB4hG6x3jhwrDit3Ysysq6uoJmmvAnjEGbPy3-mVbvAlBtj81QKyM7gaP01p3eP1DZHE~VrnxHEHJuAcBBdfoSnqzGOUnUPQAbMhRhNdkeO9qvBOM9X7C94K8YxPpd7nOesBmGRZ7pr45AkuFjwHVEjbKrB~YzVhjCq7-St2~r0ydGr0CI0OtVz0W9nNEeL~oQcFPDE-68nc6uGv8x8FHki6A__"
+    },
+    "https://footage-private.imgix.net/footage-graded/adde8a0517_1850176_0-second_w800px.jpeg?Expires=2105758757&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=GChmHtQFcGq356~3SFXvUZ5IahSiv2v761D67uatbvLegJ5uCpzrWnurk9WRVWBoTP8MH8Ho6Y4ZiMMXtoo7OXIm9EYkE7KCVMpb2mRFhgztpEA41y~qB6HY38h~Ky0lODU-k-qFHMOxdzX2og3hv2flzISARcCiSfl-2vl~fSKBuZZu~BRujyp8zo6mPB0W8nf~dTT-iCfSgFhDcaHnwSexu9MCzwEaW6fV5DXX4VUgmJ99J-~knHDSbTpAHlg3aAs9ZUj72dEgUDS0TVOWtb0ZR-jdG-FKvGDCXfwD~g8xZjG0~g8UsyNiO7H5PSdaffYQm53TCT9I2qC5dCzHRQ__": {
+      "key": "a8369ab8d69d18daf9b17cc3cc78f1ac7d054502",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 37587,
+      "mirrored_at": "1792489971",
+      "source_url": "https://footage-private.imgix.net/footage-graded/adde8a0517_1850176_0-second_w800px.jpeg?Expires=2105758757&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=GChmHtQFcGq356~3SFXvUZ5IahSiv2v761D67uatbvLegJ5uCpzrWnurk9WRVWBoTP8MH8Ho6Y4ZiMMXtoo7OXIm9EYkE7KCVMpb2mRFhgztpEA41y~qB6HY38h~Ky0lODU-k-qFHMOxdzX2og3hv2flzISARcCiSfl-2vl~fSKBuZZu~BRujyp8zo6mPB0W8nf~dTT-iCfSgFhDcaHnwSexu9MCzwEaW6fV5DXX4VUgmJ99J-~knHDSbTpAHlg3aAs9ZUj72dEgUDS0TVOWtb0ZR-jdG-FKvGDCXfwD~g8xZjG0~g8UsyNiO7H5PSdaffYQm53TCT9I2qC5dCzHRQ__"
+    },
+    "https://footage-private.imgix.net/footage-graded/50dd103484_1788454_0-second_w800px.jpeg?Expires=2105757680&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=oJ4k7D0U7HpK70sdsMdKEt-OYwjga-AY57dGPBToY4Zg~g1DTBEyjc7MPfUXT~ihiMpxdtxJ0YML3womcqVEmvdhNCzZv-qH0SZGdVelyF5hhSwaIkKxAS-A1osWJxzOTG2s~7TYiAf1~QgaS0XA59hUKgqji0ttxyi9sXCsRV5Yfa013TQf7siccWVhC0raDDnt5mRsch1cxFBopOUqsMOjyxI70Oiof7FdYgKpjO2XWfyyRBxpCGg9CuXc2I5A~yHW84nRcvqFzpXwuAXpzLXh558Ii0q-JV9b0kTlGrgZ8VhWWAjYVpJCRyUwIkN-vouToWHNaPJz629WN2Wp-A__": {
+      "key": "96ec239ae18436a73886972703f504d82dcac92f",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 61643,
+      "mirrored_at": "1792489974",
+      "source_url": "https://footage-private.imgix.net/footage-graded/50dd103484_1788454_0-second_w800px.jpeg?Expires=2105757680&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=oJ4k7D0U7HpK70sdsMdKEt-OYwjga-AY57dGPBToY4Zg~g1DTBEyjc7MPfUXT~ihiMpxdtxJ0YML3womcqVEmvdhNCzZv-qH0SZGdVelyF5hhSwaIkKxAS-A1osWJxzOTG2s~7TYiAf1~QgaS0XA59hUKgqji0ttxyi9sXCsRV5Yfa013TQf7siccWVhC0raDDnt5mRsch1cxFBopOUqsMOjyxI70Oiof7FdYgKpjO2XWfyyRBxpCGg9CuXc2I5A~yHW84nRcvqFzpXwuAXpzLXh558Ii0q-JV9b0kTlGrgZ8VhWWAjYVpJCRyUwIkN-vouToWHNaPJz629WN2Wp-A__"
+    },
+    "https://footage-private.imgix.net/footage-graded/bf7b1aeccc_1802218_0-second_w800px.jpeg?Expires=2105758057&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Pu-YpwYcTsdN4R1mxT~Paygt2N9QjIabhocBSq6aNnPCAd9FsGZfMkTSBWnoh1EXElI8vOCHDNEgxHP16tTv3CBZec2-WMGEJeybQyNQZRWaFeW5OG77uCTgSDipMn2x7zEugveyfLplgTbCxEDTDR5aDUG1x8uGUnXD2m9UniL9c51F7V-3h3yYjA1KtMl34xY4S5knRk1WxXwamy7sgYfJaIka~qDsKGfzTuZ2dN7GjwCo1ttp-Lu9zn3Pqa1f2hnMfCg9ncGl1Ri2anEDkMnLUez~heYpaDhvjk5IZBlD1~19jpLy~YlgcAoMFtFpXqgMjL4gvCwMUNgYUu-4IA__": {
+      "key": "f1be6e11e97b8d6334726fc91998929b95229abf",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 82737,
+      "mirrored_at": "1792489976",
+      "source_url": "https://footage-private.imgix.net/footage-graded/bf7b1aeccc_1802218_0-second_w800px.jpeg?Expires=2105758057&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Pu-YpwYcTsdN4R1mxT~Paygt2N9QjIabhocBSq6aNnPCAd9FsGZfMkTSBWnoh1EXElI8vOCHDNEgxHP16tTv3CBZec2-WMGEJeybQyNQZRWaFeW5OG77uCTgSDipMn2x7zEugveyfLplgTbCxEDTDR5aDUG1x8uGUnXD2m9UniL9c51F7V-3h3yYjA1KtMl34xY4S5knRk1WxXwamy7sgYfJaIka~qDsKGfzTuZ2dN7GjwCo1ttp-Lu9zn3Pqa1f2hnMfCg9ncGl1Ri2anEDkMnLUez~heYpaDhvjk5IZBlD1~19jpLy~YlgcAoMFtFpXqgMjL4gvCwMUNgYUu-4IA__"
+    },
+    "https://footage-private.imgix.net/footage-graded/7e28c0b68e_1801155_0-second_w800px.jpeg?Expires=2105757985&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=rvlCRCRanFZX4z6WJCz1tH8iU-0x6IoJ2-IAbGSrwTjyFXzqsVF4X1uSOt~c6NnrCuqCFlXhSBG2xb0nn899b6Ldj0NIvbFKpfeIOyYPI3JrXCJnfAJZJXTeBWpCt35GzG0sCWIqdcgFe8TJgeaaDLVYk2~-sfXmTw~RpWFsFcqWKwY7YdXiSAFj~LwJRsasyypdxx9GvVWi93W8rZZ46sxjn-WzLEtMvuLeDUzH3dc9aXROIRfK3Ox1b6SAJg05c6EMqdh1Bv6QAEQSXjggK00dBYP3bvyUXtUhCMx1yCvXU~mrxcwfyI2vrx41tH4kNZXJXebgAo~aqU-As7UBeg__": {
+      "key": "21f285b25f73c6a60e201a7a405feecd832ef3e4",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 63802,
+      "mirrored_at": "1792489979",
+      "source_url": "https://footage-private.imgix.net/footage-graded/7e28c0b68e_1801155_0-second_w800px.jpeg?Expires=2105757985&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=rvlCRCRanFZX4z6WJCz1tH8iU-0x6IoJ2-IAbGSrwTjyFXzqsVF4X1uSOt~c6NnrCuqCFlXhSBG2xb0nn899b6Ldj0NIvbFKpfeIOyYPI3JrXCJnfAJZJXTeBWpCt35GzG0sCWIqdcgFe8TJgeaaDLVYk2~-sfXmTw~RpWFsFcqWKwY7YdXiSAFj~LwJRsasyypdxx9GvVWi93W8rZZ46sxjn-WzLEtMvuLeDUzH3dc9aXROIRfK3Ox1b6SAJg05c6EMqdh1Bv6QAEQSXjggK00dBYP3bvyUXtUhCMx1yCvXU~mrxcwfyI2vrx41tH4kNZXJXebgAo~aqU-As7UBeg__"
+    },
+    "https://footage-private.imgix.net/footage-graded/afe71191db_1804423_0-second_w800px.jpeg?Expires=2105757726&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=hwlzYqTRWHEDK6jVXQfX~kcsgImmm2RsRPXMrOvsqrwGvLffgruYCSrGsonm-ZGShpvR1xEvsM4V6whybXaZFGNEwv~bOJPDhVEeRi3ydzd5U6QHsG97XJfNmgpSUKvF2DFBSKTQ7rSSOCBMHCUIRehMxv8mo12tBZQuIWBRaxy39jBHSkmT6FLfqdRCqe2Xlhd3SnrsS3BrdhJem9Xl1izibvOTD3w0Da5CP9QXDwRBOHPYjHhFjwu0qV2TyNMn1qYkG0Ef9829V6KKAuLO5jqHu-YD6CLEGJO1upOvKKapZuGsAODgRmsIREla9nbHBXU6GJB-R6WAsfEY8Hz0Bg__": {
+      "key": "63e470459caee10cad34348f5a0d9ff4a3234256",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 43036,
+      "mirrored_at": "1792489981",
+      "source_url": "https://footage-private.imgix.net/footage-graded/afe71191db_1804423_0-second_w800px.jpeg?Expires=2105757726&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=hwlzYqTRWHEDK6jVXQfX~kcsgImmm2RsRPXMrOvsqrwGvLffgruYCSrGsonm-ZGShpvR1xEvsM4V6whybXaZFGNEwv~bOJPDhVEeRi3ydzd5U6QHsG97XJfNmgpSUKvF2DFBSKTQ7rSSOCBMHCUIRehMxv8mo12tBZQuIWBRaxy39jBHSkmT6FLfqdRCqe2Xlhd3SnrsS3BrdhJem9Xl1izibvOTD3w0Da5CP9QXDwRBOHPYjHhFjwu0qV2TyNMn1qYkG0Ef9829V6KKAuLO5jqHu-YD6CLEGJO1upOvKKapZuGsAODgRmsIREla9nbHBXU6GJB-R6WAsfEY8Hz0Bg__"
+    },
+    "https://footage-private.imgix.net/footage-graded/7013de3dfc_1734319_0-second_w800px.jpeg?Expires=2105758227&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=X7OohIDANKdzch0xwklH-dan0ip~Qy2AHM-TcuruIUh7gd5wVoMtkMEb8d6MZOqgxRnszVejD4dmD5j65aDCVzgdPtG0BLBylsJISiThS~Q6KGEyqxA-Bz3fqcwBLrt7-k57oA2HsibtyFFJd03HbtqbITRybBD6jTCs2ldEkaiWpo804~O9Iw8x8CiW70t1YLVWtQ7zat29tOlEVyWfJLfE6ljTWrB6hJTe7Rsu4zr5on5MMbG~C15TCi2LKDyxC8FgbaxLW4-mbAIuX735JvTVG278PeYMbGUp2oJNUhH6ATnCIQc9Nl0E0zX1b0OGj-FnPmyDejXv1BzA1EgkKg__": {
+      "key": "055bfe7038ed9896ed78ab3ea800b4040de7be6c",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 48977,
+      "mirrored_at": "1792489984",
+      "source_url": "https://footage-private.imgix.net/footage-graded/7013de3dfc_1734319_0-second_w800px.jpeg?Expires=2105758227&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=X7OohIDANKdzch0xwklH-dan0ip~Qy2AHM-TcuruIUh7gd5wVoMtkMEb8d6MZOqgxRnszVejD4dmD5j65aDCVzgdPtG0BLBylsJISiThS~Q6KGEyqxA-Bz3fqcwBLrt7-k57oA2HsibtyFFJd03HbtqbITRybBD6jTCs2ldEkaiWpo804~O9Iw8x8CiW70t1YLVWtQ7zat29tOlEVyWfJLfE6ljTWrB6hJTe7Rsu4zr5on5MMbG~C15TCi2LKDyxC8FgbaxLW4-mbAIuX735JvTVG278PeYMbGUp2oJNUhH6ATnCIQc9Nl0E0zX1b0OGj-FnPmyDejXv1BzA1EgkKg__"
+    },
+    "https://footage-private.imgix.net/footage-graded/da3e90e944_1858184_0-second_w800px.jpeg?Expires=2105758778&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=VFCeORDQ27zjlp5atwIcGtPF2sgna7wR9b~b4FKVL7wZkHW83BMRMXl3DZuc4f4GTBDA88flCIGpeU0wcWupo8~73OVyhB6FmhRxJSkXe3SBT0ClwsQKeBOyhOvSunCbKV9~ZxY9Q5O9MQLdj1~UwmleoXEu57tEVDpXwvHw~RaXhZb211QTvG-Er-hT2VvT1Pe0gdBRPcDOpRRs1mIPegpeoChZnfhwnwEsw1rX7up7mZsj8CMehs81zg5TYKrIgTZyb5vw0D0wXSOCKhRraiJjy41zkgWpXMJz4YlFZXa-j5WkCGl8QWwD5ZnL6BKpZO5r4-OycvSmKLC7DaY~FA__": {
+      "key": "83f51c7cb05ef3caf55195c09230ae2f3122406d",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 132192,
+      "mirrored_at": "1792489986",
+      "source_url": "https://footage-private.imgix.net/footage-graded/da3e90e944_1858184_0-second_w800px.jpeg?Expires=2105758778&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=VFCeORDQ27zjlp5atwIcGtPF2sgna7wR9b~b4FKVL7wZkHW83BMRMXl3DZuc4f4GTBDA88flCIGpeU0wcWupo8~73OVyhB6FmhRxJSkXe3SBT0ClwsQKeBOyhOvSunCbKV9~ZxY9Q5O9MQLdj1~UwmleoXEu57tEVDpXwvHw~RaXhZb211QTvG-Er-hT2VvT1Pe0gdBRPcDOpRRs1mIPegpeoChZnfhwnwEsw1rX7up7mZsj8CMehs81zg5TYKrIgTZyb5vw0D0wXSOCKhRraiJjy41zkgWpXMJz4YlFZXa-j5WkCGl8QWwD5ZnL6BKpZO5r4-OycvSmKLC7DaY~FA__"
+    },
+    "https://footage-private.imgix.net/footage-graded/c312675e08_1845197_0-second_w800px.jpeg?Expires=2105757858&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Eb8k-XsYgQh1oD3bohJxosPpJZZdxHsCdXjPsTVBqM0YYdR2IdbRb3EZgZ-njU-KaQppsY-BKgEQ98LuOyTRMAQ4iBDGTv-WDiEXXcIQufQCCSH6GRTx4hoplQPtoe2rfcccOF-r~O2VumKC8YUlIHRQAtX6yuaOpdAu2q63lsubXV-SFPi79N3wV9hydah5bd~DqSBaMYx~S4LZqubkyjeMKOb0ML6E9ZREL9PgeKRujAM8J4dxa203hRbSw~PZCRdFDIHPpO3OvHwPyUd4foFipM0QcqNKPDGpTm4I5FT3vvv7Wx2sxF1eJZeEHjdYV2MrZHDuxWpLXEkp0MfXAQ__": {
+      "key": "a8ff7a39ecc5a81fd46e996983ce22f5f63f6227",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 26735,
+      "mirrored_at": "1792489989",
+      "source_url": "https://footage-private.imgix.net/footage-graded/c312675e08_1845197_0-second_w800px.jpeg?Expires=2105757858&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Eb8k-XsYgQh1oD3bohJxosPpJZZdxHsCdXjPsTVBqM0YYdR2IdbRb3EZgZ-njU-KaQppsY-BKgEQ98LuOyTRMAQ4iBDGTv-WDiEXXcIQufQCCSH6GRTx4hoplQPtoe2rfcccOF-r~O2VumKC8YUlIHRQAtX6yuaOpdAu2q63lsubXV-SFPi79N3wV9hydah5bd~DqSBaMYx~S4LZqubkyjeMKOb0ML6E9ZREL9PgeKRujAM8J4dxa203hRbSw~PZCRdFDIHPpO3OvHwPyUd4foFipM0QcqNKPDGpTm4I5FT3vvv7Wx2sxF1eJZeEHjdYV2MrZHDuxWpLXEkp0MfXAQ__"
+    },
+    "https://footage-private.imgix.net/footage-graded/f380154f39_1858432_0-second_w800px.jpeg?Expires=2105758113&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=fZ6VAhUehbWQ1EgCKNvKgv20pd~F~~WjsmLICvPHUz92tlmq1HxXCOb3ma3e7q5k3REAgqJezQiairpiCh6QcgjGWztMV15qXA0qQGu1P72rEQiJ8noGq4pd7XleW4XWLzKtF-HNsMWm13EI8kP3wNTad4kxv4TP6Gn8~UNvjIzjj1iIwiNYurbqIOH0BvLS73vT6KInKuOYevesrIVqkZIf56gCuNX2x~3q4VXA73U9o6lcWradLKp6EaEu0fhxYCOoHp~Xft6U8k903yrk0E-85fXfdP1jbiY-KhAKl6TH0iuHkRqSrX7tH5dOIVLgHMpyRCKm2ABCQoC43H4wmw__": {
+      "key": "0ad6913cf38a52182f623aeee78d3abe75ecd221",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 43413,
+      "mirrored_at": "1792489991",
+      "source_url": "https://footage-private.imgix.net/footage-graded/f380154f39_1858432_0-second_w800px.jpeg?Expires=2105758113&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=fZ6VAhUehbWQ1EgCKNvKgv20pd~F~~WjsmLICvPHUz92tlmq1HxXCOb3ma3e7q5k3REAgqJezQiairpiCh6QcgjGWztMV15qXA0qQGu1P72rEQiJ8noGq4pd7XleW4XWLzKtF-HNsMWm13EI8kP3wNTad4kxv4TP6Gn8~UNvjIzjj1iIwiNYurbqIOH0BvLS73vT6KInKuOYevesrIVqkZIf56gCuNX2x~3q4VXA73U9o6lcWradLKp6EaEu0fhxYCOoHp~Xft6U8k903yrk0E-85fXfdP1jbiY-KhAKl6TH0iuHkRqSrX7tH5dOIVLgHMpyRCKm2ABCQoC43H4wmw__"
+    },
+    "https://footage-private.imgix.net/footage-graded/0d3f119d5a_1790594_0-second_w800px.jpeg?Expires=2105757662&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=WQfrBQNS8th8xOuh5zKDyIlL3oJZxDUNdK-d72Dr0VKX~44yNyrvTgnb1KAeqiOmtNa0mSxC-8KXf3ZMmIzhcGr418fhP6ynSY~A-3R1S80pxtohMQ30PzCcAPSSI9MDyoCLj~GBmsDjxuWSxIhZXf8iJY4DW1zECGkGs7HkdEq~UtyznEEc5joOKWxIUcD9YZkE7eTARlJbyuOl-hJlPyPkz3TNxGeTq6XzBrco0RND4pPbuW3y70uysFX3PjWAIy40q0OQAYaWMr~2nAwoF8vF4NpEx6RVHWnCAJv8knu2kNiIVxbVmu1rxUf2hV4K1S7rCSr~yFY0eKKdEhiugA__": {
+      "key": "9d54e5913cae4236cef71dcc28afc70c6e0de6b6",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 62315,
+      "mirrored_at": "1792489994",
+      "source_url": "https://footage-private.imgix.net/footage-graded/0d3f119d5a_1790594_0-second_w800px.jpeg?Expires=2105757662&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=WQfrBQNS8th8xOuh5zKDyIlL3oJZxDUNdK-d72Dr0VKX~44yNyrvTgnb1KAeqiOmtNa0mSxC-8KXf3ZMmIzhcGr418fhP6ynSY~A-3R1S80pxtohMQ30PzCcAPSSI9MDyoCLj~GBmsDjxuWSxIhZXf8iJY4DW1zECGkGs7HkdEq~UtyznEEc5joOKWxIUcD9YZkE7eTARlJbyuOl-hJlPyPkz3TNxGeTq6XzBrco0RND4pPbuW3y70uysFX3PjWAIy40q0OQAYaWMr~2nAwoF8vF4NpEx6RVHWnCAJv8knu2kNiIVxbVmu1rxUf2hV4K1S7rCSr~yFY0eKKdEhiugA__"
+    },
+    "https://footage-private.imgix.net/footage-graded/a5fd0d98c1_1749253_0-second_w800px.jpeg?Expires=2105758252&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=r5m88Rn-g2CBdBxFnmI0Gm2~ZhxPsbfIoUDdnp4fScuTW4wJyuI0tTAAsw2qRZpSL9xNyljFs0xISzeZAI2NrWDoh3JcpxdIG9F7r~XaC-lv074HMVeiRjEEpGsJcrB-xsIDInQCKEWmVZ74p9J6OeFRrw1AVBLOzbMNzGUqtf-ELZzQFKIJY~1k2tEKLVaPqvJ2-7yKwqObn9No2bwyfUO9DDZb~K9QVlhi6AMDRXsgBcEl6BMq05NQHm6Ayly7EXym93xOaCcd3tP7tSYGPuJuqNbqBULQ5AG252zI41-A1q8sssliZ-u~X9dLUIEEJJxWtRlYW-SQ~eAXQU0KbQ__": {
+      "key": "7da1f2117d6dc1d3e2e110d69fdaef1b18b6da68",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 46583,
+      "mirrored_at": "1792489996",
+      "source_url": "https://footage-private.imgix.net/footage-graded/a5fd0d98c1_1749253_0-second_w800px.jpeg?Expires=2105758252&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=r5m88Rn-g2CBdBxFnmI0Gm2~ZhxPsbfIoUDdnp4fScuTW4wJyuI0tTAAsw2qRZpSL9xNyljFs0xISzeZAI2NrWDoh3JcpxdIG9F7r~XaC-lv074HMVeiRjEEpGsJcrB-xsIDInQCKEWmVZ74p9J6OeFRrw1AVBLOzbMNzGUqtf-ELZzQFKIJY~1k2tEKLVaPqvJ2-7yKwqObn9No2bwyfUO9DDZb~K9QVlhi6AMDRXsgBcEl6BMq05NQHm6Ayly7EXym93xOaCcd3tP7tSYGPuJuqNbqBULQ5AG252zI41-A1q8sssliZ-u~X9dLUIEEJJxWtRlYW-SQ~eAXQU0KbQ__"
+    },
+    "https://footage-private.imgix.net/footage-graded/d7ba2779c4_1802475_0-second_w800px.jpeg?Expires=2105757735&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=fvrslCiiy6nWCq5APDeDjpGHebGiuotoAnAywesNwxCumcZqJVCKWSqLsNXYsyDXjTbq29Kt52OcBTNO5pqsP8SJo-gWLoE4JPQJN5r-9w4eDJ-gVi5x1je8abjnsg9e4KXpEzPYBccdQoj2DPdvENWGKxbgFLTSUuFKDzCZiDdV6EkQK9zRW-leVA3YbhOY0Svm2AfDYyRXWlSMg15~mM~PTdLMkPUUdfveDB5kcY38a2iHvD8lGw76IgbYcB2ukkzD5BZ0ya7rYn2Z0mMWYjD6B8Zs2rdwRl8dj1GKPghvJNkI-cpqe5d~d8-CnGNqO-5hRtIlZj3ZaqIvAT7D1Q__": {
+      "key": "6496d30c1e4fa12ccfd2e9262d13303af74e873d",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 70900,
+      "mirrored_at": "1792489999",
+      "source_url": "https://footage-private.imgix.net/footage-graded/d7ba2779c4_1802475_0-second_w800px.jpeg?Expires=2105757735&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=fvrslCiiy6nWCq5APDeDjpGHebGiuotoAnAywesNwxCumcZqJVCKWSqLsNXYsyDXjTbq29Kt52OcBTNO5pqsP8SJo-gWLoE4JPQJN5r-9w4eDJ-gVi5x1je8abjnsg9e4KXpEzPYBccdQoj2DPdvENWGKxbgFLTSUuFKDzCZiDdV6EkQK9zRW-leVA3YbhOY0Svm2AfDYyRXWlSMg15~mM~PTdLMkPUUdfveDB5kcY38a2iHvD8lGw76IgbYcB2ukkzD5BZ0ya7rYn2Z0mMWYjD6B8Zs2rdwRl8dj1GKPghvJNkI-cpqe5d~d8-CnGNqO-5hRtIlZj3ZaqIvAT7D1Q__"
+    },
+    "https://footage-private.imgix.net/footage-graded/df0869171b_1845010_0-second_w800px.jpeg?Expires=2105758163&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=AbStNNW4ObOTrn8zVxx6OV0HLwrFVbRS-cTxLZFJMdCqTUnfffZrBZVyQRwAEL1TFV1Z98rI~x3q3ktDjGXzE0lFSkqZ6~wDNrvDVhtXGjZ4cUubGOCK9RCXS~ueSoAUj8Mk1Ac6M26B-g8k9-msvVvtJypeA9lRZZhuOpf9E7GTDIpmYFvOYvcE~UarS3eqoZhr~Fnb5q9HeigIyBi4RbczKTvCu1TCu~uGOlMehp~Y9x01FydiWB1kDM~~-c5LoYeTnbRvcAv4FF0PO42D~k732HSb4QuphUtZWvHvmqlAN18Yu2agpvmtaIt-HULoOcA1VyNsQG3AO6c6ZDByAA__": {
+      "key": "a5dd09be034353df99b7430cf82b8dc29215df6a",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 21335,
+      "mirrored_at": "1792490001",
+      "source_url": "https://footage-private.imgix.net/footage-graded/df0869171b_1845010_0-second_w800px.jpeg?Expires=2105758163&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=AbStNNW4ObOTrn8zVxx6OV0HLwrFVbRS-cTxLZFJMdCqTUnfffZrBZVyQRwAEL1TFV1Z98rI~x3q3ktDjGXzE0lFSkqZ6~wDNrvDVhtXGjZ4cUubGOCK9RCXS~ueSoAUj8Mk1Ac6M26B-g8k9-msvVvtJypeA9lRZZhuOpf9E7GTDIpmYFvOYvcE~UarS3eqoZhr~Fnb5q9HeigIyBi4RbczKTvCu1TCu~uGOlMehp~Y9x01FydiWB1kDM~~-c5LoYeTnbRvcAv4FF0PO42D~k732HSb4QuphUtZWvHvmqlAN18Yu2agpvmtaIt-HULoOcA1VyNsQG3AO6c6ZDByAA__"
+    },
+    "https://footage-private.imgix.net/footage-graded/8224b7c7a5_1850139_0-second_w800px.jpeg?Expires=2105758523&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=pg0NU5s2sgqAiYbhJnCwcmDDx4i~eLby1ABa-0Lp6DSUV6PhVWuXoI2nLBpi1S5g4ViivTUl89rs7gWE628O0-QehhUZhtYIyk3PdCDf3w9pys9VM-iqzszh~laDcCjmhzr1Sq8GUEqUozRLquAzVQMfcJTxbYmHCK3zB6qAwGnD5CIZkdn--A9c-ImcqXjiCXpD-35NCJ4nTPaZ33sL-~2AWcubvSRgmTIR1Sn50ZRnSTPBdyY5bvoxcd~qK-J0n~n7DAHVqOSxQC20iyVldc443jFOlSFz6FJxvqMvqz6hhZ~7epRR1YjBuo5IV5GZmjPa8IaUH-th-UTRENeGNQ__": {
+      "key": "41c0a8e4369d52336b39e118686affb3c8a81327",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 48439,
+      "mirrored_at": "1792490004",
+      "source_url": "https://footage-private.imgix.net/footage-graded/8224b7c7a5_1850139_0-second_w800px.jpeg?Expires=2105758523&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=pg0NU5s2sgqAiYbhJnCwcmDDx4i~eLby1ABa-0Lp6DSUV6PhVWuXoI2nLBpi1S5g4ViivTUl89rs7gWE628O0-QehhUZhtYIyk3PdCDf3w9pys9VM-iqzszh~laDcCjmhzr1Sq8GUEqUozRLquAzVQMfcJTxbYmHCK3zB6qAwGnD5CIZkdn--A9c-ImcqXjiCXpD-35NCJ4nTPaZ33sL-~2AWcubvSRgmTIR1Sn50ZRnSTPBdyY5bvoxcd~qK-J0n~n7DAHVqOSxQC20iyVldc443jFOlSFz6FJxvqMvqz6hhZ~7epRR1YjBuo5IV5GZmjPa8IaUH-th-UTRENeGNQ__"
+    },
+    "https://footage-private.imgix.net/footage-graded/d4cfebce6d_1850199_0-second_w800px.jpeg?Expires=2105758114&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=QB16-oZbfumDmsPhJJ~03ifO1UbZGoK3Wwt0yERwuGjZPfKJGrHB1Kj4RAkeVzHuu8BU2N~CMnqFT7c0pbNtzH3J9MN9UQGB6A6RHRbgQQ9x-gLJC-M6LxqbGr-W17jS8MeMzVcWcwTFVvxPhtdIGYiqZ-eFRd~4sKgawl9VsHLu3pjJmj8iYvbLBt1JT3-Dib2dLoSVysEhInFjnLiZRuvTDSx~cq-MWhlFmA9zi9Oul-vKP0ULMknksKUr1VJ5D9-cD4bjdw3D10tyqVpS3Em8HpXZY~wyGXwc7kJIrzJz~QoP9XfeUI2Xlje3i2Pn0dNITQusu8IP0I46EEps5g__": {
+      "key": "d8af1087285fe4ce32395aec72cdf7eb243b5873",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 42056,
+      "mirrored_at": "1792490006",
+      "source_url": "https://footage-private.imgix.net/footage-graded/d4cfebce6d_1850199_0-second_w800px.jpeg?Expires=2105758114&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=QB16-oZbfumDmsPhJJ~03ifO1UbZGoK3Wwt0yERwuGjZPfKJGrHB1Kj4RAkeVzHuu8BU2N~CMnqFT7c0pbNtzH3J9MN9UQGB6A6RHRbgQQ9x-gLJC-M6LxqbGr-W17jS8MeMzVcWcwTFVvxPhtdIGYiqZ-eFRd~4sKgawl9VsHLu3pjJmj8iYvbLBt1JT3-Dib2dLoSVysEhInFjnLiZRuvTDSx~cq-MWhlFmA9zi9Oul-vKP0ULMknksKUr1VJ5D9-cD4bjdw3D10tyqVpS3Em8HpXZY~wyGXwc7kJIrzJz~QoP9XfeUI2Xlje3i2Pn0dNITQusu8IP0I46EEps5g__"
+    },
+    "https://footage-private.imgix.net/footage-graded/26c95e28fe_1801247_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Es30j8cJgT8OLaP6FOZTtTC~~kdsc~G7eIpFkHMbYGf6Y4HuwFfnWleUOf7a3PyM3kwRzrfGMDhblYHaxmmk5JyjQFAq-q1hbYGVcGx~rLAynZoOvAoHAbhdLQNdLw1HFrIoV8x2OchaMwkUBcl-w9aNeu0Tl8~9Y5UWkOdcY3ABfukl59347r2HaZPRLY7KykPYsZVJfTfztuIFaRbRRpO9F7lH1RxkUcn~6pWNWiaTeNumz76g7MO05U3o~spPjnIz3vENaSYObMgvYipHN8oywPhRoWfMzSMEwzDabD6JkbXsnZBqSSKYt1puuARG2hJy-AQH-NF3qDkeQkvyLg__": {
+      "key": "374c9de84b3714456c9b64e2d22e8eba2f62f991",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 32307,
+      "mirrored_at": "1792490009",
+      "source_url": "https://footage-private.imgix.net/footage-graded/26c95e28fe_1801247_0-second_w800px.jpeg?Expires=2105757664&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=Es30j8cJgT8OLaP6FOZTtTC~~kdsc~G7eIpFkHMbYGf6Y4HuwFfnWleUOf7a3PyM3kwRzrfGMDhblYHaxmmk5JyjQFAq-q1hbYGVcGx~rLAynZoOvAoHAbhdLQNdLw1HFrIoV8x2OchaMwkUBcl-w9aNeu0Tl8~9Y5UWkOdcY3ABfukl59347r2HaZPRLY7KykPYsZVJfTfztuIFaRbRRpO9F7lH1RxkUcn~6pWNWiaTeNumz76g7MO05U3o~spPjnIz3vENaSYObMgvYipHN8oywPhRoWfMzSMEwzDabD6JkbXsnZBqSSKYt1puuARG2hJy-AQH-NF3qDkeQkvyLg__"
+    },
+    "https://footage-private.imgix.net/footage-graded/3effa7a2a7_1805396_0-second_w800px.jpeg?Expires=2105758618&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=lXKR0RhnI5ID3YDq56fJU0SnRGrdwSWDoTqw1Hmne7wKEDBPpI1oscE6efegSOYuiAsqZt-xdK4wT80QxcVdlUpobUNSWAUuupt1I1cwfJdayTho54Y8y1Sti1QPdf7xO-ycSTW6SxYPp41zGB4lHnxuBEN27RET-pj4x0ISFiDixj62qMFNOBla~h3xLmyLgmkSRg5HY0Q8knsA-1B6IW9ShvkpCSkExdQvQVHZqL~ztA5HBj3RVcxLmUDNb7DhnH3hP1PYac6Z1CsENOydQZL3H5vZFXpwT2Bx8WWuDrZyhDGB3j3pAUBDhkoT2yyLu5eZhm7e1SWcRjPc-uciTQ__": {
+      "key": "b9bcf0bc5e1900935db7f7293f676503f78ef744",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 54477,
+      "mirrored_at": "1792490011",
+      "source_url": "https://footage-private.imgix.net/footage-graded/3effa7a2a7_1805396_0-second_w800px.jpeg?Expires=2105758618&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=lXKR0RhnI5ID3YDq56fJU0SnRGrdwSWDoTqw1Hmne7wKEDBPpI1oscE6efegSOYuiAsqZt-xdK4wT80QxcVdlUpobUNSWAUuupt1I1cwfJdayTho54Y8y1Sti1QPdf7xO-ycSTW6SxYPp41zGB4lHnxuBEN27RET-pj4x0ISFiDixj62qMFNOBla~h3xLmyLgmkSRg5HY0Q8knsA-1B6IW9ShvkpCSkExdQvQVHZqL~ztA5HBj3RVcxLmUDNb7DhnH3hP1PYac6Z1CsENOydQZL3H5vZFXpwT2Bx8WWuDrZyhDGB3j3pAUBDhkoT2yyLu5eZhm7e1SWcRjPc-uciTQ__"
+    },
+    "https://footage-private.imgix.net/footage-graded/dd30192bc5_1790647_0-second_w800px.jpeg?Expires=2105758387&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=v4hgfKqv6ye4o0AxPcItIumGBDqkAMFnfJWef5zqf8svGnbF-tbM4G3q0rFFn3Hw9P6gC4OcN6Sb-75vO12Mk4zLWS90JFJx17tHkb~pSqf7pksBzkzq06~L2OeRFJWCy9gBSSv8BWbW3csg~pBAwmCiGqm0lnkYL04opG7kcnKfSUSV38e~tktSIcvYw0QNYTdHd1L9e6nI1Hicp7sury9NeueHHNDIbR9hciZTkFtbDWC02CvkgBXijhFU~R-8euhGwrQYg9IpvmCE92rNMc-HiUVDkuVkEafZDmBCpIT~sTfjZfDeeWKLvNTHg8gweGYUzZY~~ykz8Tr9zyaPnA__": {
+      "key": "dba113811ff3e70f5241157cd08e13406a44e118",
+      "namespace": "artlist-scraper",
+      "content_type": "application/octet-stream",
+      "size": 40937,
+      "mirrored_at": "1792490014",
+      "source_url": "https://footage-private.imgix.net/footage-graded/dd30192bc5_1790647_0-second_w800px.jpeg?Expires=2105758387&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=v4hgfKqv6ye4o0AxPcItIumGBDqkAMFnfJWef5zqf8svGnbF-tbM4G3q0rFFn3Hw9P6gC4OcN6Sb-75vO12Mk4zLWS90JFJx17tHkb~pSqf7pksBzkzq06~L2OeRFJWCy9gBSSv8BWbW3csg~pBAwmCiGqm0lnkYL04opG7kcnKfSUSV38e~tktSIcvYw0QNYTdHd1L9e6nI1Hicp7sury9NeueHHNDIbR9hciZTkFtbDWC02CvkgBXijhFU~R-8euhGwrQYg9IpvmCE92rNMc-HiUVDkuVkEafZDmBCpIT~sTfjZfDeeWKLvNTHg8gweGYUzZY~~ykz8Tr9zyaPnA__"
+    }
+  }
+}
