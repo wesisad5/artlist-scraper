@@ -1,12 +1,12 @@
 # Artlist Catalog Scraper — Self-Chaining Full Scrape
 #
-# Runs the full catalog scrape in chunks, self-triggering the next run via GitHub API.
-# Each run picks up where the last left off (progress tracked in data/_meta/progress.json).
-# Handles the 3000-item pagination cap via combinatorial filtering.
+# Runs ONE catalog step per workflow run (chunked execution).
+# Self-chains to the next step via `gh workflow run` at the end.
+# Each step has its own time budget (most are <6h, the GHA job limit).
 #
 # Triggers:
 # - workflow_dispatch (manual, with --resume flag support)
-# - workflow_run (auto-chain: when this workflow completes, trigger next run if not done)
+# - schedule (every 10 min, in case chain breaks — auto-resumes)
 
 name: Full Catalog Scrape (Self-Chaining)
 
@@ -17,10 +17,9 @@ on:
         description: 'Resume from last checkpoint (true) or start fresh (false)'
         required: false
         default: 'true'
-  workflow_run:
-    workflows: ["Full Catalog Scrape (Self-Chaining)"]
-    types: [completed]
-    branches: [main]
+  schedule:
+    # Every 10 minutes (auto-resumes if chain breaks and there's pending work)
+    - cron: '*/10 * * * *'
 
 permissions:
   contents: write
@@ -29,8 +28,8 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    timeout-minutes: 30  # 30 min per step (most steps are <5 min; music/sfx/footage can take longer)
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,56 +68,75 @@ jobs:
           HTTP_MAX_RETRIES=5
           EOF
 
+      - name: Reset progress if not resuming
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.resume == 'false' }}
+        run: |
+          rm -f data/_meta/progress.json
+          echo "Progress reset for fresh scrape"
+
       - name: Test auth
         run: python -m src.cli test-auth
 
-      - name: Run scrape chunk (10 min budget)
-        run: |
-          RESUME="${{ github.event.inputs.resume || 'true' }}"
-          if [ "$RESUME" = "true" ] && [ -f data/_meta/progress.json ]; then
-            echo "Resuming from checkpoint..."
-            python -m src.cli catalog --resume
-          else
-            echo "Starting fresh scrape..."
-            python -m src.cli catalog
-          fi
+      - name: Show current progress
+        run: python -m src.cli progress
 
-      - name: Check if scrape is complete
-        id: check_done
+      - name: Run next pending step (resume mode)
         run: |
-          if [ -f data/_meta/progress.json ]; then
-            DONE=$(python -c "import json; d=json.load(open('data/_meta/progress.json')); print(d.get('done', False))")
-            echo "done=$DONE" >> $GITHUB_OUTPUT
-          else
-            echo "done=false" >> $GITHUB_OUTPUT
-          fi
+          python -m src.cli catalog --resume
+          echo "---"
+          echo "Progress after run:"
+          python -m src.cli progress
 
       - name: Commit progress
         run: |
           git config user.email "scraper-bot@users.noreply.github.com"
           git config user.name "artlist-scraper-bot"
+          git pull --rebase || true
           git add data/ || true
           git commit -m "Scrape checkpoint $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "No changes"
+          git push
+
+      - name: Check if scrape is complete
+        id: check_done
+        run: |
+          DONE=$(python3 -c "import json; d=json.load(open('data/_meta/progress.json')); print(d.get('done', False))")
+          echo "done=$DONE" >> $GITHUB_OUTPUT
+          echo "Scrape done: $DONE"
+
+      - name: Final audit + mirror signed URLs
+        if: steps.check_done.outputs.done == 'true'
+        run: |
+          python -m src.cli audit > audit_report.json 2>/dev/null || true
+          cat audit_report.json | head -80
+          echo "---"
+          echo "Mirroring signed URLs to Netlify blob..."
+          python -m src.cli mirror-signed || echo "Mirror failed (may need creds)"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+
+      - name: Commit final results
+        if: steps.check_done.outputs.done == 'true'
+        run: |
+          git config user.email "scraper-bot@users.noreply.github.com"
+          git config user.name "artlist-scraper-bot"
+          git add data/ audit_report.json || true
+          git commit -m "Scrape complete + audit + mirror $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "No changes"
           git push
 
       - name: Trigger next run (self-chain)
         if: steps.check_done.outputs.done != 'true'
         run: |
+          echo "Self-chaining to next run..."
           gh workflow run "$GITHUB_WORKFLOW" \
             --repo "$GITHUB_REPOSITORY" \
             -f resume=true
+          echo "Triggered next run"
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
 
-      - name: Upload audit report
+      - name: Disable schedule when done (prevent infinite runs)
         if: steps.check_done.outputs.done == 'true'
         run: |
-          python -m src.cli audit > audit_report.json 2>/dev/null || true
-          cat audit_report.json | head -50
-
-      - name: Mirror signed URLs to Netlify blob
-        if: steps.check_done.outputs.done == 'true'
-        run: python -m src.cli mirror-signed
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          echo "Scrape complete. Schedule will be a no-op (progress.done=true)."
+          echo "To re-run, manually trigger with resume=false."

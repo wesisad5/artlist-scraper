@@ -55,24 +55,47 @@ def cmd_test_auth(args):
 
 
 def cmd_catalog(args):
-    skip = args.skip.split(",") if args.skip else []
+    """Run catalog scrape. With --resume, runs only the next pending step."""
     if getattr(args, 'resume', False):
-        # Resume mode: check progress.json and skip already-completed steps
-        from pathlib import Path
-        progress_file = config.META_DIR / "progress.json"
-        if progress_file.exists():
-            progress = json.loads(progress_file.read_text())
-            done_steps = progress.get("done_steps", [])
-            skip = list(set(skip + done_steps))
-            log.info(f"Resuming: skipping completed steps: {done_steps}")
+        # Resume mode: run only the next pending step (for chunked execution)
+        log.info("=== Resume mode: running next pending step ===")
+        progress = cat_pipeline.run_catalog_resume()
+        print(json.dumps(progress, indent=2))
+        return
+    skip = args.skip.split(",") if args.skip else []
     meta = cat_pipeline.run_catalog(skip=skip)
     print(json.dumps(meta, indent=2))
-    # Save progress
-    progress = {"done_steps": list(meta.get("steps", {}).keys()),
-                "done": all(s.get("status") == "ok" for s in meta.get("steps", {}).values()),
-                "totals": meta.get("totals", {}),
-                "run_id": meta.get("run_id")}
-    (config.META_DIR / "progress.json").write_text(json.dumps(progress, indent=2))
+
+
+def cmd_step(args):
+    """Run a single catalog step. Usage: python -m src.cli step <name>"""
+    step = args.step
+    log.info(f"=== Running single step: {step} ===")
+    result = cat_pipeline.run_single_step(step)
+    print(json.dumps(result, indent=2))
+    # Update progress
+    progress = cat_pipeline.load_progress()
+    if result["status"]["status"] == "ok":
+        if step not in progress.get("done_steps", []):
+            progress.setdefault("done_steps", []).append(step)
+        progress["totals"][step] = result.get("total", 0)
+    cat_pipeline.save_progress(progress)
+
+
+def cmd_progress(args):
+    """Show current progress."""
+    progress = cat_pipeline.load_progress()
+    print(json.dumps(progress, indent=2))
+
+
+def cmd_reset(args):
+    """Reset progress.json."""
+    import os
+    if (config.META_DIR / "progress.json").exists():
+        os.remove(config.META_DIR / "progress.json")
+        print("Progress reset.")
+    else:
+        print("No progress file to reset.")
 
 
 def cmd_mirror_signed(args):
@@ -307,6 +330,16 @@ def main():
     sub.add_parser("audit", help="Run E2E audit").set_defaults(func=cmd_audit)
 
     sub.add_parser("mirror-signed", help="Mirror signed URLs to Netlify blob").set_defaults(func=cmd_mirror_signed)
+
+    p_step = sub.add_parser("step", help="Run a single catalog step (categories|music|sfx|footage|luts|templates|collections|flows|studio)")
+    p_step.add_argument("step", help="Step name")
+    p_step.set_defaults(func=cmd_step)
+
+    p_progress = sub.add_parser("progress", help="Show current progress")
+    p_progress.set_defaults(func=cmd_progress)
+
+    p_reset = sub.add_parser("reset", help="Reset progress.json (start fresh)")
+    p_reset.set_defaults(func=cmd_reset)
 
     p_serve = sub.add_parser("serve", help="Serve UI")
     p_serve.add_argument("--port", type=int, default=8000)
