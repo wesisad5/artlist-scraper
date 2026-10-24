@@ -1,0 +1,11 @@
+{
+  "done_steps": [
+    "categories"
+  ],
+  "current_step": "music",
+  "done": false,
+  "totals": {
+    "categories": 27
+  },
+  "run_id": "20261024T081735Z"
+}
