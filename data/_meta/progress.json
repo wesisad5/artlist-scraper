@@ -1,11 +1,15 @@
 {
   "done_steps": [
-    "categories"
+    "categories",
+    "music",
+    "luts"
   ],
-  "current_step": "music",
+  "current_step": "sfx",
   "done": false,
   "totals": {
-    "categories": 27
+    "categories": 27,
+    "music": 35424,
+    "luts": 411
   },
   "run_id": "20261024T081735Z"
 }
